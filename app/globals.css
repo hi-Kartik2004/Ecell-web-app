@@ -49,6 +49,11 @@
   }
 }
 
+.texto {
+  writing-mode: vertical-rl;
+  /* text-orientation: mixed; */
+}
+
 @layer base {
   * {
     @apply border-border;
