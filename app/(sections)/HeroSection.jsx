@@ -104,7 +104,7 @@ function HeroSection() {
         >
           {VideoPlaying ? <FaPause /> : <FaPlay />}
         </button>
-        <MouseScroll scrollToId={"about"} />
+        {/* <MouseScroll scrollToId={"about"} /> */}
       </div>
     </div>
   );
