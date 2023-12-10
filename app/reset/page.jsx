@@ -28,7 +28,7 @@ const page = () => {
             <div className="relative p-6 flex flex-col items-center justify-center min-h-screen overflow-hidden">
                 <div className="relative grid place-items-center w-full blob-container  z-2">
                     <svg
-                        className={`top-[3rem] right-[2rem] left-[35rem] bottom-[-2rem] blob w-20 h-20 rounded-full bg-primary absolute transform z-1`}
+                        className={`top-[3rem] right-[2rem] left-[55rem] bottom-[-2rem] blob w-20 h-20 rounded-full bg-primary absolute transform z-1`}
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 200 200"
                     >
@@ -41,7 +41,7 @@ const page = () => {
                     <div className="w-full p-6 lg:max-w-xl sm:w-11/12 backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-6 shadow-inner border-2 text-white relative z-2">
                         <form onSubmit={handleResetPass} className="max-w-md mx-auto mt-8">
                             <div className="mb-4">
-                                <label htmlFor="username" className=" block text-gray-700 text-sm font-bold mb-2">Registered Email:</label>
+                                <label htmlFor="username" className=" block text-primary text-sm font-bold mb-2">Registered Email:</label>
                                 <input
                                     type="text"
                                     id="username"
