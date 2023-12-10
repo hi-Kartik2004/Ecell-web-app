@@ -12,10 +12,11 @@ const page = () => {
         e.preventDefault();
         // console.log('Form Values:', { username, password });
         signInWithEmailAndPassword(auth, username, password).then((userCredential) => {
+            setisCorrect("")
             console.log(userCredential.user);
         }).catch((err) => {
             // console.log(err.code);
-            setisCorrect("Check your password or regestered email")
+            setisCorrect("Check your password or registered email")
         })
     };
 

@@ -13,6 +13,7 @@ const page = () => {
         e.preventDefault();
         await sendPasswordResetEmail(auth, username).then(data => {
             alert("Check your Mailbox to reset your password")
+            setisCorrect("")
             push('/signin');
         }).catch((err) => {
             // alert("Could not send mail to reset password: ", err.code)
@@ -40,7 +41,7 @@ const page = () => {
                     <div className="w-full p-6 lg:max-w-xl sm:w-11/12 backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-6 shadow-inner border-2 text-white relative z-2">
                         <form onSubmit={handleResetPass} className="max-w-md mx-auto mt-8">
                             <div className="mb-4">
-                                <label htmlFor="username" className=" block text-gray-700 text-sm font-bold mb-2">Regestered Email:</label>
+                                <label htmlFor="username" className=" block text-gray-700 text-sm font-bold mb-2">Registered Email:</label>
                                 <input
                                     type="text"
                                     id="username"
