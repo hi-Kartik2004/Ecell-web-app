@@ -51,7 +51,7 @@ function Navbar() {
               height={50}
               alt={"logo"}
             />
-            <span className="text-xl font-bold">E-Cell</span>
+            <span className="text-xl font-bold hidden md:block">E-Cell</span>
           </Link>
         </div>
 

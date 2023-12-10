@@ -14,22 +14,23 @@ import FooterSection from "@/app/(sections)/FooterSection";
 
 export default function Home() {
   return (
-    <main className="">
-      {/* <HeroSection /> */}
-      <div className="">
-        <NewHeroSection />
-      </div>
-      <FeaturedSection2 />
-      <Separator />
-      <AboutSection />
-      <Separator />
+    <main className="flex justify-center flex-col">
+      <div className="container">
+        <div className="">
+          <NewHeroSection />
+        </div>
+        <FeaturedSection2 />
+        <Separator />
+        <AboutSection />
+        <Separator />
 
-      <AppFeatures />
-      {/* <Separator /> */}
-      {/* <PopularEvents /> */}
-      <Separator />
-      <TestimonialsSection />
-      <FooterSection />
+        <AppFeatures />
+        {/* <Separator /> */}
+        {/* <PopularEvents /> */}
+        <Separator />
+        <TestimonialsSection />
+        <FooterSection />
+      </div>
     </main>
   );
 }
