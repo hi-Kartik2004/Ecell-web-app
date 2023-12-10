@@ -33,7 +33,7 @@ function HeroSection() {
   }
 
   return (
-    <div className="mt-16 h-[92vh] relative flex justify-center">
+    <div className="mt-16 h-[95vh] relative flex justify-center">
       <video
         ref={videoRef}
         autoPlay
@@ -87,7 +87,7 @@ function HeroSection() {
           </Button>
         </div>
 
-        <div className="flex justify-center items-center w-full mt-10 flex-col">
+        <div className="flex justify-center items-center w-full mt-6 flex-col">
           <Image src="/ecell-no-bg.png" alt="logo" width={250} height={250} />
           <h3 className="text-xl font-semibold">{sectionData?.clubName}</h3>
           <p className="text-center text-sm mt-2">
