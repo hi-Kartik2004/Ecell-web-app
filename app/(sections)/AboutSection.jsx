@@ -33,7 +33,7 @@ const notifications = [
 function AboutSection() {
   return (
     <section>
-      <div className="container py-10 relative overflow-hidden ">
+      <div className="container py-10 pb-24 relative overflow-hidden ">
         <h1 className="text-2xl text-center font-semibold">
           Lorem ipsum dolor sit amet,{" "}
           <span className="text-primary">consectetur</span> adipisicing elit.
