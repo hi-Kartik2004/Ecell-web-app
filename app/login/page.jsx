@@ -2,6 +2,7 @@
 import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../lib/firebase/index';
+import Link from 'next/link';
 
 const page = () => {
     const [username, setUsername] = useState('');
@@ -77,7 +78,7 @@ const page = () => {
                                 />
                             </div>
                             <div className="mb-4 text-right">
-                                <a onClick={handleResetPass} href="#" className="text-sm text-primary hover:underline">Forgot Password?</a>
+                                <a onClick={handleResetPass} href="/reset" className="text-sm text-primary hover:underline">Forgot Password?</a>
                             </div>
                             <button
                                 type="submit"
