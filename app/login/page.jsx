@@ -1,8 +1,7 @@
 'use client'
-import { signInWithEmailAndPassword, sendPasswordResetEmail } from 'firebase/auth';
+import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../lib/firebase/index';
-import Link from 'next/link';
 
 const page = () => {
     const [username, setUsername] = useState('');
@@ -17,15 +16,6 @@ const page = () => {
             console.log(err.code);
         })
     };
-
-    const handleResetPass = async () => {
-        try {
-            await sendPasswordResetEmail(auth, username);
-            console.log('Password reset email sent successfully');
-        } catch (error) {
-            console.error('Error sending password reset email:', error.message);
-        }
-    }
 
     return (
         <main>
@@ -78,7 +68,7 @@ const page = () => {
                                 />
                             </div>
                             <div className="mb-4 text-right">
-                                <a onClick={handleResetPass} href="/reset" className="text-sm text-primary hover:underline">Forgot Password?</a>
+                                <a href="/reset" className="text-sm text-primary hover:underline">Forgot Password?</a>
                             </div>
                             <button
                                 type="submit"
