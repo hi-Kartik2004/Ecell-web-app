@@ -1,10 +1,10 @@
 import React from "react";
 
-function GlassCard({ data, top, left, right, bottom }) {
+function GlassCard({ data, className }) {
   return (
     <div className="blob-container relative z-2">
       <svg
-        className={`top-[${top}] right-[${right}] left-[${left}] bottom-[${bottom}] blob w-20 h-20 rounded-full bg-primary absolute transform z-1`}
+        className={`${className} blob w-20 h-20 rounded-full bg-primary absolute transform z-1`}
         xmlns="http://www.w3.org/2000/svg"
         viewBox="0 0 200 200"
       >
@@ -15,7 +15,7 @@ function GlassCard({ data, top, left, right, bottom }) {
         />
       </svg>
 
-      <div className="backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-6 shadow-inner border-2 text-white relative z-2">
+      <div className="backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2">
         <h2 className="text-xl font-semibold">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum fugiat
           asperiores aperiam.

@@ -33,17 +33,15 @@ const notifications = [
 function AboutSection() {
   return (
     <section>
-      <div className="container py-10 relative overflow-hidden">
-        <h1 className="text-2xl font-semibold text-white">
+      <div className="container py-10 relative overflow-hidden ">
+        <h1 className="text-2xl text-center font-semibold">
           Lorem ipsum dolor sit amet,{" "}
           <span className="text-primary">consectetur</span> adipisicing elit.
           Recusandae nam non delectus.
         </h1>
 
-        <GlassCard top="-2rem" right="2rem" />
-        <GlassCard bottom="-2rem" left="2rem" />
-        <GlassCard bottom="-2rem" right="2rem" />
-        <GlassCard top="-2rem" left="2rem" />
+        <GlassCard className="right-2 -top-4" />
+        <GlassCard className="-bottom-6 left-2" />
       </div>
     </section>
   );
