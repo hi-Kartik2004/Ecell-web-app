@@ -35,13 +35,13 @@ function HeroSection() {
   }
 
   return (
-    <div className="mt-16 min-h-[92vh] relative flex justify-center">
+    <div className="mt-16 min-h-[100vh] relative flex justify-center">
       <video
         ref={videoRef}
         autoPlay
         muted
         loop
-        className="w-full h-full object-cover min-h-[92vh]"
+        className="w-full h-full object-cover min-h-[100vh]"
       >
         <source src="/hero-video.mp4" type="video/mp4" />
         Your browser does not support the video tag.
