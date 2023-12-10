@@ -49,7 +49,7 @@ function HeroSection() {
 
       <div className="absolute top-0 left-0 w-full h-full dark:bg-black bg-white opacity-80"></div>
 
-      <div className="container flex flex-col items-center absolute top-0 min-h-[92vh]">
+      <div className="container flex flex-col items-center absolute top-0 min-h-[100vh]">
         <div className="px-4 py-2 rounded-full bg-background border my-4 gap-2 items-center w-auto flex  ">
           <Badge variant="warning">{sectionData.badgeTag}</Badge>
           <Link
