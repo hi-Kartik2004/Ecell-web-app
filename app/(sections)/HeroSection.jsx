@@ -101,7 +101,7 @@ function HeroSection() {
           <div className="w-[2px] h-7 rounded bg-muted-foreground"></div>
         </div>
 
-        <div className="flex justify-center items-center w-full mt-10 flex-col">
+        <div className="flex justify-center items-center w-full my-10 flex-col">
           <Image src="/ecell-no-bg.png" alt="logo" width={170} height={170} />
           <h3 className="text-xl font-semibold mt-2">
             {sectionData?.clubName}
