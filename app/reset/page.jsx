@@ -7,14 +7,16 @@ import { useRouter } from 'next/navigation';
 const page = () => {
     const [username, setUsername] = useState('');
     const { push } = useRouter();
+    const [isCorrect, setisCorrect] = useState('');
 
     const handleResetPass = async (e) => {
         e.preventDefault();
         await sendPasswordResetEmail(auth, username).then(data => {
             alert("Check your Mailbox to reset your password")
-            push('/login');
+            push('/signin');
         }).catch((err) => {
-            alert("Could not send mail to reset password: ", err.code)
+            // alert("Could not send mail to reset password: ", err.code)
+            setisCorrect("Could not send mail to reset password, check the entered email")
         })
         // console.log(username);
         // console.log(auth);
@@ -38,7 +40,7 @@ const page = () => {
                     <div className="w-full p-6 lg:max-w-xl sm:w-11/12 backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-6 shadow-inner border-2 text-white relative z-2">
                         <form onSubmit={handleResetPass} className="max-w-md mx-auto mt-8">
                             <div className="mb-4">
-                                <label htmlFor="username" className=" block text-gray-700 text-sm font-bold mb-2">User Email:</label>
+                                <label htmlFor="username" className=" block text-gray-700 text-sm font-bold mb-2">Regestered Email:</label>
                                 <input
                                     type="text"
                                     id="username"
@@ -48,7 +50,9 @@ const page = () => {
                                     autoComplete="off"
                                 />
                             </div>
-                            <br />
+                            <div className="mb-4 text-left">
+                                <p className='text-sm text-primary'>{isCorrect}</p>
+                            </div>
                             <button
                                 type="submit"
                                 className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 border"
