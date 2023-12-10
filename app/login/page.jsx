@@ -6,6 +6,7 @@ import { auth } from '../../lib/firebase/index';
 const page = () => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
+    const [isCorrect, setisCorrect] = useState('');
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -13,7 +14,8 @@ const page = () => {
         signInWithEmailAndPassword(auth, username, password).then((userCredential) => {
             console.log(userCredential.user);
         }).catch((err) => {
-            console.log(err.code);
+            // console.log(err.code);
+            setisCorrect("Check your password or regestered email")
         })
     };
 
@@ -69,6 +71,9 @@ const page = () => {
                             </div>
                             <div className="mb-4 text-right">
                                 <a href="/reset" className="text-sm text-primary hover:underline">Forgot Password?</a>
+                            </div>
+                            <div className="mb-4 text-right">
+                                <p className='text-sm text-primary'>{isCorrect}</p>
                             </div>
                             <button
                                 type="submit"

@@ -2,19 +2,22 @@
 import { sendPasswordResetEmail } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../lib/firebase/index';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
     const [username, setUsername] = useState('');
+    const { push } = useRouter();
 
     const handleResetPass = async (e) => {
         e.preventDefault();
-        try {
-            await sendPasswordResetEmail(auth, username);
-            // console.log(username);
-            alert("check your mail to reset password")
-        } catch (error) {
-            console.error('Error sending password reset email:', error.message);
-        }
+        await sendPasswordResetEmail(auth, username).then(data => {
+            alert("Check your Mailbox to reset your password")
+            push('/login');
+        }).catch((err) => {
+            alert("Could not send mail to reset password: ", err.code)
+        })
+        // console.log(username);
+        // console.log(auth);
     }
 
     return (
