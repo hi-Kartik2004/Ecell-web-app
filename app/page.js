@@ -25,8 +25,8 @@ export default function Home() {
       <Separator />
 
       <AppFeatures />
-      <Separator />
-      <PopularEvents />
+      {/* <Separator /> */}
+      {/* <PopularEvents /> */}
       <Separator />
       <TestimonialsSection />
       <FooterSection />

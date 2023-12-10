@@ -5,7 +5,7 @@ import React from "react";
 function AppFeatures() {
   return (
     <section className="bg-primary text-gray-800">
-      <div className="container flex flex-col items-center py-10">
+      <div className="container flex flex-col items-center py-16">
         <div>
           <h1 className="text-2xl text-center font-bold">
             Lorem ipsum dolor sit.
@@ -16,7 +16,7 @@ function AppFeatures() {
           </p>
         </div>
 
-        <div className="flex flex-col justify-center gap-4">
+        <div className="flex flex-col justify-center gap-4 mt-6">
           <AppFeaturesCard />
           <AppFeaturesCard />
           <AppFeaturesCard />
