@@ -7,8 +7,8 @@ import Marquee from "react-fast-marquee";
 
 function NewHeroSection() {
   return (
-    <section className="pt-24 py-6 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
-      <div className="container flex flex-col items-center">
+    <section className="pt-24 py-6 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')] w-full">
+      <div className="container flex flex-col items-center w-full">
         <div className="">
           <AlertComponent
             badgeMessage="New"
@@ -41,35 +41,34 @@ function NewHeroSection() {
             Explore Events &rarr;
           </Button>
         </div>
-
-        <Marquee className="">
-          <div className="flex">
-            <img
-              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="hero-image"
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-            <img
-              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="hero-image"
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-          </div>
-
-          <div className="flex">
-            <img
-              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="hero-image"
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-            <img
-              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              alt="hero-image"
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-          </div>
-        </Marquee>
       </div>
+      <Marquee className="">
+        <div className="flex">
+          <img
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="hero-image"
+            className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+          />
+          <img
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="hero-image"
+            className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+          />
+        </div>
+
+        <div className="flex">
+          <img
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="hero-image"
+            className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+          />
+          <img
+            src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+            alt="hero-image"
+            className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+          />
+        </div>
+      </Marquee>
     </section>
   );
 }
