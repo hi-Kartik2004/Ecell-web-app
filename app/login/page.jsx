@@ -1,5 +1,5 @@
 'use client'
-import { signInWithEmailAndPassword } from 'firebase/auth';
+import { signInWithEmailAndPassword,sendPasswordResetEmail } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../lib/firebase/index';
 
@@ -16,6 +16,15 @@ const page = () => {
             console.log(err.code);
         })
     };
+
+    const handleResetPass = async () => {
+        try {
+            await sendPasswordResetEmail(auth, username);
+            console.log('Password reset email sent successfully');
+        } catch (error) {
+            console.error('Error sending password reset email:', error.message);
+        }
+    }
 
     return (
         <div className="relative p-6 flex flex-col items-center justify-center min-h-screen overflow-hidden">
@@ -43,6 +52,9 @@ const page = () => {
                             autoComplete="off"
                         />
                     </div>
+                    <div className="mb-4 text-right">
+                        <a onClick={handleResetPass} href="#" className="text-sm text-primary-foreground hover:underline">Forgot Password?</a>
+                    </div>
                     <button
                         type="submit"
                         className="w-full lg:w-auto inline-flex items-center justify-center whitespace-nowrap rounded-md text-sm font-medium ring-offset-background transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring focus-visible:ring-offset-2 disabled:pointer-events-none disabled:opacity-50 bg-primary text-primary-foreground hover:bg-primary/90 h-10 px-4 py-2 border"
@@ -52,7 +64,6 @@ const page = () => {
                 </form>
             </div>
         </div>
-
     );
 };
 
