@@ -15,7 +15,7 @@ import FooterSection from "@/app/(sections)/FooterSection";
 export default function Home() {
   return (
     <main className="flex justify-center flex-col">
-      <div className="container">
+      <div className="">
         <div className="">
           <NewHeroSection />
         </div>
