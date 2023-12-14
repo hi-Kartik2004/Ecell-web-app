@@ -4,11 +4,11 @@ import FooterSection from '../(sections)/FooterSection';
 import { Separator } from "@/components/ui/separator";
 
 const images = [
+    'https://placekitten.com/600/400',
+    'https://placekitten.com/400/300',
+    'https://placekitten.com/600/400',
+    'https://placekitten.com/400/300',
     'https://placekitten.com/800/600',
-    'https://placekitten.com/600/400',
-    'https://placekitten.com/400/300',
-    'https://placekitten.com/600/400',
-    'https://placekitten.com/400/300',
     'https://placekitten.com/800/600',
     'https://placekitten.com/600/400',
     'https://placekitten.com/400/300',
