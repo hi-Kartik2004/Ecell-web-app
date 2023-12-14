@@ -49,11 +49,11 @@ const page = () => {
                     ></iframe>
                 </div>
                 <div className="container px-5 py-24 mx-auto flex">
-                    <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-9 shadow-md">
+                    <div className=" lg:w-1/3 md:w-1/2 rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-9 shadow-md backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white">
                         <h2 className="text-2xl text-primary font-bold mb-4">Contact Us</h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="mb-4">
-                                <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
+                                <label htmlFor="name" className="block  text-gray-700 text-sm font-bold mb-2">Name:</label>
                                 <input
                                     type="text"
                                     id="name"
@@ -104,10 +104,10 @@ const page = () => {
                         <Separator />
                         <br />
                         <div className="flex items-center justify-evenly">
-                            <h2><a className='text-xl' target='_blank'  href="https://www.instagram.com/ecelluvce/"><FaInstagram /></a></h2>
-                            <h2><a className='text-xl' target='_blank' href="https://www.linkedin.com/company/entrepreneurship-cell-uvce/mycompany/"><FaLinkedin /></a></h2>
-                            <h2><a className='text-xl' target='_blank' href="mailto:entrepreneurshipcelluvce@gmail.com"><FaEnvelope /></a></h2>
-                            <h2><a className='text-xl' target='_blank' href="tel:+91 98862 25685"><FaPhone /></a></h2>
+                            <h2><a className='text-xl' target='_blank'  href="https://www.instagram.com/ecelluvce/"><FaInstagram color='orange' /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="https://www.linkedin.com/company/entrepreneurship-cell-uvce/mycompany/"><FaLinkedin color='orange' /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="mailto:entrepreneurshipcelluvce@gmail.com"><FaEnvelope color='orange' /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="tel:+91 98862 25685"><FaPhone color='orange' /></a></h2>
                         </div>
                     </div>
                 </div>
