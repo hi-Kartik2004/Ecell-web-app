@@ -16,7 +16,26 @@ const About = () => {
         { name: 'John Doe', position: 'President', imageUrl: 'https://placekitten.com/600/400' },
         { name: 'Jane Doe', position: 'Vice President', imageUrl: 'https://placekitten.com/300/200' },
     ];
+    const relation = [
+        { name: 'John Doe', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+    ];
     const design = [
+        { name: 'John Doe', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+    ];
+    const tech = [
+        { name: 'Saini', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+        { name: 'Vansh Bhardwaj', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
+    ];
+    const market = [
+        { name: 'John Doe', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+    ];
+    const content = [
         { name: 'John Doe', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
         { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
         { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
@@ -59,10 +78,50 @@ const About = () => {
                 ))}
             </div>
             <br />
+            <h1 className="text-2xl text-center font-bold mb-4">Public Relations Team</h1>
+            <br />
+            <div className="flex flex-wrap justify-evenly">
+                {relation.map((member, index) => (
+                    <TeamMemberCard key={index} {...member} />
+                ))}
+            </div>
+            <br />
             <h1 className="text-2xl text-center font-bold mb-4">Design Team</h1>
             <br />
             <div className="flex flex-wrap justify-evenly">
                 {design.map((member, index) => (
+                    <TeamMemberCard key={index} {...member} />
+                ))}
+            </div>
+            <br />
+            <h1 className="text-2xl text-center font-bold mb-4">Technical Team</h1>
+            <br />
+            <div className="flex flex-wrap justify-evenly">
+                {tech.map((member, index) => (
+                    <TeamMemberCard key={index} {...member} />
+                ))}
+            </div>
+            <br />
+            <h1 className="text-2xl text-center font-bold mb-4">Marketing Team</h1>
+            <br />
+            <div className="flex flex-wrap justify-evenly">
+                {market.map((member, index) => (
+                    <TeamMemberCard key={index} {...member} />
+                ))}
+            </div>
+            <br />
+            <h1 className="text-2xl text-center font-bold mb-4">Content Team</h1>
+            <br />
+            <div className="flex flex-wrap justify-evenly">
+                {market.map((member, index) => (
+                    <TeamMemberCard key={index} {...member} />
+                ))}
+            </div>
+            <br />
+            <h1 className="text-2xl text-center font-bold mb-4">Operations Team</h1>
+            <br />
+            <div className="flex flex-wrap justify-evenly">
+                {market.map((member, index) => (
                     <TeamMemberCard key={index} {...member} />
                 ))}
             </div>
