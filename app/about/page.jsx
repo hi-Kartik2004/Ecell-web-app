@@ -74,7 +74,7 @@ const About = () => {
             <div className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
                 <div className="container mx-auto p-4">
                     <br />
-                    <h1 className=" text-3xl font-bold">Team <span className='text-primary'>E Cell UVCE</span></h1>
+                    <h1 className=" text-center text-3xl font-bold">Team <span className='text-primary'>E Cell UVCE</span></h1>
                     <br />
                     <h1 className="text-2xl text-center font-bold mb-4">Presidents</h1>
                     <br />
