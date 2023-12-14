@@ -1,5 +1,4 @@
 'use client'
-// pages/index.js
 import React, { useState } from 'react';
 
 const images = [
@@ -17,6 +16,7 @@ const images = [
 
 const Page = () => {
     const [selectedImage, setSelectedImage] = useState(null);
+    const [darkMode, setDarkMode] = useState(false);
 
     const openModal = (index) => {
         setSelectedImage(images[index]);
@@ -33,16 +33,16 @@ const Page = () => {
     };
 
     return (
-        <div className="container mx-auto p-4">
+        <div className={`container mx-auto p-4 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]`}>
             <br />
             <br />
             <br />
-            <h1 className="text-3xl font-bold mb-4">E Cell <span className="text-primary">Gallery</span></h1>
+            <h1 className={`text-3xl font-bold mb-4 text-white`}>E Cell <span className="text-primary">Gallery</span></h1>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
                 {images.map((image, index) => (
                     <div
                         key={index}
-                        className="relative overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer border-2 border-yellow-500 rounded-md"
+                        className={`relative overflow-hidden transition-transform transform hover:scale-105 duration-300 ease-in-out cursor-pointer border-2 border-yellow-500 rounded-md`}
                         onClick={() => openModal(index)}
                     >
                         <img
@@ -68,7 +68,7 @@ const Page = () => {
                         />
                         <button
                             onClick={closeModal}
-                            className="absolute top-4 right-4 text-white cursor-pointer bg-gray-800 px-2 py-1 rounded"
+                            className={`absolute top-4 right-4 text-white cursor-pointer ${darkMode ? 'bg-gray-800' : 'bg-gray-200'} px-2 py-1 rounded`}
                         >
                             Close
                         </button>
