@@ -1,10 +1,10 @@
 'use client'
-import Head from 'next/head';
 import { useState } from 'react';
 import FooterSection from '../(sections)/FooterSection';
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../lib/firebase/index';
 import { Separator } from '@/components/ui/separator';
+import { FaEnvelope, FaPhone, FaLinkedin, FaInstagram } from 'react-icons/fa';
 
 const page = () => {
     const [formData, setFormData] = useState({
@@ -49,7 +49,7 @@ const page = () => {
                     ></iframe>
                 </div>
                 <div className="container px-5 py-24 mx-auto flex">
-                    <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-10 shadow-md">
+                    <div className="lg:w-1/3 md:w-1/2 bg-white rounded-lg p-8 flex flex-col md:ml-auto w-full mt-10 md:mt-0 relative z-9 shadow-md">
                         <h2 className="text-2xl text-primary font-bold mb-4">Contact Us</h2>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             <div className="mb-4">
@@ -104,70 +104,14 @@ const page = () => {
                         <Separator />
                         <br />
                         <div className="flex items-center justify-evenly">
-                            <h2><a href="mailto:someone@example.com">icon</a></h2>
-                            <h2><a href="mailto:someone@example.com">icon</a></h2>
-                            <h2><a href="mailto:someone@example.com">icon</a></h2>
-                            <h2><a href="tel:+91 98862 25685">icon</a></h2>
+                            <h2><a className='text-xl' target='_blank'  href="https://www.instagram.com/ecelluvce/"><FaInstagram /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="https://www.linkedin.com/company/entrepreneurship-cell-uvce/mycompany/"><FaLinkedin /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="mailto:entrepreneurshipcelluvce@gmail.com"><FaEnvelope /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="tel:+91 98862 25685"><FaPhone /></a></h2>
                         </div>
                     </div>
                 </div>
             </section>
-
-
-            {/* <div className="flex items-center justify-center min-h-screen p-4">
-                <div className="w-full max-w-md p-6 bg-white rounded-md shadow-md z-100">
-                    <h2 className="text-2xl text-primary font-bold mb-4">Contact Us</h2>
-                    <form onSubmit={handleSubmit} className="space-y-4">
-                        <div className="mb-4">
-                            <label htmlFor="name" className="block text-gray-700 text-sm font-bold mb-2">Name:</label>
-                            <input
-                                type="text"
-                                id="name"
-                                name="name"
-                                value={formData.name}
-                                onChange={handleChange}
-                                className="w-full px-3 py-2 border rounded shadow appearance-none text-white-700 leading-tight focus:outline-none focus:shadow-outline"
-                                autoComplete="off"
-                                required
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="email" className="block text-gray-700 text-sm font-bold mb-2">Email:</label>
-                            <input
-                                type="email"
-                                id="email"
-                                name="email"
-                                value={formData.email}
-                                onChange={handleChange}
-                                className="w-full px-3 py-2 border rounded shadow appearance-none text-white-700 leading-tight focus:outline-none focus:shadow-outline"
-                                autoComplete="off"
-                                required
-                            />
-                        </div>
-                        <div className="mb-4">
-                            <label htmlFor="message" className="block text-gray-700 text-sm font-bold mb-2">Message:</label>
-                            <textarea
-                                id="message"
-                                name="message"
-                                value={formData.message}
-                                onChange={handleChange}
-                                rows="4"
-                                className="w-full px-3 py-2 border rounded shadow appearance-none text-white-700 leading-tight focus:outline-none focus:shadow-outline"
-                                required
-                            ></textarea>
-                        </div>
-                        <p className='text-primary'>{isSubmit}</p>
-                        <div>
-                            <button
-                                type="submit"
-                                className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 focus:outline-none focus:shadow-outline"
-                            >
-                                Submit
-                            </button>
-                        </div>
-                    </form>
-                </div>
-            </div> */}
             <Separator />
             <FooterSection />
         </main>
