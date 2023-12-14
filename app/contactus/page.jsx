@@ -94,7 +94,7 @@ const page = () => {
                             <div>
                                 <button
                                     type="submit"
-                                    className="w-full bg-primary text-white py-2 px-4 rounded-md hover:bg-primary/90 focus:outline-none focus:shadow-outline"
+                                    className="w-full bg-primary text-black py-2 px-4 rounded-md hover:bg-primary/90 focus:outline-none focus:shadow-outline"
                                 >
                                     Submit
                                 </button>
