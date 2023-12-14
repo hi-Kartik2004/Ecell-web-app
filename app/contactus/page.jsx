@@ -4,7 +4,7 @@ import FooterSection from '../(sections)/FooterSection';
 import { addDoc, collection } from 'firebase/firestore'
 import { db } from '../../lib/firebase/index';
 import { Separator } from '@/components/ui/separator';
-import { FaEnvelope, FaPhone, FaLinkedin, FaInstagram } from 'react-icons/fa';
+import { FaEnvelope, FaPhone, FaLinkedin, FaInstagram, FaMapPin } from 'react-icons/fa';
 
 const page = () => {
     const [formData, setFormData] = useState({
@@ -108,6 +108,7 @@ const page = () => {
                             <h2><a className='text-xl' target='_blank' href="https://www.linkedin.com/company/entrepreneurship-cell-uvce/mycompany/"><FaLinkedin color='orange' /></a></h2>
                             <h2><a className='text-xl' target='_blank' href="mailto:entrepreneurshipcelluvce@gmail.com"><FaEnvelope color='orange' /></a></h2>
                             <h2><a className='text-xl' target='_blank' href="tel:+91 98862 25685"><FaPhone color='orange' /></a></h2>
+                            <h2><a className='text-xl' target='_blank' href="https://maps.app.goo.gl/wRGxbWbLiGFSjSH9A"><FaMapPin color='orange' /></a></h2>
                         </div>
                     </div>
                 </div>
