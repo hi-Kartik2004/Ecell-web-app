@@ -2,7 +2,7 @@
 import React from 'react';
 
 const TeamMemberCard = ({ name, position, imageUrl }) => (
-    <div className="max-w-xs mx-auto mb-4 border border-brown">
+    <div className="max-w-xs mx-auto mb-4 border border-brown rounded">
         <img src={imageUrl} alt={name} className="w-full h-48 object-cover rounded-t" />
         <div className="bg-brown text-white p-4 rounded-b">
             <h3 className="text-lg font-semibold">{name}</h3>
@@ -15,13 +15,11 @@ const About = () => {
     const leads = [
         { name: 'John Doe', position: 'President', imageUrl: 'https://placekitten.com/600/400' },
         { name: 'Jane Doe', position: 'Vice President', imageUrl: 'https://placekitten.com/300/200' },
-        // Add more team members as needed
     ];
     const design = [
         { name: 'John Doe', position: 'Design Lead', imageUrl: 'https://placekitten.com/600/400' },
-        { name: 'Jane Doe', position: 'Vice President', imageUrl: 'https://placekitten.com/300/200' },
-        { name: 'Jane Doe', position: 'Vice President', imageUrl: 'https://placekitten.com/300/200' },
-        // Add more team members as needed
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
+        { name: 'Jane Doe', position: 'Co-Design Lead', imageUrl: 'https://placekitten.com/300/200' },
     ];
 
     return (
@@ -53,14 +51,16 @@ const About = () => {
             {/* team */}
             <h1 className="text-3xl font-bold mb-4">Team <span className='text-primary'>E Cell UVCE</span></h1>
             <br />
-            <h1 className="text-2xl font-bold mb-4">Presidents</h1>
+            <h1 className="text-2xl text-center font-bold mb-4">Presidents</h1>
+            <br />
             <div className="flex flex-wrap justify-evenly">
                 {leads.map((member, index) => (
                     <TeamMemberCard key={index} {...member} />
                 ))}
             </div>
             <br />
-            <h1 className="text-2xl font-bold mb-4">Design Team</h1>
+            <h1 className="text-2xl text-center font-bold mb-4">Design Team</h1>
+            <br />
             <div className="flex flex-wrap justify-evenly">
                 {design.map((member, index) => (
                     <TeamMemberCard key={index} {...member} />
