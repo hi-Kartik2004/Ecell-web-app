@@ -33,9 +33,8 @@ function Navbar() {
 
   return (
     <nav
-      className={`border-b-2 w-full z-10 ${
-        isVisible ? "bg-opacity-70 backdrop-blur-xl" : "hidden"
-      }`}
+      className={`border-b-2 w-full z-10 ${isVisible ? "bg-opacity-70 backdrop-blur-xl" : "hidden"
+        }`}
       style={{ position: "fixed", top: 0 }}
     >
       <div className="flex container flex-grow py-2 px-4 items-center justify-between relative ">
@@ -63,9 +62,11 @@ function Navbar() {
           <ModeToggle />
         </div>
 
-        <Button variant="secondary" className="border">
-          Sign In
-        </Button>
+        <a href="/signin">
+          <Button variant="secondary" className="border">
+            Sign In
+          </Button>
+        </a>
       </div>
     </nav>
   );
