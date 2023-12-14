@@ -2,8 +2,9 @@
 import Head from 'next/head';
 import { useState } from 'react';
 import FooterSection from '../(sections)/FooterSection';
-import { addDoc,collection } from 'firebase/firestore'
-import { auth } from '../../lib/firebase/index';
+import { addDoc, collection } from 'firebase/firestore'
+import { db } from '../../lib/firebase/index';
+import { Separator } from '@/components/ui/separator';
 
 const page = () => {
     const [formData, setFormData] = useState({
@@ -11,8 +12,9 @@ const page = () => {
         email: '',
         message: '',
     });
+    const [isSubmit, setisSubmit] = useState("")
 
-    const userCollection = collection(auth,"contactData")
+    const userCollection = collection(db, "contactData")
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -24,7 +26,13 @@ const page = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        addDoc(userCollection,formData)
+        addDoc(userCollection, formData)
+        setisSubmit("We recieved your message and will get back to you soon!")
+        setFormData({
+            name: '',
+            email: '',
+            message: '',
+        })
         // console.log('Form Data:', formData);
     };
 
@@ -73,6 +81,7 @@ const page = () => {
                                 required
                             ></textarea>
                         </div>
+                        <p className='text-primary'>{isSubmit}</p>
                         <div>
                             <button
                                 type="submit"
@@ -84,6 +93,7 @@ const page = () => {
                     </form>
                 </div>
             </div>
+            <Separator />
             <FooterSection />
         </main>
     );
