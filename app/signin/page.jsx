@@ -2,22 +2,29 @@
 import { signInWithEmailAndPassword } from 'firebase/auth';
 import { useState } from 'react';
 import { auth } from '../../lib/firebase/index';
+import { useRouter } from 'next/navigation';
 
 const page = () => {
+
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
     const [isCorrect, setisCorrect] = useState('');
 
-    const handleSubmit = (e) => {
+    const router = useRouter();
+    const handleSubmit = async (e) => {
         e.preventDefault();
-        // console.log('Form Values:', { username, password });
-        signInWithEmailAndPassword(auth, username, password).then((userCredential) => {
-            setisCorrect("")
-            console.log(userCredential.user);
-        }).catch((err) => {
-            // console.log(err.code);
-            setisCorrect("Check your password or registered email")
-        })
+        try {
+            const userCredential = await signInWithEmailAndPassword(auth, username, password);
+            setisCorrect('');
+            const signedInUsername = userCredential.user.displayName || username;
+            alert(signedInUsername);
+            router.push({
+                pathname: '/',
+                query: { username: signedInUsername },
+            });
+        } catch (error) {
+            setisCorrect('Check your password or registered email');
+        }
     };
 
     return (
