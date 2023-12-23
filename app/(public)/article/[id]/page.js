@@ -109,7 +109,7 @@ function page({ params }) {
           <Skeleton className="w-full h-[90vh] " />
         </div>
       ) : (
-        <div className="container mt-4 pt-16">
+        <div className="max-w-[800px] px-4 py-4 mx-auto mt-4 pt-16">
           <div className="flex justify-between gap-2 flex-wrap items-center">
             <p className="text-xs text-muted-foreground">
               Note: The image is randomly generated based on the title.
