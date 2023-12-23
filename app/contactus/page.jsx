@@ -1,7 +1,5 @@
 "use client";
 import { auth } from "../../lib/firebase/index";
-  const userCollection = collection(auth, "contactData");
-'use client'
 import { useState } from 'react';
 import FooterSection from '../(sections)/FooterSection';
 import { addDoc, collection } from 'firebase/firestore'
@@ -9,6 +7,7 @@ import { db } from '../../lib/firebase/index';
 import { Separator } from '@/components/ui/separator';
 import { FaEnvelope, FaPhone, FaLinkedin, FaInstagram, FaMapPin } from 'react-icons/fa';
 
+const userCollection = collection(auth, "contactData");
 const page = () => {
     const [formData, setFormData] = useState({
         name: '',
