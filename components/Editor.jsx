@@ -134,7 +134,7 @@ export default function Editor({
         </h1>
         <div className="flex gap-4 flex-wrap">
           <Button variant="outline">
-            <Link href="/manage-blogs">Manage Blogs</Link>
+            <Link href="/articles">Manage Articles</Link>
           </Button>
           {value.length > 75 ? (
             <AlertDialog>

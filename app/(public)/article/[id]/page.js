@@ -93,9 +93,9 @@ function page({ params }) {
 
   if (loading) {
     return (
-      <div className="container">
+      <div className="container mt-10">
         <Skeleton className="w-full h-[100px] my-4" />
-        <Skeleton className="w-full h-[100px] my-2" />
+        <Skeleton className="w-full h-[100px] my-4" />
         <Skeleton className="w-full h-[60vh]" />
       </div>
     );
@@ -109,19 +109,11 @@ function page({ params }) {
           <Skeleton className="w-full h-[90vh] " />
         </div>
       ) : (
-        <div className="container mt-4">
+        <div className="container mt-4 pt-16">
           <div className="flex justify-between gap-2 flex-wrap items-center">
-            <Button variant="outline">
-              <Link
-                href={`/${params.username}`}
-                // onClick={() => {
-                //   router.reload();
-                // }}
-              >
-                View Writter's Portfolio
-              </Link>
-            </Button>
-            <p className="text-xs text-muted-foreground">id: {params.id}</p>
+            <p className="text-xs text-muted-foreground">
+              Note: The image is randomly generated based on the title.
+            </p>
             <Button variant="secondary">
               <Link
                 href={`https://github.com/hi-Kartik2004/CraftFolio/issues/new?assignees=&labels=&projects=&template=report-blog.md&title=Blog Report Aganist:${params.username} | id: ${params.id}`}
@@ -147,7 +139,7 @@ function page({ params }) {
               <div className="mt-6">
                 <h1 className="text-4xl font-bold">{blogData.title}</h1>
                 <p className="text-muted-foreground mt-4">
-                  {blogData.description}
+                  {blogData.description} - written by {blogData.user}
                 </p>
               </div>
 
