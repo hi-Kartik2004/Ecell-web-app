@@ -16,7 +16,7 @@ function NewHeroSection() {
           />
         </div>
 
-        <h1 className="text-3xl lg:leading-tight	 lg:text-5xl max-w-[1000px] font-bold text-center mt-6">
+        <h1 className="text-3xl lg:leading-tight	 md:text-4xl lg:text-5xl max-w-[1000px] font-bold text-center mt-6">
           Lorem ipsum dolor sit amet{" "}
           <span className="text-primary">consectetur adipisicing</span> elit.
           Impedit, autem?

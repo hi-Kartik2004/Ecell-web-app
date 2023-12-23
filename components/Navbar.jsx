@@ -1,11 +1,11 @@
 "use client";
 import Image from "next/image";
 import React, { useEffect, useState } from "react";
-import { NavMenu } from "./NavMenu";
 import { ModeToggle } from "./ThemeToggleBtn";
 import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import { Button } from "./ui/button";
+import NavMenu from "./NavMenu";
 
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -33,8 +33,9 @@ function Navbar() {
 
   return (
     <nav
-      className={`w-full z-10 ${isVisible ? "bg-opacity-70 backdrop-blur-xl" : "hidden"
-        }`}
+      className={`w-full z-10 ${
+        isVisible ? "bg-opacity-70 backdrop-blur-xl" : "hidden"
+      }`}
       style={{ position: "fixed", top: 0 }}
     >
       <div className="flex container flex-grow py-2 px-4 items-center justify-between relative ">
@@ -55,18 +56,19 @@ function Navbar() {
         </div>
 
         <div className="md:flex hidden items-center justify-between">
-          <div className="absolute lg:left-[50%] lg:translate-x-[-50%] md:left-[60%] md:translate-x-[-60%]">
+          <div className="absolute lg:left-[50%] lg:translate-x-[-55%] md:left-[55%] md:translate-x-[-60%]">
             <NavMenu />
           </div>
-
-          <ModeToggle />
         </div>
 
-        <a href="/signin">
-          <Button variant="secondary" className="border">
-            Sign In
-          </Button>
-        </a>
+        <div className="flex items-center gap-2">
+          <ModeToggle />
+          <a href="/signin">
+            <Button variant="secondary" className="border">
+              Sign In
+            </Button>
+          </a>
+        </div>
       </div>
     </nav>
   );

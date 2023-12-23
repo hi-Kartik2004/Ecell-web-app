@@ -8,9 +8,9 @@ import {
   SheetTrigger,
 } from "./ui/sheet";
 import { HamburgerMenuIcon } from "@radix-ui/react-icons";
-import { NavMenu } from "./NavMenu";
 import { ModeToggle } from "./ThemeToggleBtn";
 import { Button } from "./ui/button";
+import NavMenu from "./NavMenu";
 
 function MobileMenu() {
   return (
@@ -31,7 +31,6 @@ function MobileMenu() {
 
         <div className="flex flex-col gap-4 items-start my-4">
           <NavMenu />
-          <ModeToggle />
         </div>
       </SheetContent>
     </Sheet>
