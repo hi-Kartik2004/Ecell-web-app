@@ -16,19 +16,18 @@ function NewHeroSection() {
           />
         </div>
 
-        <h1 className="text-3xl font-bold text-center mt-6">
+        <h1 className="text-3xl lg:leading-tight	 lg:text-5xl max-w-[1000px] font-bold text-center mt-6">
           Lorem ipsum dolor sit amet{" "}
           <span className="text-primary">consectetur adipisicing</span> elit.
           Impedit, autem?
         </h1>
 
-        <p className="text-muted-foreground text-sm text-center my-6">
+        <p className="max-w-[800px] lg:text-base text-muted-foreground text-sm text-center my-6 lg:my-8">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Quibusdam
-          sint ex nesciunt quia sequi iure accusantium recusandae aliquam? Rerum
-          tempora quae repellendus quisquam minima.
+          sint ex nesciunt quia sequi iure accusantium recusandae aliquam?
         </p>
 
-        <div className="flex gap-4 flex-col">
+        <div className="flex gap-4 flex-col lg:flex-row">
           <Button className="flex gap-2 items-center font-semibold" size="lg">
             <Image src="/ecell-no-bg.png" alt="logo" width={25} height={25} />{" "}
             Join the Community &rarr;
@@ -37,6 +36,7 @@ function NewHeroSection() {
           <Button
             className="flex gap-2 items-center border-primary/20 border"
             variant="secondary"
+            size="lg"
           >
             Explore Events &rarr;
           </Button>

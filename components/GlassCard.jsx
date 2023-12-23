@@ -15,7 +15,7 @@ function GlassCard({ data, className,img }) {
         />
       </svg>
 
-      <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2">
+      <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2 max-w-[400px] w-full">
         <h2 className="text-xl font-semibold">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum fugiat
           asperiores aperiam.

@@ -5,13 +5,13 @@ function TestimonialsSection() {
   return (
     <section className="bg-background flex flex-col items-center justify-center overflow-hidden">
       <div className="container py-10">
-        <div className="flex flex-col gap-2">
-          <h1 className="text-2xl font-bold text-center">
+        <div className="flex flex-col gap-2 items-center">
+          <h1 className="lg:text-4xl max-w-[800px] text-2xl font-bold text-center">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Quod saepe
-            dignissimos repellat!
+            dignissimos.
           </h1>
 
-          <p className="text-center text-sm text-muted-foreground">
+          <p className="text-center text-sm text-muted-foreground lg:mt-2">
             Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui fugit
             autem suscipit?
           </p>

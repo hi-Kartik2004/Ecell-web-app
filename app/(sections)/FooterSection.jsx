@@ -9,7 +9,7 @@ import React from "react";
 function FooterSection() {
   return (
     <footer className="">
-      <div className="flex items-center flex-col gap-6 py-6 pb-10">
+      <div className="flex items-center flex-col gap-6 py-6 px-2 pb-10">
         <h2 className="text-xl text-center text-muted-foreground font-bold">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam nam
           magni dolorem.
@@ -20,10 +20,13 @@ function FooterSection() {
 
       <Separator />
 
-      <div className="p-8 flex flex-col gap-4">
+      <div className="p-8 flex flex-wrap justify-around container gap-6">
         <FooterLinksGroup />
+        <FooterLinksGroup />
+        <FooterLinksGroup />
+        <FooterLinksGroup />
+
         <Separator />
-       
       </div>
 
       <div>
