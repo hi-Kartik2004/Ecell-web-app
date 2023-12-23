@@ -93,10 +93,10 @@ function page({ params }) {
 
   if (loading) {
     return (
-      <div className="container mt-10">
-        <Skeleton className="w-full h-[100px] my-4" />
-        <Skeleton className="w-full h-[100px] my-4" />
-        <Skeleton className="w-full h-[60vh]" />
+      <div className="container mt-10 flex flex-col items-center justify-center">
+        <Skeleton className="w-[800px] h-[100px] my-4" />
+        <Skeleton className="w-[800px] h-[100px] my-4" />
+        <Skeleton className="w-[800px] h-[60vh]" />
       </div>
     );
   }
