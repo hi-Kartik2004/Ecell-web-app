@@ -62,12 +62,12 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <ModeToggle />
-          <a href="/signin">
+          <Link href="/signin">
             <Button variant="secondary" className="border">
               Sign In
             </Button>
-          </a>
+          </Link>
+          <ModeToggle />
         </div>
       </div>
     </nav>
