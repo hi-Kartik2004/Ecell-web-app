@@ -14,10 +14,10 @@ function TestimonialCard() {
   return (
     <div>
       <div className="flex justify-center">
-        <Card className="max-w-[400px] w-full bg-primary-foreground">
+        <Card className="max-w-[400px] w-full bg-muted">
           <CardHeader className="flex gap-2 w-full">
             <div className="flex gap-2 items-center fle">
-              <CardTitle className="text-lg  text-white">
+              <CardTitle className="text-lg ">
                 Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
               </CardTitle>
             </div>
@@ -37,7 +37,7 @@ function TestimonialCard() {
             </Avatar>
 
             <div>
-              <p className="text-sm  text-white">Lorem, ipsum.</p>
+              <p className="text-sm">Lorem, ipsum.</p>
               <p className="text-xs text-muted-foreground">
                 Lorem, ipsum dolor.
               </p>
