@@ -11,32 +11,28 @@ import "swiper/css/pagination";
 import "swiper/css/scrollbar";
 
 import TestimonialCard from "./TestimonialCard";
+import Marquee from "react-fast-marquee";
 
-export const SwiperTestimonals = () => {
+export const SwiperTestimonals = ({ marginLeft, direction }) => {
   const s = useSwiper();
   return (
-    <section className="container rounded-lg py-6">
-      <Swiper
-        spaceBetween={10}
-        scrollbar={{ draggable: true }}
-        onSlideChange={() => console.log("slide change")}
-        onSwiper={(swiper) => console.log(swiper)}
-        modules={[Navigation, Pagination, Scrollbar, A11y]}
+    <section>
+      <Marquee
+        pauseOnHover={true}
+        direction={direction ? direction : "right"}
+        className={`ml-[${marginLeft ? marginLeft : 0}]`}
       >
-        {/* <button onClick={() => s.slideNext()}>Slide to the next slide</button> */}
-        <SwiperSlide>
+        <div className="flex mr-4 gap-4">
           <TestimonialCard />
-        </SwiperSlide>
-        <SwiperSlide>
           <TestimonialCard />
-        </SwiperSlide>
-        <SwiperSlide>
           <TestimonialCard />
-        </SwiperSlide>
-        <SwiperSlide>
+        </div>
+        <div className="mr-4 flex gap-4">
           <TestimonialCard />
-        </SwiperSlide>
-      </Swiper>
+          <TestimonialCard />
+          <TestimonialCard />
+        </div>
+      </Marquee>
     </section>
   );
 };

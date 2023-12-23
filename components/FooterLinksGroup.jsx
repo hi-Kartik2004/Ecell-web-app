@@ -5,7 +5,7 @@ import Link from "next/link";
 
 function FooterLinksGroup() {
   return (
-    <div>
+    <div className="flex flex-col items-center">
       <h3 className="text-lg font-semibold">Lorem, ipsum dolor.</h3>
       <div className="mt-2 flex flex-col items-start">
         <Button variant="link" className="p-0">

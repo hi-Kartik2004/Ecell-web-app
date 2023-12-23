@@ -23,10 +23,7 @@ function FooterSection() {
       <div className="p-8 flex flex-col gap-4">
         <FooterLinksGroup />
         <Separator />
-        <FooterLinksGroup />
-        <Separator />
-        <FooterLinksGroup />
-        <Separator />
+       
       </div>
 
       <div>

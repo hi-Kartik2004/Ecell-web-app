@@ -33,7 +33,7 @@ function Navbar() {
 
   return (
     <nav
-      className={`border-b-2 w-full z-10 ${
+      className={`w-full z-10 ${
         isVisible ? "bg-opacity-70 backdrop-blur-xl" : "hidden"
       }`}
       style={{ position: "fixed", top: 0 }}

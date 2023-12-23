@@ -12,6 +12,7 @@ import AppFeatures from "./(sections)/AppFeatures";
 import PopularEvents from "./(sections)/PopularEvents";
 import FooterSection from "@/app/(sections)/FooterSection";
 import RecentBlogs from "./(sections)/RecentBlogs";
+import StatsSection from "./(sections)/StatsSection";
 
 export default function Home() {
   return (
@@ -31,6 +32,7 @@ export default function Home() {
         {/* <PopularEvents /> */}
         <Separator />
         <TestimonialsSection />
+        <StatsSection />
         <FooterSection />
       </div>
     </main>

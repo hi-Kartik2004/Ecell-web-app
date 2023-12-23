@@ -8,22 +8,22 @@ function LegalStuff() {
       <div className="flex gap-6 flex-wrap justify-center">
         <Button variant="link">
           <Link href="/" className="text-muted-foreground">
-            Privary
+            Privacy
           </Link>
         </Button>
         <Button variant="link">
           <Link href="/" className="text-muted-foreground">
-            Privary
+            Privacy
           </Link>
         </Button>
         <Button variant="link">
           <Link href="/" className="text-muted-foreground">
-            Privary
+            Privacy
           </Link>
         </Button>
         <Button variant="link">
           <Link href="/" className="text-muted-foreground">
-            Privary
+            Privacy
           </Link>
         </Button>
       </div>

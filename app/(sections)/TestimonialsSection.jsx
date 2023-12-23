@@ -3,7 +3,7 @@ import React from "react";
 
 function TestimonialsSection() {
   return (
-    <section className="bg-background flex justify-center">
+    <section className="bg-background flex flex-col items-center justify-center overflow-hidden">
       <div className="container py-10">
         <div className="flex flex-col gap-2">
           <h1 className="text-2xl font-bold text-center">
@@ -16,10 +16,10 @@ function TestimonialsSection() {
             autem suscipit?
           </p>
         </div>
-
-        <div className="mt-6">
-          <SwiperTestimonals />
-        </div>
+      </div>
+      <div className="my-6 flex flex-col gap-4">
+        <SwiperTestimonals />
+        <SwiperTestimonals direction={"left"} />
       </div>
     </section>
   );

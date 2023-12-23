@@ -1,6 +1,6 @@
 import React from "react";
 
-function GlassCard({ data, className }) {
+function GlassCard({ data, className,img }) {
   return (
     <div className="blob-container relative z-2">
       <svg
@@ -15,7 +15,7 @@ function GlassCard({ data, className }) {
         />
       </svg>
 
-      <div className="backdrop-filter backdrop-blur-lg bg-primary/10 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2">
+      <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2">
         <h2 className="text-xl font-semibold">
           Lorem ipsum dolor sit amet consectetur, adipisicing elit. Cum fugiat
           asperiores aperiam.
@@ -27,6 +27,12 @@ function GlassCard({ data, className }) {
           nulla libero voluptas tenetur repudiandae aliquam numquam sed, magnam
           deserunt? Sed, natus maiores.
         </p>
+
+        {
+          img ? 
+          <div className="w-full h-[200px] mt-6 rounded-md">
+          <img src={`${img}`} alt="logo" className="h-full w-full object-cover rounded-md" /> </div> : ""
+        }
       </div>
     </div>
   );
