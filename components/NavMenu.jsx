@@ -7,31 +7,31 @@ function NavMenu() {
     <div className="flex gap-10 flex-col md:flex-row">
       <Link
         href="#"
-        className="opacity-75 text-sm hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
         Home
       </Link>
       <Link
         href="#"
-        className="opacity-75 text-sm hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
         Home
       </Link>
       <Link
         href="#"
-        className="opacity-75 text-sm hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
         Home
       </Link>
       <Link
         href="#"
-        className="opacity-75 text-sm hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
         Home
       </Link>
       <Link
         href="#"
-        className="opacity-75 text-sm hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
         Home
       </Link>

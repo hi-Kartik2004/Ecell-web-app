@@ -23,7 +23,7 @@ function MobileMenu() {
       <SheetContent className="max-w-[250px] px-1" side="left">
         <SheetHeader>
           <SheetTitle>Ecell Menu</SheetTitle>
-          <SheetDescription>
+          <SheetDescription className="text-xs">
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Officiis
             suscipit quod qui.
           </SheetDescription>

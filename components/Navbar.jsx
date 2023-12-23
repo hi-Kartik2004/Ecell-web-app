@@ -56,7 +56,7 @@ function Navbar() {
         </div>
 
         <div className="md:flex hidden items-center justify-between">
-          <div className="absolute lg:left-[50%] lg:translate-x-[-55%] md:left-[55%] md:translate-x-[-60%]">
+          <div className="absolute lg:left-[50%] lg:translate-x-[-50%] md:left-[55%] md:translate-x-[-60%]">
             <NavMenu />
           </div>
         </div>
