@@ -12,37 +12,29 @@ import {
   DropdownMenuTrigger,
 } from "@/components/ui/dropdown-menu";
 
-import { MoonIcon, SunIcon } from "@radix-ui/react-icons";
-
 export function ModeToggle() {
   const { setTheme } = useTheme();
-  const [showMoon, setShowMoon] = React.useState(false);
 
   return (
-    <>
-      {showMoon ? (
-        <Button
-          variant="muted"
-          className="border"
-          onClick={() => {
-            setTheme("dark");
-            setShowMoon(!showMoon);
-          }}
-        >
-          <MoonIcon className="w-5 h-5" />
+    <DropdownMenu>
+      <DropdownMenuTrigger asChild>
+        <Button variant="secondary" size="icon">
+          <Sun className="h-[1.2rem] w-[1.2rem] rotate-0 scale-100 transition-all dark:-rotate-90 dark:scale-0" />
+          <Moon className="absolute h-[1.2rem] w-[1.2rem] rotate-90 scale-0 transition-all dark:rotate-0 dark:scale-100" />
+          <span className="sr-only">Toggle theme</span>
         </Button>
-      ) : (
-        <Button
-          variant="muted"
-          className="border"
-          onClick={() => {
-            setTheme("light");
-            setShowMoon(!showMoon);
-          }}
-        >
-          <SunIcon className="w-5 h-5" />
-        </Button>
-      )}
-    </>
+      </DropdownMenuTrigger>
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem onClick={() => setTheme("light")}>
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("dark")}>
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem onClick={() => setTheme("system")}>
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
