@@ -116,7 +116,7 @@ function page({ params }) {
             </p>
             <Button variant="secondary">
               <Link
-                href={`https://github.com/hi-Kartik2004/CraftFolio/issues/new?assignees=&labels=&projects=&template=report-blog.md&title=Blog Report Aganist:${params.username} | id: ${params.id}`}
+                href={`https://github.com/hi-Kartik2004/CraftFolio/issues/new?assignees=&labels=&projects=&template=report-blog.md&title=Blog id: ${params.id}`}
                 target="_blank"
               >
                 Report
