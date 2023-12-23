@@ -6,6 +6,8 @@ import MobileMenu from "./MobileMenu";
 import Link from "next/link";
 import { Button } from "./ui/button";
 import NavMenu from "./NavMenu";
+import { ClerkLoading, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
+import { Skeleton } from "./ui/skeleton";
 
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -62,11 +64,19 @@ function Navbar() {
         </div>
 
         <div className="flex items-center gap-2">
-          <Link href="/signin">
-            <Button variant="secondary" className="border">
-              Sign In
-            </Button>
-          </Link>
+          <SignedIn>
+            <ClerkLoading>
+              <Skeleton className={"w-10 h-10 rounded-full"} />
+            </ClerkLoading>
+            <UserButton />
+          </SignedIn>
+          <SignedOut>
+            <Link href="/sign-in">
+              <Button variant="secondary" className="border">
+                Sign In
+              </Button>
+            </Link>
+          </SignedOut>
           <ModeToggle />
         </div>
       </div>
