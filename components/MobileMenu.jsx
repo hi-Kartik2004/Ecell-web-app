@@ -20,7 +20,7 @@ function MobileMenu() {
           <HamburgerMenuIcon className="w-5 h-5" />
         </Button>
       </SheetTrigger>
-      <SheetContent>
+      <SheetContent className="max-w-[250px] px-1" side="left">
         <SheetHeader>
           <SheetTitle>Ecell Menu</SheetTitle>
           <SheetDescription>
@@ -29,8 +29,14 @@ function MobileMenu() {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="flex flex-col gap-4 items-start my-4">
+        <div className="flex flex-col gap-4 items-center my-10 ">
           <NavMenu />
+        </div>
+
+        <div className="fixed bottom-4 flex justify-center ml-2">
+          <p className="text-xs text-center">
+            &copy; {new Date().getFullYear()} Ecell UVCE. All rights reserved.
+          </p>
         </div>
       </SheetContent>
     </Sheet>
