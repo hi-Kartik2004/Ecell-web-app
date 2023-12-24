@@ -20,7 +20,7 @@ function ArticleCard({ data }) {
     <Suspense fallback={"Loading..."}>
       <div>
         <div className="mt-10">
-          <Card className="w-[400px] md:w-[400px]">
+          <Card className="max-w-[400px] w-full md:w-[400px]">
             <CardHeader className="flex flex-col w-full">
               <div className="flex justify-between">
                 <p className="text-muted-foreground text-xs">{timeAgo}</p>
