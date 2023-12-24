@@ -17,6 +17,7 @@ import Blog from "@/components/Blog";
 import { Skeleton } from "@/components/ui/skeleton";
 // import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { useRouter } from "next/navigation";
+import Foot from "@/components/Foot";
 
 function page({ params }) {
   const router = useRouter();
@@ -59,6 +60,8 @@ function page({ params }) {
         description: "Head over to our github to know more",
       });
       throw error;
+    } finally {
+      setLoading(false);
     }
   }
 
@@ -95,7 +98,7 @@ function page({ params }) {
     return (
       <div className="container mt-10 flex flex-col items-center justify-center">
         <Skeleton className="w-[800px] h-[100px] my-4" />
-        <Skeleton className="w-[800px] h-[100px] my-4" />
+        <Skeleton className="w-[800px] h-[100px] mb-4" />
         <Skeleton className="w-[800px] h-[60vh]" />
       </div>
     );
@@ -109,23 +112,23 @@ function page({ params }) {
           <Skeleton className="w-full h-[90vh] " />
         </div>
       ) : (
-        <div className="max-w-[800px] px-4 py-4 mx-auto mt-4 pt-16">
-          <div className="flex justify-between gap-2 flex-wrap items-center">
-            <p className="text-xs text-muted-foreground">
-              Note: The image is randomly generated based on the title.
-            </p>
-            <Button variant="secondary">
-              <Link
-                href={`https://github.com/hi-Kartik2004/CraftFolio/issues/new?assignees=&labels=&projects=&template=report-blog.md&title=Blog id: ${params.id}`}
-                target="_blank"
-              >
-                Report
-              </Link>
-            </Button>
-          </div>
-          {blogData && (
-            <div className="mt-4">
-              <Suspense fallback={<div>Loading image...</div>}>
+        <Suspense fallback={<p>Loading...</p>}>
+          <div className="max-w-[800px] px-4 py-4 mx-auto mt-4 pt-16">
+            <div className="flex justify-between gap-2 flex-wrap items-center">
+              <p className="text-xs text-muted-foreground">
+                Note: The image is randomly generated based on the title.
+              </p>
+              <Button variant="secondary">
+                <Link
+                  href={`https://github.com/hi-Kartik2004/CraftFolio/issues/new?assignees=&labels=&projects=&template=report-blog.md&title=Blog id: ${params.id}`}
+                  target="_blank"
+                >
+                  Report
+                </Link>
+              </Button>
+            </div>
+            {blogData && (
+              <div className="mt-4">
                 <div className="object-cover w-full lg:h-[200px] h-[150px] overflow-hidden">
                   <img
                     src={`https://source.unsplash.com/random/900x700/?${encodeURIComponent(
@@ -135,23 +138,23 @@ function page({ params }) {
                     alt="inside blog image"
                   />
                 </div>
-              </Suspense>
-              <div className="mt-6">
-                <h1 className="text-4xl font-bold">{blogData.title}</h1>
-                <p className="text-muted-foreground mt-4">
-                  {blogData.description} - written by {blogData.user}
-                </p>
-              </div>
 
-              <div className="mt-6">
-                <Blog code={blogData.blog} />
-              </div>
-            </div>
-          )}
+                <div className="mt-6">
+                  <h1 className="text-4xl font-bold">{blogData.title}</h1>
+                  <p className="text-muted-foreground mt-4">
+                    {blogData.description} - written by {blogData.user}
+                  </p>
+                </div>
 
-          {/* <Foot /> */}
-        </div>
+                <div className="mt-6">
+                  <Blog code={blogData.blog} />
+                </div>
+              </div>
+            )}
+          </div>
+        </Suspense>
       )}
+      <Foot />
     </>
   );
 }
