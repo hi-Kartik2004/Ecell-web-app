@@ -154,7 +154,7 @@ function page({ params }) {
           </div>
         </Suspense>
       )}
-      <Foot />
+
     </>
   );
 }

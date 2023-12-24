@@ -1,10 +1,14 @@
 import React from "react";
 
-function FeatureCardWithImg({ title, description, imgSrc }) {
+function FeatureCardWithImg({ title, description, imgSrc, center }) {
   return (
     <div>
-      <div className="bg-card mt-10 flex flex-col gap-4 p-4 border rounded-md max-w-[400px]">
-        <h3 className="text-xl font-medium">
+      <div className="bg-card mt-10 flex flex-col gap-4 p-4 border rounded-md max-w-[350px]">
+        <h3
+          className={`lg:text-2xl text-xl font-medium ${
+            center ? "text-center" : ""
+          }`}
+        >
           {title ? title : "Lorem ipsum dolor sit amet consectetur"}
         </h3>
         <p className=" text-muted-foreground">
