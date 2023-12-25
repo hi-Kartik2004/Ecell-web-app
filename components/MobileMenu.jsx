@@ -29,7 +29,7 @@ function MobileMenu() {
           </SheetDescription>
         </SheetHeader>
 
-        <div className="flex flex-col gap-4 items-center my-10 ">
+        <div className="flex flex-col gap-4 items-center my-10 text-center">
           <NavMenu />
         </div>
 
