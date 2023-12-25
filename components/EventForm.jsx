@@ -1,12 +1,9 @@
+// Import necessary libraries and components
 "use client";
 import React from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
 import * as z from "zod";
-// import { ref, uploadString, getDownloadURL } from "firebase/storage";
-import { storage } from "@/firebase/config";
-
-import { useState } from "react";
 import { BsCheck2Circle } from "react-icons/bs";
 import { Button } from "./ui/button";
 import {
@@ -22,20 +19,16 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/firebase/config";
 import { collection, addDoc } from "firebase/firestore";
-import { Calendar } from "./ui/calendar";
-import { getDownloadURL, ref, uploadString } from "firebase/storage";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useState, useEffect } from "react";
+import { storage } from "@/firebase/config";
 
-const ACCEPTED_IMAGE_TYPES = [
-  "image/jpeg",
-  "image/jpg",
-  "image/png",
-  "image/webp",
-];
-
+// Helper function to get file extension
 function getFileExtension(fileName) {
   return fileName.split(".").pop().toLowerCase();
 }
 
+// Form schema for validation
 const formSchema = z.object({
   name: z.string().min(2, "Name must be at least 2 characters."),
   description: z
@@ -102,57 +95,46 @@ const formSchema = z.object({
       }
     )
     .nullable(),
+  link: z.string().url("Please enter a valid URL."),
 });
 
+// Function to handle Firestore operation
 async function addMessageToFirestore({ formData }) {
-  try {
-    console.log("Before Firestore operation");
+  const timestamp = new Date().getTime();
 
-    // Extract the file from the form data
+  try {
     const imageFile = formData.image;
 
-    // Upload the file to Firebase Storage
-    const storageRef = ref(storage, "images/" + imageFile.name);
-    console.log("Before uploading to Storage");
-
-    try {
-      await uploadString(storageRef, imageFile);
-      console.log("After uploading to Storage");
-    } catch (uploadError) {
-      console.error("Error uploading to Storage:", uploadError);
-      throw uploadError; // rethrow the error to stop further execution
+    if (imageFile.size === 0) {
+      console.warn("File size is 0 bytes. Skipping upload.");
+      return false;
     }
 
-    // Get the download URL of the uploaded file
-    console.log("Before getting Download URL");
+    const storageRef = ref(storage, `images/${imageFile.name}_${timestamp}`);
+
+    try {
+      await uploadBytes(storageRef, imageFile);
+    } catch (uploadError) {
+      console.error("Error uploading to Storage:", uploadError);
+      throw uploadError;
+    }
 
     let downloadURL;
     try {
       downloadURL = await getDownloadURL(storageRef);
-      console.log("Download URL:", downloadURL);
     } catch (downloadError) {
       console.error("Error getting Download URL:", downloadError);
-      throw downloadError; // rethrow the error to stop further execution
+      throw downloadError;
     }
-
-    // Add the document to Firestore with the download URL
-    console.log("Before Firestore document add");
 
     const docData = {
       ...formData,
       timestamp: Date.now(),
-      image: downloadURL, // Store the download URL in Firestore
+      image: downloadURL,
     };
 
-    console.log("Firestore document data:", docData);
-
     const collectionRef = collection(db, "events");
-    console.log("Firestore collection reference:", collectionRef);
-
     const docRef = await addDoc(collectionRef, docData);
-    console.log("Document written with ID", docRef.id);
-
-    console.log("After Firestore document add");
 
     return true;
   } catch (error) {
@@ -161,6 +143,7 @@ async function addMessageToFirestore({ formData }) {
   }
 }
 
+// Main component for the form
 export default function EventForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
@@ -174,15 +157,27 @@ export default function EventForm() {
       venue: "",
       entryFees: 0,
       image: null,
+      teamSize: 1,
+      date: "",
     },
   });
 
+  // Function to handle form submission
   async function onSubmit(values) {
+    console.log("Form Values:", values); // Log form values
+
     setSubmitting(true);
 
     try {
       const isDocAdded = await addMessageToFirestore({ formData: values });
-      isDocAdded ? setSubmitted(true) : setSubmitted(false);
+
+      if (isDocAdded) {
+        setSubmitted(true);
+        // reset the form after successful submission
+        form.reset();
+      } else {
+        setSubmitted(false);
+      }
     } catch (error) {
       console.error(error);
       setSubmitted(false);
@@ -191,13 +186,14 @@ export default function EventForm() {
     }
   }
 
+  // Render UI based on form state
   if (submitted) {
     return (
       <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center">
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-start">
-            Thanks for Filling the form the event should show up in some time.
+            Thanks for filling the form. The event should show up shortly.
             Refresh the page to add another event.
           </p>
         </div>
@@ -233,6 +229,7 @@ export default function EventForm() {
             </FormItem>
           )}
         />
+
         <FormField
           control={form.control}
           name="email"
@@ -365,7 +362,8 @@ export default function EventForm() {
                   onChange={(e) => {
                     // Ensure that there are files present in the event
                     if (e.target.files && e.target.files.length > 0) {
-                      field.onChange(e.target.files[0]);
+                      // Use setValue instead of field.onChange
+                      form.setValue("image", e.target.files[0]);
                     }
                   }}
                 />
@@ -394,7 +392,7 @@ export default function EventForm() {
         />
 
         <Button type="submit" disabled={submitting}>
-          {submitting ? "adding..." : "Add this Event"}
+          {submitting ? "Adding..." : "Add this Event"}
         </Button>
       </form>
     </Form>
