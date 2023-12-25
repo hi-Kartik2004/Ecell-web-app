@@ -24,16 +24,22 @@ function NavMenu() {
         Articles
       </Link>
       <Link
-        href="#"
+        href="/about"
         className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
-        Home
+        About E-Cell
       </Link>
       <Link
-        href="#"
+        href="/gallery"
         className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
       >
-        Home
+       E-Cell Gallery
+      </Link>
+      <Link
+        href="/contactus"
+        className="opacity-75 text-xs hover:opacity-100 ease-in-out duration-100 hover:underline underline-offset-4"
+      >
+        Contact Us
       </Link>
     </div>
   );
