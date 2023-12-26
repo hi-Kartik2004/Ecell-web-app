@@ -51,7 +51,7 @@ const page = () => {
             height="100%"
             title="map"
             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d4389.3471894774875!2d77.58387051434795!3d12.975611486485349!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae1672fcfc6af1%3A0x9c2dc517c9231979!2sUVCE!5e0!3m2!1sen!2sin!4v1702567242179"
-            style={{ filter: " invert(90%)" }}
+            // style={{ filter: " invert(90%)  grayscale(100%);" }}
           ></iframe>
         </div>
         <div className="container px-5 py-24 mx-auto flex">
