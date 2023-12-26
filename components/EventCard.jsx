@@ -45,7 +45,7 @@ function EventCard({ data }) {
         </CardDescription>
 
         <div className="w-full flex justify-center">
-          <div className="mt-4 flex justify-center w-[275px] h-[275px]">
+          <div className="mt-4 flex justify-center w-[275px] h-[275px] bg-muted rounded-md">
             <img
               src={`${data.image}`}
               alt={`${data.name}`}
