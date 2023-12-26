@@ -37,9 +37,9 @@ function ArticleCard({ data }) {
           <div className="">
             <div className="w-full h-[200px] px-5">
               <img
-                src="https://static.vecteezy.com/system/resources/previews/015/573/452/original/sunset-landscape-with-bird-silhouettes-free-vector.jpg"
+                src={`https://source.unsplash.com/random/350X350/?${data.title}`}
                 alt="blog-card"
-                className="rounded-md object-cover w-full h-full"
+                className="rounded-md object-cover w-full h-full bg-muted"
               />
             </div>
             <CardFooter className="w-full flex justify-between mt-4">

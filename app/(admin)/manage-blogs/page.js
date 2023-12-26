@@ -1,9 +1,10 @@
 import { SignIn, SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
 import { collection, getDocs, orderBy, query, where } from "firebase/firestore";
 import { db } from "@/firebase/config";
-import React from "react";
+import React, { Suspense } from "react";
 import BlogCard from "@/components/BlogCard";
 import Navbar from "@/components/Navbar";
+import Loader from "@/components/Loader";
 // import UserNotFound from "@/app/components/UserNotFound";
 
 async function ManageBlogs() {
@@ -28,8 +29,8 @@ async function ManageBlogs() {
     <>
       <SignedIn>
         <div className="container flex flex-col items-center mt-20 mb-24">
-          <div className="flex justify-center text-center max-w-[800px] flex-col items-center mb-10">
-            <h1 className="text-center my-4 text-3xl font-bold">
+          <div className="flex justify-center text-center max-w-[800px] flex-col items-center mb-12">
+            <h1 className="text-center my-2 text-3xl font-bold">
               <span className="text-primary">
                 {(user && user.firstName) || "Not found"}'s
               </span>{" "}
@@ -38,23 +39,25 @@ async function ManageBlogs() {
 
             <p className="text-muted-foreground">lorem ipsum dor sit amet.</p>
           </div>
-          <div className="container  flex flex-wrap justify-around gap-4">
-            {user &&
-              blogsData.map((blog, index) => (
-                <div key={index}>
-                  <BlogCard
-                    length={blog.blog.length}
-                    title={blog.title}
-                    description={blog.description}
-                    link={`edit-blog/${blog.id}`}
-                    username={user.username || "Not found"}
-                    editIcon={1}
-                    deleteIcon={1}
-                    id={blog.id}
-                  />
-                </div>
-              ))}
-          </div>
+          <Suspense fallback={<Loader />}>
+            <div className="container flex flex-wrap justify-around gap-4">
+              {user &&
+                blogsData.map((blog, index) => (
+                  <div key={index}>
+                    <BlogCard
+                      length={blog.blog.length}
+                      title={blog.title}
+                      description={blog.description}
+                      link={`edit-blog/${blog.id}`}
+                      username={user.username || "Not found"}
+                      editIcon={1}
+                      deleteIcon={1}
+                      id={blog.id}
+                    />
+                  </div>
+                ))}
+            </div>
+          </Suspense>
         </div>
       </SignedIn>
     </>

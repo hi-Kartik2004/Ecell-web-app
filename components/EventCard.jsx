@@ -49,7 +49,7 @@ function EventCard({ data }) {
             <img
               src={`${data.image}`}
               alt={`${data.name}`}
-              className="rounded-md object-cover"
+              className="rounded-md object-cover bg-muted"
             />
           </div>
         </div>

@@ -61,7 +61,7 @@ function BlogCard({
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 10 },
         }}
-        className="h-full"
+        className="h-full w-full max-w-[350px]"
       >
         <Card className="duration-500 max-w-[350px] flex-col flex justify-between overflow-hidden h-full">
           <CardHeader className="h-full w-full">

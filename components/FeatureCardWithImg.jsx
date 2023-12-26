@@ -23,7 +23,7 @@ function FeatureCardWithImg({ title, description, imgSrc, center }) {
                 : "https://mir-s3-cdn-cf.behance.net/projects/404/374d8c110139351.Y3JvcCwxMDgwLDg0NCwwLDA.png"
             }`}
             alt="image-alt"
-            className="object-cover h-full w-full rounded-md"
+            className="object-cover h-full w-full rounded-md bg-muted"
           />
         </div>
       </div>
