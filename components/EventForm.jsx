@@ -34,7 +34,7 @@ const formSchema = z.object({
   description: z
     .string()
     .min(10, "Description must be at least 10 characters."),
-  teamSize: z.number().min(1, "Team size must be at least 1."),
+  teamSize: z.coerce.number().min(1, "Team size must be at least 1."),
   date: z
     .string()
     .refine(
@@ -68,7 +68,7 @@ const formSchema = z.object({
     ),
   venue: z.string().min(2, "Please enter a valid venue."),
   email: z.string().email("Please enter a valid contact email."),
-  entryFees: z.number().min(0, "Please enter a valid entry fees."),
+  entryFees: z.coerce.number().min(0, "Please enter a valid entry fees."),
   image: z
     .unknown()
     .refine(
@@ -95,7 +95,7 @@ const formSchema = z.object({
       }
     )
     .nullable(),
-  link: z.string().url("Please enter a valid URL."),
+  link: z.optional(z.string().trim().url({ message: "Invalid URL" })),
 });
 
 // Function to handle Firestore operation
@@ -153,12 +153,12 @@ export default function EventForm() {
       name: "",
       email: "",
       description: "",
-      link: "",
       venue: "",
       entryFees: 0,
       image: null,
       teamSize: 1,
       date: "",
+      link: "",
     },
   });
 
@@ -318,16 +318,11 @@ export default function EventForm() {
             <FormItem>
               <FormLabel>Team size*</FormLabel>
               <FormControl>
-                <Input
-                  placeholder="3"
-                  type="number"
-                  onChange={(e) => {
-                    const value = parseFloat(e.target.value);
-                    field.onChange(value);
-                  }}
-                />
+                <Input {...field} />
               </FormControl>
-              <FormDescription>Enter the max-members in a team</FormDescription>
+              <FormDescription>
+                Enter the max members possible in a team
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}

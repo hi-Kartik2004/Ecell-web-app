@@ -33,7 +33,7 @@ function EventCard({ data }) {
           <div className="flex items-center gap-1">
             <BsPerson />{" "}
             <span className="text-sm">
-              {data?.teamSize == 1 ? "1" : `1-${data?.teamSize}`}
+              {data?.teamSize == 1 ? "1" : "1" + ` - ${data?.teamSize}`}
             </span>
           </div>
         </div>
