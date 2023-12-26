@@ -96,6 +96,7 @@ const formSchema = z.object({
     )
     .nullable(),
   link: z.optional(z.string().trim().url({ message: "Invalid URL" })),
+  prizes: z.string().min(2, "Please enter a valid prize."),
 });
 
 // Function to handle Firestore operation
@@ -159,6 +160,7 @@ export default function EventForm() {
       teamSize: 1,
       date: "",
       link: "",
+      prizes: "",
     },
   });
 
@@ -255,6 +257,23 @@ export default function EventForm() {
               <FormLabel>Description*</FormLabel>
               <FormControl>
                 <Textarea placeholder="..." {...field} />
+              </FormControl>
+              <FormDescription>
+                This would be shown on the event card.
+              </FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="prizes"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Rewards*</FormLabel>
+              <FormControl>
+                <Textarea placeholder="what is to be won?" {...field} />
               </FormControl>
               <FormDescription>
                 This would be shown on the event card.

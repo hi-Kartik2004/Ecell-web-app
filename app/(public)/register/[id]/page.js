@@ -39,7 +39,7 @@ async function page({ params }) {
             />
           </div>
           <div className="mt-4">
-            <h1 className="text-2xl font-semibold">lorem ipsum dor sit ipem</h1>
+            <h1 className="text-2xl font-semibold">{data.name}</h1>
             <div className="flex items-center justify-between mt-4">
               <div className="flex flex-col gap-2">
                 <div className="flex gap-2 items-center">
@@ -77,18 +77,14 @@ async function page({ params }) {
               </div>
             </div>
           </div>
+
           <div className="mt-8">
-            <h1 className="text-xl font-semibold">About the Event</h1>
-            <p className="text-muted-foreground mt-2">{data.description}</p>
+            <h1 className="text-xl font-semibold">About the event</h1>
+            <p className="text-muted-foreground mt-2">{data?.description}</p>
           </div>
 
           <div className="mt-8">
-            <h1 className="text-xl font-semibold">Rules</h1>
-            <p className="text-muted-foreground mt-2">{data?.rules}</p>
-          </div>
-
-          <div className="mt-8">
-            <h1 className="text-xl font-semibold">Prizes</h1>
+            <h1 className="text-xl font-semibold">Rewards</h1>
             <p className="text-muted-foreground mt-2">{data?.prizes}</p>
           </div>
 
