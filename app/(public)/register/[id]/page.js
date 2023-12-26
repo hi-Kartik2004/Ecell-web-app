@@ -23,13 +23,14 @@ async function page({ params }) {
     const eventRef = doc(db, "events", params.id);
     const snapshot = await getDoc(eventRef);
     data = snapshot.data();
+    data = { ...data, id: snapshot.id };
   } catch (error) {
     console.error(error);
   }
 
   return (
     <>
-      <section className="flex flex-wrap container gap-10 mt-16 py-10 justify-between">
+      <section className="flex flex-wrap container gap-10 mt-16 py-10 justify-center xl:justify-between">
         <div className="max-w-[650px] w-full">
           <div className="w-full h-[100px] rounded-md">
             <img
@@ -121,9 +122,7 @@ async function page({ params }) {
           </div>
         </div>
 
-        {/* <Separator className="my-2" /> */}
-
-        <div className="max-w-[600px] w-full bg-card p-8 py-10 rounded-md border">
+        <div className="max-w-[600px] w-full bg-card p-8 py-10 rounded-md border max-h-[150vh] overflow-auto">
           <h1 className="text-3xl font-semibold text-center">
             <span className="text-primary">Register</span> for {data.name}!
           </h1>
@@ -132,12 +131,10 @@ async function page({ params }) {
             lorem ipsum dor sit ipem
           </p>
 
-          <div className="mt-6 pr-4">
+          <div className="mt-6 pr-4 ">
             <RegisterForm data={data} />
           </div>
         </div>
-
-        {/* <Separator className="my-2" /> */}
       </section>
 
       <Separator className="my-4" />
