@@ -118,8 +118,8 @@ export default function Editor({
   if (loading) {
     return (
       <div className="container">
-        <Skeleton className="w-full h-100px my-2" />
-        <Skeleton className="w-full h-[80vh]" />
+        <Skeleton className="w-full h-[100px] my-2" />
+        <Skeleton className="w-full h-[90vh]" />
       </div>
     );
   }

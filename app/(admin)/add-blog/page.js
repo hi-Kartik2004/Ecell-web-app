@@ -10,18 +10,14 @@ import {
   useUser,
 } from "@clerk/nextjs";
 
-async function AddBlog() {
-  const user = await currentUser();
-
+function AddBlog() {
   return (
     <div className="">
       <Toaster />
-      <SignedIn>
-        <div className="mt-24">
-          
-          <Editor showProfile={1} />
-        </div>
-      </SignedIn>
+
+      <div className="mt-24">
+        <Editor showProfile={1} />
+      </div>
 
       <SignedOut>
         <ClerkLoading>

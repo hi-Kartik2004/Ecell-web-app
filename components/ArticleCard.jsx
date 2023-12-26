@@ -17,25 +17,25 @@ function ArticleCard({ data }) {
   });
 
   return (
-    <Suspense fallback={"Loading..."}>
-      <div>
-        <div className="mt-10">
-          <Card className="max-w-[400px] w-full md:w-[400px]">
-            <CardHeader className="flex flex-col w-full">
-              <div className="flex justify-between">
-                <p className="text-muted-foreground text-xs">{timeAgo}</p>
-                <p className="text-muted-foreground text-xs">{data.user}</p>
-              </div>
-              <div>
-                <CardTitle className="leading-2 text-2xl line-clamp-2 mt-2">
-                  {data.title}
-                </CardTitle>
-              </div>
-            </CardHeader>
-            <div className="text-muted-foreground line-clamp-3 px-5 -mt-2">
+    <div className="max-w-[400px] w-full">
+      <div className="mt-10 w-full">
+        <Card className="h-full max-w-[400px] w-full md:w-[400px] flex flex-col justify-between">
+          <CardHeader className="flex flex-col w-full">
+            <div className="flex justify-between">
+              <p className="text-muted-foreground text-xs">{timeAgo}</p>
+              <p className="text-muted-foreground text-xs">{data.user}</p>
+            </div>
+            <div>
+              <CardTitle className="leading-2 text-2xl line-clamp-2">
+                {data.title}
+              </CardTitle>
+            </div>
+            <div className="text-muted-foreground line-clamp-3 mt-2">
               <p>{data.description}</p>
             </div>
-            <div className="w-full h-[200px] px-5 mt-4">
+          </CardHeader>
+          <div className="">
+            <div className="w-full h-[200px] px-5">
               <img
                 src="https://static.vecteezy.com/system/resources/previews/015/573/452/original/sunset-landscape-with-bird-silhouettes-free-vector.jpg"
                 alt="blog-card"
@@ -53,10 +53,10 @@ function ArticleCard({ data }) {
                 </Button>
               </div>
             </CardFooter>
-          </Card>
-        </div>
+          </div>
+        </Card>
       </div>
-    </Suspense>
+    </div>
   );
 }
 

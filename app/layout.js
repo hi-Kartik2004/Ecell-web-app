@@ -5,6 +5,7 @@ import Navbar from "@/components/Navbar";
 import { ClerkProvider } from "@clerk/nextjs";
 import { shadesOfPurple } from "@clerk/themes";
 import Foot from "@/components/Foot";
+import FooterSection from "./(sections)/FooterSection";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,7 @@ export default function RootLayout({ children }) {
           >
             <Navbar />
             {children}
-            <Foot />
+            <FooterSection />
           </ThemeProvider>
         </body>
       </html>
