@@ -35,7 +35,7 @@ function Page() {
 
   return (
     <section className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
-      <div className="container w-full pt-12 pb-36 flex flex-col items-center min-h-[100vh]">
+      <div className="container w-full pt-12 pb-24 flex flex-col items-center min-h-[100vh]">
         <div className="max-w-[800px] mt-12">
           <h1 className="lg:text-4xl text-3xl font-bold text-center">
             Place a mode toggle on{" "}
