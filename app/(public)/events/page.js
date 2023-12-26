@@ -1,7 +1,7 @@
 "use client";
 import EventCard from "@/components/EventCard";
 import { Checkbox } from "@/components/ui/checkbox";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
@@ -11,19 +11,33 @@ async function fetchEvents() {
     const eventCollection = collection(db, "events");
     const q = query(eventCollection);
     const querySnapshot = await getDocs(q);
-    const snapShotId = querySnapshot.id;
 
     if (querySnapshot.empty) {
       console.log("No matching documents.");
       throw new Error("No events found in the database");
     }
 
+    // Convert date strings to JavaScript Date objects for sorting
     const events = querySnapshot.docs.map((doc) => {
-      return { ...doc.data(), id: doc.id };
+      const eventData = doc.data();
+      // Assuming your date field is named 'date'
+      const dateParts = eventData.date.split("-");
+      eventData.dateObject = new Date(
+        dateParts[2], // Year
+        dateParts[1] - 1, // Month (subtract 1 because months are 0-indexed in JavaScript)
+        dateParts[0] // Day
+      );
+      return { ...eventData, id: doc.id };
     });
-    console.log(events);
 
-    return events;
+    // Sort events by date in ascending order
+    const sortedEvents = events.sort(
+      (a, b) => a.dateObject.getTime() - b.dateObject.getTime()
+    );
+
+    console.log(sortedEvents);
+
+    return sortedEvents;
   } catch (error) {
     console.error("Error getting events:", error);
     throw new Error("Error getting events");
