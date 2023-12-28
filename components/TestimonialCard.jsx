@@ -10,7 +10,7 @@ import {
 import { Avatar } from "@radix-ui/react-avatar";
 import { AvatarFallback, AvatarImage } from "./ui/avatar";
 
-function TestimonialCard() {
+function TestimonialCard({ testimonial }) {
   return (
     <div>
       <div className="flex justify-center">
@@ -18,28 +18,31 @@ function TestimonialCard() {
           <CardHeader className="flex gap-2 w-full">
             <div className="flex gap-2 items-center fle">
               <CardTitle className="text-lg ">
-                Lorem ipsum dolor Lorem ipsum dolor Lorem ipsum dolor
+                {testimonial?.title || "Lorem ipsum dolor sit amet."}
               </CardTitle>
             </div>
             <CardDescription className="text-sm">
-              Lorem ipsum, dolor sit amet consectetur adipisicing elit. Alias
-              nostrum sapiente asperiores accusantium ipsum quo aspernatur
+              {testimonial?.description ||
+                "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."}
             </CardDescription>
           </CardHeader>
           <CardFooter className="gap-2">
             <Avatar className="w-10 h-10">
               <AvatarImage
-                src="https://github.com/shadcn.png"
-                alt="@shadcn"
+                src={`${testimonial?.image || "/ecell-no-bg.png"}`}
+                alt={`${testimonial?.personName || "Lorem, ipsum."}`}
                 className="rounded-full object-cover"
               />
-              <AvatarFallback>CN</AvatarFallback>
+
+              <AvatarFallback>
+                {testimonial?.personName.slice(0, 2)}
+              </AvatarFallback>
             </Avatar>
 
             <div>
-              <p className="text-sm">Lorem, ipsum.</p>
+              <p className="text-sm">{testimonial?.personName}</p>
               <p className="text-xs text-muted-foreground">
-                Lorem, ipsum dolor.
+                {testimonial?.personSubtitle}
               </p>
             </div>
           </CardFooter>

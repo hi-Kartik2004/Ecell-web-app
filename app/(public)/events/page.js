@@ -5,6 +5,7 @@ import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
+import data from "@/app/data";
 
 async function fetchEvents() {
   try {
@@ -79,10 +80,10 @@ function EventsPage() {
         <div className="container mt-24 pb-12">
           <div className="flex justify-center flex-col items-center">
             <h1 className="text-4xl text-center font-bold">
-              Events ({loading ? "_" : events.length})
+              {data?.eventPageTitle} ({loading ? "_" : events.length})
             </h1>
             <p className="text-muted-foreground text-center mt-2">
-              lorem ipsum dor sit ipem lorem ipsum dor sit ipem
+              {data?.eventPageDescription}
             </p>
 
             <div className="flex gap-8 flex-wrap">

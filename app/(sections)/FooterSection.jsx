@@ -5,26 +5,29 @@ import { Button } from "@/components/ui/button";
 import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import React from "react";
+import data from "../data";
 
 function FooterSection() {
   return (
     <footer className="">
       <div className="flex items-center flex-col gap-6 py-6 px-2 pb-10">
         <h2 className="text-xl text-center text-muted-foreground font-bold">
-          Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aperiam nam
-          magni dolorem.
+          {data?.footerMessage}
         </h2>
 
-        <Button size={"lg"}>Join the Community &rarr;</Button>
+        <Button size={"lg"}>
+          <Link href={`${data?.footerYellowBtnLink}`}>
+            {data?.footerYellowBtnMessage} &rarr;
+          </Link>
+        </Button>
       </div>
 
       <Separator />
 
       <div className="p-8 flex flex-wrap justify-around container gap-6">
-        <FooterLinksGroup />
-        <FooterLinksGroup />
-        <FooterLinksGroup />
-        <FooterLinksGroup />
+        {data.footerLinks.map((group, index) => (
+          <FooterLinksGroup key={index} group={group} />
+        ))}
 
         <Separator />
       </div>

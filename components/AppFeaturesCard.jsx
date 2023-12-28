@@ -1,7 +1,7 @@
 import Link from "next/link";
 import React from "react";
 
-function AppFeaturesCard({ reverse }) {
+function AppFeaturesCard({ reverse, data }) {
   return (
     <div>
       <div
@@ -11,24 +11,24 @@ function AppFeaturesCard({ reverse }) {
       >
         <div className="lg:mt-4 max-w-[500px]">
           <h3 className="lg:text-2xl text-lg font-semibold">
-            1. Lorem ipsum dolor sit amet consectetur.
+            {data?.title || "Lorem ipsum dolor sit amet."}
           </h3>
           <p className="lg:mt-4 my-2 lg:text-base text-sm">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat
-            alias aliquam consequatur. Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Fugiat alias aliquam consequatur. Lorem ipsum
-            dolor sit amet consectetur adipisicing elit. Fugiat alias aliquam
-            consequatur.
+            {data?.description ||
+              "Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, voluptatum."}
           </p>
 
-          <Link href="/" className="text-sm lg:text-base underline underline-offset-4">
+          <Link
+            href={`${data?.link || "#"}`}
+            className="text-sm lg:text-base underline underline-offset-4"
+          >
             Read more
           </Link>
         </div>
         <div className="w-full md:w-[700px] max-w-[500px] flex justify-center mt-4">
           <div className="max-w-[400px] max-h-[400px]">
             <img
-              src="https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+              src={`${data?.image || "/ecell-no-bg.png"}`}
               alt="logo"
               className="rounded-lg shadow-lg mt-4 object-cover"
             />

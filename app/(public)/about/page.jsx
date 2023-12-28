@@ -1,7 +1,8 @@
 "uce client";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
-import FooterSection from "../(sections)/FooterSection";
+import FooterSection from "../../(sections)/FooterSection";
+import data from "@/app/data";
 
 const TeamMemberCard = ({ name, position, imageUrl }) => (
   <div className="max-w-xs mx-auto mb-4 border border-yellow rounded shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
@@ -10,9 +11,9 @@ const TeamMemberCard = ({ name, position, imageUrl }) => (
       alt={name}
       className="w-full h-48 object-cover rounded-t"
     />
-    <div className="bg-black text-white p-4 rounded-b">
+    <div className="bg-secondary  p-4 rounded-b">
       <h3 className="text-lg font-semibold">{name}</h3>
-      <p className="text-gray-500">{position}</p>
+      <p className="text-muted-foreground">{position}</p>
     </div>
   </div>
 );
@@ -112,15 +113,20 @@ const About = () => {
   ];
 
   return (
-    <main>
-      <div className="container mx-auto p-4 bg-brown text-white">
+    <main className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
+      <div className="container flex flex-col items-center mx-auto p-4 bg-brown">
         <br />
         <br />
         <br />
-        <h1 className="text-3xl font-bold mb-4">
-          About <span className="text-primary">E Cell UVCE</span>
-        </h1>
-        <p className="mb-4">
+        <div className="max-w-[800px]">
+          <h1 className={`text-3xl font-bold mb-4  text-center`}>
+            E Cell <span className="text-primary">{data.aboutPageTitle}</span>
+          </h1>
+          <p className="text-muted-foreground text-center">
+            {data.aboutPageDescription}
+          </p>
+        </div>
+        <p className="my-4 text-center">
           Welcome to our company's About Us page! Lorem ipsum dolor sit amet,
           consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed
           cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum
@@ -129,12 +135,12 @@ const About = () => {
           Class aptent taciti sociosqu ad litora torquent per conubia nostra,
           per inceptos himenaeos. Curabitur sodales ligula in libero.
         </p>
-        <p className="mb-4 text-primary">
+        <p className="mb-4 text-primary text-center bg-muted">
           Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh.
           Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed
           convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.
         </p>
-        <p className="mb-4">
+        <p className="mb-4 text-center">
           Morbi lectus risus, iaculis vel, suscipit quis, luctus non, massa.
           Fusce ac turpis quis ligula lacinia aliquet. Mauris ipsum. Nulla metus
           metus, ullamcorper vel, tincidunt sed, euismod in, nibh. Quisque
@@ -145,7 +151,7 @@ const About = () => {
         {/* team */}
       </div>
       <Separator />
-      <div className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
+      <div className="">
         <div className="container mx-auto p-4">
           <br />
           <h1 className=" text-center text-3xl font-bold">

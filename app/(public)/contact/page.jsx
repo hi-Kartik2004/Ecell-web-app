@@ -1,8 +1,8 @@
 "use client";
 import { useState } from "react";
-import FooterSection from "../(sections)/FooterSection";
+import FooterSection from "../../(sections)/FooterSection";
 import { addDoc, collection } from "firebase/firestore";
-import { db } from "../../firebase/config";
+import { db } from "../../../firebase/config";
 import { Separator } from "@/components/ui/separator";
 import {
   FaEnvelope,

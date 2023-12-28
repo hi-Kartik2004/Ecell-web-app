@@ -14,35 +14,30 @@ import {
 import { Switch } from "@/components/ui/switch";
 import { AboutCard } from "@/components/AboutCard";
 import GlassCard from "@/components/GlassCard";
-
-const notifications = [
-  {
-    title: "Your call has been confirmed.",
-    description: "1 hour ago",
-  },
-  {
-    title: "You have a new message!",
-    description: "1 hour ago",
-  },
-  {
-    title: "Your subscription is expiring soon!",
-    description: "2 hours ago",
-  },
-];
+import data from "../data";
 
 function AboutSection() {
   return (
     <section>
       <div className="container lg:py-16 lg:pb-24 py-10 pb-24 relative overflow-hidden flex flex-col items-center ">
         <h1 className="lg:text-3xl text-2xl text-center font-semibold max-w-[800px]">
-          Lorem ipsum dolor sit amet,{" "}
-          <span className="text-primary">consectetur</span> adipisicing elit.
-          Recusandae nam non delectus.
+          {data.aboutSectionTitleLeft}{" "}
+          <span className="text-primary">{data.aboutSectionTitleYellow}</span>{" "}
+          {data.aboutSectionTitleRight}
         </h1>
         <div className="flex justify-around w-full lg:my-6 flex-wrap">
-          <GlassCard className="right-2 top-4 lg:left-2" />
-          <GlassCard className="-bottom-6 left-2 lg:left-[50%]" />
-          <GlassCard className="-bottom-6 right-2 lg:top-4" />
+          {data.aboutSectionCards.map((card, index) =>
+            index % 3 === 0 ? (
+              <GlassCard className="right-2 top-4 lg:left-2" data={card} />
+            ) : index % 3 === 1 ? (
+              <GlassCard
+                className="-bottom-6 left-2 lg:left-[50%]"
+                data={card}
+              />
+            ) : (
+              <GlassCard className="-bottom-6 right-2 lg:top-4" />
+            )
+          )}
         </div>
       </div>
     </section>

@@ -1,7 +1,8 @@
 "use client";
 import React, { useState } from "react";
-import FooterSection from "../(sections)/FooterSection";
+import FooterSection from "../../(sections)/FooterSection";
 import { Separator } from "@/components/ui/separator";
+import data from "@/app/data";
 
 const images = [
   "https://placekitten.com/600/400",
@@ -35,17 +36,20 @@ const Page = () => {
   };
 
   return (
-    <main>
-      <div
-        className={`container mx-auto p-4 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]`}
-      >
+    <main className=" dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
+      <div className={`mx-auto p-4 container flex flex-col items-center`}>
         <br />
         <br />
         <br />
-        <h1 className={`text-3xl font-bold mb-4 text-white`}>
-          E Cell <span className="text-primary">Gallery</span>
-        </h1>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="max-w-[800px]">
+          <h1 className={`text-3xl font-bold mb-4 text-center`}>
+            E Cell <span className="text-primary">{data.galleryPageTitle}</span>
+          </h1>
+          <p className=" text-center text-muted-foreground">
+            {data.galleryPageDescription}
+          </p>
+        </div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-8">
           {images.map((image, index) => (
             <div
               key={index}
@@ -75,9 +79,7 @@ const Page = () => {
               />
               <button
                 onClick={closeModal}
-                className={`absolute top-4 right-4 text-white cursor-pointer ${
-                  darkMode ? "bg-gray-800" : "bg-gray-200"
-                } px-2 py-1 rounded`}
+                className={`absolute top-4 right-4  cursor-pointer bg-muted px-2 py-1 rounded`}
               >
                 Close
               </button>

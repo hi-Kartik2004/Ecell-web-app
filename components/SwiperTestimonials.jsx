@@ -13,7 +13,7 @@ import "swiper/css/scrollbar";
 import TestimonialCard from "./TestimonialCard";
 import Marquee from "react-fast-marquee";
 
-export const SwiperTestimonals = ({ marginLeft, direction }) => {
+export const SwiperTestimonals = ({ marginLeft, direction, testimonials }) => {
   const s = useSwiper();
   return (
     <section>
@@ -23,14 +23,14 @@ export const SwiperTestimonals = ({ marginLeft, direction }) => {
         className={`ml-[${marginLeft ? marginLeft : 0}]`}
       >
         <div className="flex mr-4 gap-4">
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
+          ))}
         </div>
         <div className="mr-4 flex gap-4">
-          <TestimonialCard />
-          <TestimonialCard />
-          <TestimonialCard />
+          {testimonials.map((testimonial, index) => (
+            <TestimonialCard key={index} testimonial={testimonial} />
+          ))}
         </div>
       </Marquee>
     </section>
