@@ -200,7 +200,7 @@ export default function EventForm({ data }) {
       <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
-          <p className="text-start">
+          <p className="text-center">
             Thanks for filling the form. You have successfully registered for
             the event.
           </p>

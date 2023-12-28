@@ -194,7 +194,7 @@ export default function EventForm() {
       <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center">
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
-          <p className="text-start">
+          <p className="text-center">
             Thanks for filling the form. The event should show up shortly.
             Refresh the page to add another event.
           </p>
