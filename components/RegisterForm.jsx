@@ -78,7 +78,7 @@ export default function EventForm({ data }) {
         </div>
         <div>
           <Button variant="secondary">
-            <Link href="/login">Login</Link>
+            <Link href="/sign-in">Sign in</Link>
           </Button>
         </div>
       </div>
