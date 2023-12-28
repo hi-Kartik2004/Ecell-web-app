@@ -52,6 +52,7 @@ export default function Editor({
         user: user.emailAddresses[0].emailAddress,
         blog: sessionStorage.getItem("addBlog"),
         timestamp: Date.now(),
+        views: 0,
       });
       console.log("Blog added with ID: ", docSnap.id);
       toast({
@@ -134,7 +135,7 @@ export default function Editor({
         </h1>
         <div className="flex gap-4 flex-wrap">
           <Button variant="outline">
-            <Link href="/articles">Manage Articles</Link>
+            <Link href="/manage-blogs">Manage Articles</Link>
           </Button>
           {value.length > 75 ? (
             <AlertDialog>

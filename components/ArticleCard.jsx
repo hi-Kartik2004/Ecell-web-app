@@ -43,10 +43,13 @@ function ArticleCard({ data }) {
               />
             </div>
             <CardFooter className="w-full flex justify-between mt-4">
-              <div className="flex gap-2 items-center">
-                <BsFillPersonFill />
-                473 views
-              </div>
+              {
+                <div className="flex gap-2 items-center text-sm">
+                  <BsFillPersonFill />
+                  {data.views + " views"}
+                </div>
+              }
+
               <div>
                 <Button variant="outline">
                   <Link href={`/article/${data.id}`}>Read more &rarr;</Link>

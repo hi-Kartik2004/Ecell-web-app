@@ -5,7 +5,9 @@ import {
   doc,
   getDoc,
   getDocs,
+  increment,
   query,
+  updateDoc,
   where,
 } from "firebase/firestore";
 import { db } from "@/firebase/config";
@@ -79,6 +81,10 @@ function page({ params }) {
         if (blogSnapshot.exists()) {
           const blogData = blogSnapshot.data();
           setBlogData(blogData);
+
+          // Increment the views field by 1
+          const updatedViews = increment(1);
+          await updateDoc(blogDocRef, { views: updatedViews });
         } else {
           console.log("No such document!");
         }
@@ -89,10 +95,6 @@ function page({ params }) {
 
     fetchBlogData();
   }, [params.id]);
-
-  useEffect(() => {
-    setLoading(false);
-  }, []);
 
   if (loading) {
     return (
@@ -154,7 +156,6 @@ function page({ params }) {
           </div>
         </Suspense>
       )}
-
     </>
   );
 }
