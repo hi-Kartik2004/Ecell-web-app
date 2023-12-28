@@ -1,16 +1,14 @@
 import React from "react";
-
-import { columns } from "./columns";
 import { DataTable } from "@/components/DataTable";
 import { DataTableDemo } from "@/components/RegTable";
-import { collection, getDocs, query } from "firebase/firestore";
+import { collection, getDocs, orderBy, query } from "firebase/firestore";
 import { db } from "@/firebase/config";
 
 async function page() {
   let data = [];
   try {
     const eventCollection = collection(db, "registrations");
-    const q = query(eventCollection);
+    const q = query(eventCollection, orderBy("timestamp", "asc"));
     const querySnapshot = await getDocs(q);
 
     if (querySnapshot.empty) {

@@ -63,11 +63,11 @@ const columns = [
     enableSorting: false,
     enableHiding: false,
   },
-  {
-    accessorKey: "eventId",
-    header: "Event ID",
-    cell: ({ row }) => <div>{row.getValue("eventId")}</div>,
-  },
+  // {
+  //   accessorKey: "eventId",
+  //   header: "Event ID",
+  //   cell: ({ row }) => <div>{row.getValue("eventId")}</div>,
+  // },
   {
     accessorKey: "eventName",
     header: "Event Name",
@@ -89,6 +89,24 @@ const columns = [
     cell: ({ row }) => <div>{row.getValue("leaderEmail")}</div>,
   },
   {
+    accessorKey: "paymentId",
+    header: "Payment Id",
+    cell: ({ row }) => <div>{row.getValue("paymentId") || "Free event"}</div>,
+  },
+  {
+    accessorKey: "timestamp",
+    header: "Registered at",
+    cell: ({ row }) => (
+      <div>
+        {" "}
+        {new Date(row.getValue("timestamp"))
+          .toISOString()
+          .slice(0, 19)
+          .replace("T", " ")}
+      </div>
+    ),
+  },
+  {
     id: "actions",
     enableHiding: false,
     cell: ({ row }) => {
@@ -104,15 +122,22 @@ const columns = [
           </DropdownMenuTrigger>
           <DropdownMenuContent align="end">
             <DropdownMenuLabel>Actions</DropdownMenuLabel>
-            <TeamDetailsDialog memberDetails={row.original} />
+            <TeamDetailsDialog data={row.original} />
+
             <DropdownMenuItem onClick={() => showPaymentDetails(row.original)}>
               Show Payment Details
             </DropdownMenuItem>
             <DropdownMenuItem onClick={() => copyPaymentId(paymentId)}>
               Copy Payment ID
             </DropdownMenuItem>
+            <DropdownMenuItem>
+              {new Date(row.original.timestamp)
+                .toISOString()
+                .slice(0, 19)
+                .replace("T", " ")}
+            </DropdownMenuItem>
           </DropdownMenuContent>
-        </DropdownMenu> 
+        </DropdownMenu>
       );
     },
   },
@@ -120,7 +145,7 @@ const columns = [
 
 const showMembersDetails = (data) => {
   // Implement logic to show members details in a modal
-  console.log("Show Members Details:", data.teamMembers);
+  console.log("Show Members Details:", data);
 };
 
 const showPaymentDetails = (data) => {
@@ -160,15 +185,26 @@ export function DataTableDemo({ data }) {
 
   return (
     <div className="w-full">
-      <div className="flex items-center py-4">
-        <Input
-          placeholder="Filter by team names..."
-          value={table.getColumn("teamName")?.getFilterValue() || ""}
-          onChange={(event) =>
-            table.getColumn("teamName")?.setFilterValue(event.target.value)
-          }
-          className="max-w-sm"
-        />
+      <div className="flex flex-wrap gap-2 items-center py-4">
+        <div className="flex gap-4 flex-wrap w-full">
+          <Input
+            placeholder="Filter by event name..."
+            value={table.getColumn("eventName")?.getFilterValue() || ""}
+            onChange={(event) =>
+              table.getColumn("eventName")?.setFilterValue(event.target.value)
+            }
+            className="max-w-xs"
+          />
+
+          <Input
+            placeholder="Filter by team names..."
+            value={table.getColumn("teamName")?.getFilterValue() || ""}
+            onChange={(event) =>
+              table.getColumn("teamName")?.setFilterValue(event.target.value)
+            }
+            className="max-w-xs"
+          />
+        </div>
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="outline" className="ml-auto">
