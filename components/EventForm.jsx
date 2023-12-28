@@ -22,6 +22,8 @@ import { collection, addDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 import { useState, useEffect } from "react";
 import { storage } from "@/firebase/config";
+import { useUser } from "@clerk/nextjs";
+import Loader from "./Loader";
 
 // Helper function to get file extension
 function getFileExtension(fileName) {
@@ -148,6 +150,7 @@ async function addMessageToFirestore({ formData }) {
 export default function EventForm() {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+
   const form = useForm({
     resolver: zodResolver(formSchema),
     defaultValues: {

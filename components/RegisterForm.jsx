@@ -4,7 +4,7 @@ import React, { useEffect, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useFieldArray } from "react-hook-form";
 import * as z from "zod";
-import { BsCheck2Circle } from "react-icons/bs";
+import { BsCheck2Circle, BsFillSignStopFill } from "react-icons/bs";
 import { Button } from "./ui/button";
 import {
   Form,
@@ -66,6 +66,25 @@ export default function EventForm({ data }) {
       </div>
     );
   }
+
+  if (!user) {
+    return (
+      <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+        <BsFillSignStopFill size={50} />
+        <div className="p-2 rounded-md border">
+          <p className="text-center">
+            Please Sign in to register for the event.
+          </p>
+        </div>
+        <div>
+          <Button variant="secondary">
+            <Link href="/login">Login</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [teamSize, setTeamSize] = useState(1);

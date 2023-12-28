@@ -286,8 +286,8 @@ const data = {
       link: "/about",
     },
     {
-      name: "Gallery",
       link: "/gallery",
+      name: "Gallery",
     },
     {
       name: "Contact",
