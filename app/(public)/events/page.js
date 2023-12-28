@@ -47,12 +47,13 @@ async function fetchEvents() {
 function EventsPage() {
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
+  const [showLiveEvents, setShowLiveEvents] = useState(true);
+  const [showPastEvents, setShowPastEvents] = useState(false);
 
   useEffect(() => {
     fetchEvents()
       .then((data) => {
         setEvents(data);
-        // Handle toasts here, if needed
       })
       .catch((error) => {
         console.error("Error fetching events:", error);
@@ -62,6 +63,15 @@ function EventsPage() {
         setLoading(false);
       });
   }, []);
+
+  // Filter events based on checkbox states
+  const filteredEvents = events.filter((event) => {
+    const today = new Date();
+    return (
+      (showLiveEvents && event.dateObject >= today) ||
+      (showPastEvents && event.dateObject < today)
+    );
+  });
 
   return (
     <>
@@ -74,9 +84,14 @@ function EventsPage() {
             <p className="text-muted-foreground text-center mt-2">
               lorem ipsum dor sit ipem lorem ipsum dor sit ipem
             </p>
-            <div className="flex gap-6 md:gap-10 flex-wrap justify-around items-center">
+
+            <div className="flex gap-8 flex-wrap">
               <div className="flex items-center space-x-2 mt-4">
-                <Checkbox id="live-events" />
+                <Checkbox
+                  id="live-events"
+                  checked={showLiveEvents}
+                  onCheckedChange={() => setShowLiveEvents(!showLiveEvents)}
+                />
                 <label
                   htmlFor="live-events"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -86,7 +101,11 @@ function EventsPage() {
               </div>
 
               <div className="flex items-center space-x-2 mt-4">
-                <Checkbox id="past-events" />
+                <Checkbox
+                  id="past-events"
+                  checked={showPastEvents}
+                  onCheckedChange={() => setShowPastEvents(!showPastEvents)}
+                />
                 <label
                   htmlFor="past-events"
                   className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
@@ -101,14 +120,13 @@ function EventsPage() {
             {loading ? (
               <Loader />
             ) : (
-              events.length === 0 && (
+              filteredEvents.length === 0 && (
                 <p className="mt-4">
-                  We currently dont have any planned events, we will be added em
-                  soon! 💖
+                  We currently don't have any matching events. 💖
                 </p>
               )
             )}
-            {events.map((event) => (
+            {filteredEvents.map((event) => (
               <div key={event.timestamp}>
                 <EventCard data={event} />
               </div>
@@ -116,7 +134,6 @@ function EventsPage() {
           </div>
         </div>
       </section>
-      {/* <h1>Hello</h1> */}
     </>
   );
 }
