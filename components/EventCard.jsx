@@ -21,6 +21,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { BiLogoGmail } from "react-icons/bi";
 import { date } from "zod";
+import { FaLocationDot } from "react-icons/fa6";
 
 function EventCard({ data }) {
   return (
@@ -64,7 +65,7 @@ function EventCard({ data }) {
               href={`mailto:${data.email || "kudlu2004@gmail.com"}`}
               className="text-sm hover:underline underline-offset-4 flex gap-2 items-center"
             >
-              <BiLogoGmail /> Contact
+              <FaLocationDot /> <span className="text-xs">{data?.venue}</span>
             </Link>
           </div>
         </div>

@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import EventForm from "@/components/EventForm";
 import { Separator } from "@/components/ui/separator";
 import RegisterForm from "@/components/RegisterForm";
+import globalData from "@/app/data";
 
 async function page({ params }) {
   let data;
@@ -92,17 +93,27 @@ async function page({ params }) {
           <div className="mt-8">
             <h1 className="text-xl font-semibold">Contact</h1>
             <div className="mt-2 flex gap-2 items-center">
-              <p>{"Rushil BR"}</p> -
+              <p>{globalData.presidentName}</p> -
               <Link
-                href={`tel:${data?.presidentPhone}`}
+                href={`tele:${globalData?.presidentPhone}`}
                 className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-4"
               >
                 <FaPhoneAlt />
-                <span>+91 12345 67890</span>
+                <span>+91 {globalData.presidentPhone}</span>
               </Link>
             </div>
             <div className="mt-2 flex gap-2 items-center">
-              <p>{"Rushil BR"}</p> -
+              <p>{globalData.presidentName}</p> -
+              <Link
+                href={`mailto:${globalData?.presidentEmail}`}
+                className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-4"
+              >
+                <MdMarkEmailRead />
+                <span>{globalData?.presidentEmail}</span>
+              </Link>
+            </div>
+            <div className="mt-2 flex gap-2 items-center">
+              <p>Alternate Email</p> -
               <Link
                 href={`mailto:${data?.email}`}
                 className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-4"
@@ -128,7 +139,7 @@ async function page({ params }) {
           </h1>
 
           <p className="text-center text-muted-foreground mt-2">
-            lorem ipsum dor sit ipem
+            {globalData?.registerDescription}
           </p>
 
           <div className="mt-6 pr-4 ">

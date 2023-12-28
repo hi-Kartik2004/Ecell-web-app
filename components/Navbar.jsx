@@ -8,6 +8,7 @@ import { Button } from "./ui/button";
 import NavMenu from "./NavMenu";
 import { ClerkLoading, SignedIn, SignedOut, UserButton } from "@clerk/nextjs";
 import { Skeleton } from "./ui/skeleton";
+import data from "@/app/data";
 
 function Navbar() {
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -53,7 +54,9 @@ function Navbar() {
               height={50}
               alt={"logo"}
             />
-            <span className="text-xl font-bold hidden md:block">E-Cell</span>
+            <span className="text-xl font-bold hidden md:block">
+              {data.clubName}
+            </span>
           </Link>
         </div>
 

@@ -1,4 +1,13 @@
 const data = {
+  // General
+  siteName: "E-Cell UVCE, Bengaluru",
+  siteDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  clubName: "E-Cell UVCE",
+  presidentName: "Rushil BR",
+  presidentPhone: "1234567890",
+  presidentEmail: "test@gmail.com",
+
+  // Hero section
   heroBadgeMessage: "New",
   heroAlertMessage: "We are currently in beta. Please report any bugs to us.",
   heroTitleLeft: "Welcome to",
@@ -245,6 +254,9 @@ const data = {
 
   // Foot
   footText: "E-Cell UVCE, Bengaluru | Most Rights Reserved",
+
+  // Registration form description
+  registerDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
 
   // Events page
   eventPageTitle: "Events",

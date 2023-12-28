@@ -17,7 +17,7 @@ function LegalStuff() {
       </div>
       <div className="flex flex-col gap-2 items-center">
         <img src="/ecell-no-bg.png" alt="logo" className="max-w-[100px]" />
-        <h2 className="text-xl font-bold">E-Cell UVCE</h2>
+        <h2 className="text-xl font-bold">{data.clubName}</h2>
       </div>
     </div>
   );
