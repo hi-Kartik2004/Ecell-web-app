@@ -13,12 +13,13 @@ async function layout({ children }) {
     const link = "http://localhost:5001/subscribers/" + email;
     const response = await fetch(link);
     const data = await response.json();
-    // console.log(data);
-    // console.log("working");
-    if (data.email == email) {
-      return true;
-    }
-    else return false;
+    console.log(data);
+    console.log("working");
+    // if (data.admin == true) {
+    //   return true;
+    // }
+    // else return false;
+    return data.admin;
   }
 
   isAdmin = await checkAdmin();

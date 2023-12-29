@@ -10,8 +10,15 @@ async function layout({ children }) {
     const email = user.emailAddresses[0].emailAddress;
     // const resp = await fetch("/api/checkAdmin", {});
     // const data = await resp.json();
-
-    return true;
+    const link = "http://localhost:5001/subscribers/" + email;
+    const response = await fetch(link);
+    const data = await response.json();
+    // console.log(data);
+    // console.log("working");
+    if (data.email == email) {
+      return true;
+    }
+    else return false;
   }
 
   isMember = await checkMembership();
