@@ -2,4 +2,4 @@ GET http://localhost:5001/subscribers
 
 ###
 
-GET http://localhost:5000/subscribers/vanshayushi@gmail.com
+GET http://localhost:5001/subscribers/vanshayushi@gmail.com
