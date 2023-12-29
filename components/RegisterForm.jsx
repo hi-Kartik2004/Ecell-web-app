@@ -88,6 +88,7 @@ export default function EventForm({ data }) {
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
   const [teamSize, setTeamSize] = useState(1);
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     async function isUserRegistered(eventId, userEmail) {
@@ -125,8 +126,10 @@ export default function EventForm({ data }) {
       const isRegistered = await isUserRegistered(eventId, userEmail);
       if (isRegistered) {
         setSubmitted(true);
+        setLoading(false);
       } else {
         setSubmitted(false);
+        setLoading(false);
       }
     }
 
@@ -211,6 +214,14 @@ export default function EventForm({ data }) {
         memberPhone: "",
       });
     }
+  }
+
+  if (loading) {
+    return (
+      <div className="mt-24">
+        <Loader />
+      </div>
+    );
   }
 
   // Render UI based on form state
