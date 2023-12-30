@@ -82,7 +82,7 @@ async function layout({ children }) {
             </div>
             <div>
               <Button variant="secondary">
-                <Link href="/">&larr; Back to home</Link>
+                <Link href="/join">Take our membership &rarr;</Link>
               </Button>
             </div>
           </div>
