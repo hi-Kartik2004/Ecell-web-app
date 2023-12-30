@@ -1,7 +1,10 @@
+import { Button } from "@/components/ui/button";
 import { currentUser } from "@clerk/nextjs";
+import Link from "next/link";
 import { redirect, useRouter } from "next/navigation";
 import React from "react";
-var axios = require('axios');
+import { BsFillSignStopFill } from "react-icons/bs";
+var axios = require("axios");
 
 async function layout({ children }) {
   const user = await currentUser();
@@ -22,24 +25,25 @@ async function layout({ children }) {
     // else return false;
 
     var data = JSON.stringify({
-      "collection": "subscribers",
-      "database": "subscribers",
-      "dataSource": "Cluster0",
-      "filter": {
+      collection: "subscribers",
+      database: "subscribers",
+      dataSource: "Cluster0",
+      filter: {
         // "email": "vanshayush@gmail.com",
-        "email": email,
-      }
+        email: email,
+      },
     });
 
     var config = {
-      method: 'post',
-      url: 'https://ap-south-1.aws.data.mongodb-api.com/app/data-wtzjz/endpoint/data/v1/action/findOne',
+      method: "post",
+      url: "https://ap-south-1.aws.data.mongodb-api.com/app/data-wtzjz/endpoint/data/v1/action/findOne",
       headers: {
-        'Content-Type': 'application/json',
-        'Access-Control-Request-Headers': '*',
-        'api-key': '8xyZSAUDmD1HMh3E3gjGhijlKitYPmnw8i4yTtY8QmMXelkyRCsQrrkp8FwkuBNM',
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers": "*",
+        "api-key":
+          "8xyZSAUDmD1HMh3E3gjGhijlKitYPmnw8i4yTtY8QmMXelkyRCsQrrkp8FwkuBNM",
       },
-      data: data
+      data: data,
     };
 
     return axios(config)
@@ -49,8 +53,7 @@ async function layout({ children }) {
         if (checkData.document == null) {
           // console.log("working");
           return false;
-        }
-        else {
+        } else {
           // console.log("working");
           // console.log(checkData.document.admin);
           return true;
@@ -60,16 +63,34 @@ async function layout({ children }) {
       .catch(function (error) {
         console.log(error);
       });
-
   }
 
   isMember = await checkMembership();
 
-  if (!isMember) {
-    redirect("/");
-  }
-
-  return <div>{children}</div>;
+  return (
+    <div>
+      {!isMember && (
+        <div>
+          <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+            <BsFillSignStopFill size={50} />
+            <div className="p-2 rounded-md border max-w-[400px]">
+              <p className="text-center">
+                You are not allowed to access this page, because you don't have
+                Membership, please contact E-cell UVCE if you think this is a
+                mistake.
+              </p>
+            </div>
+            <div>
+              <Button variant="secondary">
+                <Link href="/">&larr; Back to home</Link>
+              </Button>
+            </div>
+          </div>
+        </div>
+      )}
+      {isMember && { children }}
+    </div>
+  );
 }
 
 export default layout;
