@@ -25,9 +25,9 @@ async function layout({ children }) {
       "collection": "subscribers",
       "database": "subscribers",
       "dataSource": "Cluster0",
-      "projection": {
-        "email": 1,
-        "admin": 1
+      "filter": {
+        // "email": "vanshayush@gmail.com",
+        "email": email,
       }
     });
 
@@ -42,16 +42,26 @@ async function layout({ children }) {
       data: data
     };
 
-    axios(config)
+    return axios(config)
       .then(function (response) {
-        console.log(JSON.stringify(response.data));
+        const checkData = response.data;
+        // console.log("checkdata " + checkData);
+        if (checkData.document == null) {
+          // console.log("working");
+          return false;
+        }
+        else {
+          // console.log("working");
+          // console.log(checkData.document.admin);
+          return checkData.document.admin;
+        }
+        // console.log(JSON.stringify(response.data));
       })
       .catch(function (error) {
         console.log(error);
       });
 
-
-    return data.admin;
+    // console.log(check);
   }
 
   isAdmin = await checkAdmin();
