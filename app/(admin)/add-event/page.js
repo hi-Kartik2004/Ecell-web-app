@@ -16,6 +16,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import React from "react";
 import EventForm from "@/components/EventForm";
+import data from "@/app/data";
 
 const formSchema = z.object({
   name: z.string().min(2, {
@@ -44,11 +45,11 @@ function page() {
       <div className="container mt-24 pb-10 flex justify-center flex-col items-center">
         <div className="flex flex-col items-center">
           <h1 className="text-2xl lg:text-4xl font-semibold">
-            Add Events For the community!
+            {data?.addEventPageTitle}
           </h1>
 
           <p className="text-muted-foreground mt-2">
-            lorem ipsum dor it lorem ipsum dor it
+            {data?.addEventPageDescription}
           </p>
         </div>
         <div className="max-w-[800px] w-full  mt-6 ">

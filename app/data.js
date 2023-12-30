@@ -313,6 +313,25 @@ const data = {
   galleryPageDescription:
     "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
 
+  // Add event page
+  addEventPageTitle: "Add Event",
+  addEventPageDescription:
+    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+
+  // registrations page
+  registrationsPageTitle: "Registrations",
+  registrationsPageDescription:
+    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",  
+
+  // Add blog page
+  addBlogPageTitle: "Add Blog",
+  addBlogPageDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+
+  // manage blogs page
+  manageBlogsPageTitle: "Manage Blogs",
+  manageBlogsPageDescription:
+    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+
   // Navbar - only techies touch this
   navbarLinks: [
     {
