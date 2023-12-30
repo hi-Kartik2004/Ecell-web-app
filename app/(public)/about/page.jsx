@@ -150,8 +150,8 @@ const About = () => {
               />
             </svg>
             <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2 max-w-[1000px] ">
-              <br />
-              <h1 className={`text-xl font-semibold`}>
+       
+              <h1 className={`text-xl font-semibold `}>
                 History
               </h1>
               <p className="my-4 text-primary">

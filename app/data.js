@@ -284,7 +284,6 @@ const data = {
     title: "Mission",
     description:
       "To enhance and nurture entrepreneurial skills among students.",
-
   },
   aboutPageHistoryHeading: "Where Innovation Meets Opportunity.",
   aboutPageHistoryP1:
