@@ -2,7 +2,7 @@ const data = {
   // General
   siteName: "E-Cell UVCE, Bengaluru",
   siteDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  clubName: "E-Cell UVCE",
+  clubName: "E-Cell",
   presidentName: "Rushil BR",
   presidentPhone: "1234567890",
   presidentEmail: "test@gmail.com",
@@ -35,7 +35,7 @@ const data = {
   ],
 
   // about section
-  aboutSectionTitleLeft: "About",
+  aboutSectionTitleLeft: "About etrtty",
   aboutSectionTitleYellow: "Entrepreneurship Cell ",
   aboutSectionTitleRight: "UVCE, Bengaluru",
   aboutSectionCards: [
@@ -54,6 +54,7 @@ const data = {
       description:
         "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
     },
+    
   ],
 
   // Features section
@@ -86,6 +87,8 @@ const data = {
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       link: "https://www.google.com",
     },
+
+   
   ],
 
   // Memories section
@@ -114,6 +117,7 @@ const data = {
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
+    
   ],
 
   // Testimonials:
@@ -163,7 +167,7 @@ const data = {
   stats: [
     {
       title: "lorem ipsum dor sit ipem",
-      count: 100,
+      count: 120,
     },
     {
       title: "lorem ipsum dor sit ipem",
@@ -181,12 +185,12 @@ const data = {
 
   // Footer
   footerMessage: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  footerYellowBtnMessage: "Join our Community",
+  footerYellowBtnMessage: "Join our Community2",
   footerYellowBtnLink: "/join",
 
   footerLinks: [
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "1st link grp",
       links: [
         {
           name: "lorem ipsum dor sit ipem",

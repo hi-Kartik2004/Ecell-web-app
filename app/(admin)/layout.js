@@ -73,29 +73,28 @@ async function layout({ children }) {
   //   redirect("/");
   // }
 
-  return (
-    <div>
-      {!isAdmin && (
-        <div>
-          <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
-            <BsFillSignStopFill size={50} />
-            <div className="p-2 rounded-md border max-w-[400px]">
-              <p className="text-center">
-                You are not allowed to access this page, because you don't have
-                admin rights, please contact the team to get admin rights.
-              </p>
-            </div>
-            <div>
-              <Button variant="secondary">
-                <Link href="/">&larr; Back to home</Link>
-              </Button>
-            </div>
+  if (!isAdmin) {
+    return (
+      <div>
+        <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+          <BsFillSignStopFill size={50} />
+          <div className="p-2 rounded-md border max-w-[400px]">
+            <p className="text-center">
+              You are not allowed to access this page, because you don't have
+              admin rights, please contact the team to get admin rights.
+            </p>
+          </div>
+          <div>
+            <Button variant="secondary">
+              <Link href="/">&larr; Back to home</Link>
+            </Button>
           </div>
         </div>
-      )}
-      {isAdmin && { children }}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return <div>{children}</div>;
 }
 
 export default layout;

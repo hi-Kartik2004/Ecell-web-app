@@ -67,30 +67,29 @@ async function layout({ children }) {
 
   isMember = await checkMembership();
 
-  return (
-    <div>
-      {!isMember && (
-        <div>
-          <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
-            <BsFillSignStopFill size={50} />
-            <div className="p-2 rounded-md border max-w-[400px]">
-              <p className="text-center">
-                You are not allowed to access this page, because you don't have
-                Membership, please contact E-cell UVCE if you think this is a
-                mistake.
-              </p>
-            </div>
-            <div>
-              <Button variant="secondary">
-                <Link href="/join">Take our membership &rarr;</Link>
-              </Button>
-            </div>
+  if (!isMember) {
+    return (
+      <div>
+        <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+          <BsFillSignStopFill size={50} />
+          <div className="p-2 rounded-md border max-w-[400px]">
+            <p className="text-center">
+              You are not allowed to access this page, because you don't have
+              Membership, please contact E-cell UVCE if you think this is a
+              mistake.
+            </p>
+          </div>
+          <div>
+            <Button variant="secondary">
+              <Link href="/join">Take our membership &rarr;</Link>
+            </Button>
           </div>
         </div>
-      )}
-      {isMember && { children }}
-    </div>
-  );
+      </div>
+    );
+  }
+
+  return <div>{children}</div>;
 }
 
 export default layout;
