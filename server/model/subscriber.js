@@ -5,6 +5,10 @@ const subscriberSchema = new mongoose.Schema({
         type: String,
         required: true
     },
+    admin:{
+        type: Boolean,
+        required: true
+    },
 })
 
 module.exports = mongoose.model('Subscriber', subscriberSchema)
