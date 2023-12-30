@@ -273,6 +273,41 @@ const data = {
   aboutPageDescription:
     "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
 
+  aboutSectionVision:
+  {
+    title: "Vision",
+    description:
+      "To be a well recognized center of excellence for entrepreneurial development to form successful entrepreneurs.",
+  },
+  aboutSectionMission:
+  {
+    title: "Mission",
+    description:
+      "To enhance and nurture entrepreneurial skills among students.",
+
+  },
+  aboutPageHistoryHeading: "Where Innovation Meets Opportunity.",
+  aboutPageHistoryP1:
+    `The Entrepreneurship Cell of UVCE, founded in 2014 by Tejas Narayan,
+  stands tall as a student-run body with the goal of fostering an
+  entrepreneurial culture and providing the most unique opportunities to the
+  student community. In 2019, the club was re-organized with support from
+  the alumni.`,
+  aboutPageHistoryP2:
+    `We, at the Entrepreneurship Cell UVCE, seek to instill an Entrepreneurship
+  drive among the students of the college. With our numerous workshops,
+  seminars, and events, we aim to further the students' understanding of
+  business from how to chalk out a business plan to executing it. The E-Cell
+  envisions nurturing the innovative potential of every student, in a bid to
+  invigorate and inspire them to get one step closer to their entrepreneurial
+  vision. From networking, and business modeling to investor pitches, E-Cell
+  continually strives to provide students with a platform to holistically develop,
+  learn and expand the horizon of opportunities that lie before them.`,
+  aboutPageHistoryP3:
+    `We also provide opportunities for our members to gain a better
+  understanding of the finance world by facilitating regular interactions with
+  them.`,
+
   // Gallery page
   galleryPageTitle: "Gallery",
   galleryPageDescription:
