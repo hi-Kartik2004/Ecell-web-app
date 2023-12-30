@@ -5,6 +5,9 @@ import React, { Suspense } from "react";
 import BlogCard from "@/components/BlogCard";
 import Navbar from "@/components/Navbar";
 import Loader from "@/components/Loader";
+import globalData from "@/app/data";
+import { Button } from "@/components/ui/button";
+import Link from "next/link";
 // import UserNotFound from "@/app/components/UserNotFound";
 
 async function ManageBlogs() {
@@ -37,10 +40,26 @@ async function ManageBlogs() {
               Blogs
             </h1>
 
-            <p className="text-muted-foreground">lorem ipsum dor sit amet.</p>
+            <p className="text-muted-foreground">
+              {globalData?.manageBlogsPageDescription}
+            </p>
           </div>
           <Suspense fallback={<Loader />}>
-            <div className="container flex flex-wrap justify-around gap-4">
+            <div className="container flex flex-wrap justify-around gap-4 min-h-[60vh]">
+              {blogsData.length === 0 && (
+                <div className="flex flex-col justify-center items-center">
+                  <h1 className="text-2xl font-semibold">
+                    No Articles found.{" "}
+                    <span className="text-primary">Create one!</span>
+                  </h1>
+
+                  <Button className="mt-6">
+                    <Link href={"/add-blog"}>
+                      Create and publish an article{" "}
+                    </Link>
+                  </Button>
+                </div>
+              )}
               {user &&
                 blogsData.map((blog, index) => (
                   <div key={index}>
