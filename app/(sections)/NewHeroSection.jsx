@@ -1,15 +1,42 @@
+"use client";
 import AlertComponent from "@/components/AlertComponent";
 import { Button } from "@/components/ui/button";
 import Image from "next/image";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Marquee from "react-fast-marquee";
 import data from "../data";
 import Link from "next/link";
+import { motion } from "framer-motion";
+import Loader from "@/components/Loader";
 
 function NewHeroSection() {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <section className="pt-24 py-6 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')] w-full">
-      <div className="container flex flex-col items-center w-full">
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.3 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 10 },
+        }}
+        className="container flex flex-col items-center w-full"
+      >
         <div className="">
           <AlertComponent
             badgeMessage={data?.heroBadgeMessage}
@@ -50,28 +77,40 @@ function NewHeroSection() {
             </Link>
           </Button>
         </div>
-      </div>
-      <Marquee className="">
-        <div className="flex">
-          {data.heroMarqueeImages.map((image) => (
-            <img
-              src={image}
-              alt={`hero-image ${image}}`}
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-          ))}
-        </div>
+      </motion.div>
 
-        <div className="flex">
-          {data.heroMarqueeImages.map((image) => (
-            <img
-              src={image}
-              alt={`hero-image ${image}}`}
-              className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
-            />
-          ))}
-        </div>
-      </Marquee>
+      <motion.div
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.5 }}
+        variants={{
+          visible: { opacity: 1, y: 0 },
+          hidden: { opacity: 0, y: 10 },
+        }}
+      >
+        <Marquee className="">
+          <div className="flex">
+            {data.heroMarqueeImages.map((image) => (
+              <img
+                src={image}
+                alt={`hero-image ${image}}`}
+                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+              />
+            ))}
+          </div>
+
+          <div className="flex">
+            {data.heroMarqueeImages.map((image) => (
+              <img
+                src={image}
+                alt={`hero-image ${image}}`}
+                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+              />
+            ))}
+          </div>
+        </Marquee>
+      </motion.div>
     </section>
   );
 }

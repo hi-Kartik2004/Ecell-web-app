@@ -1,10 +1,22 @@
+"use client";
 import Image from "next/image";
 import React from "react";
 import data from "../data";
+import { motion } from "framer-motion";
 
 function FeaturedSection2() {
   return (
-    <section className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
+    <motion.section
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.1 }}
+      transition={{ duration: 0.3 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+      className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]"
+    >
       <div className="container py-10 flex flex-col items-center justify-center">
         <h1 className="text-center lg:text-xl text-lg font-medium">
           {data?.featuredSection2Title}
@@ -16,7 +28,7 @@ function FeaturedSection2() {
           ))}
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 

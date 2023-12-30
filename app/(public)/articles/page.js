@@ -19,6 +19,7 @@ import {
   SelectValue,
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 function Page() {
   const [articles, setArticles] = useState([]);
@@ -27,6 +28,7 @@ function Page() {
   const [nameFilter, setNameFilter] = useState(""); // State for filtering by name
   const [viewsFilter, setViewsFilter] = useState(null); // State for filtering by views
   const [selectedFilter, setSelectedFilter] = useState(null); // State for the selected filter
+  const [visibleArticles, setVisibleArticles] = useState(6);
 
   useEffect(() => {
     async function getArticlesFromFirestore() {
@@ -95,6 +97,11 @@ function Page() {
     return Math.ceil(article.blog.length / 100);
   };
 
+  // Load more articles when the button is clicked
+  const handleLoadMore = () => {
+    setVisibleArticles((prevVisibleArticles) => prevVisibleArticles + 6);
+  };
+
   return (
     <section className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
       <div className="container w-full pt-12 pb-24 flex flex-col items-center min-h-[100vh]">
@@ -161,10 +168,18 @@ function Page() {
         {/* Render Loading or Articles */}
         <div className="mt-2 md:mt-4 flex flex-wrap w-full justify-around gap-4 md:gap-6">
           {loading ? <Loader /> : ""}
-          {articles.map((article) => (
+          {articles.slice(0, visibleArticles).map((article) => (
             <ArticleCard key={article.id} data={article} />
           ))}
         </div>
+
+        {visibleArticles < articles.length && (
+          <div className="flex justify-center mt-6">
+            <Button onClick={handleLoadMore} variant="secondary">
+              Load More Events &#10227;
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

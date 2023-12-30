@@ -9,7 +9,7 @@ function Loader() {
         <AiOutlineLoading size={35} className="animate-spin" />
         {/* </div> */}
 
-        <p className="mt-4 text-lg">Loading...</p>
+        <p className="mt-4 text-md">Loading...</p>
       </div>
     </div>
   );

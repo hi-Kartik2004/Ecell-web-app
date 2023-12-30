@@ -6,6 +6,8 @@ import { db } from "@/firebase/config";
 import { useEffect, useState } from "react";
 import Loader from "@/components/Loader";
 import data from "@/app/data";
+import { Input } from "@/components/ui/input";
+import { Button } from "@/components/ui/button";
 
 async function fetchEvents() {
   try {
@@ -50,6 +52,8 @@ function EventsPage() {
   const [events, setEvents] = useState([]);
   const [showLiveEvents, setShowLiveEvents] = useState(true);
   const [showPastEvents, setShowPastEvents] = useState(false);
+  const [eventNameFilter, setEventNameFilter] = useState("");
+  const [visibleEvents, setVisibleEvents] = useState(6);
 
   useEffect(() => {
     fetchEvents()
@@ -65,14 +69,25 @@ function EventsPage() {
       });
   }, []);
 
-  // Filter events based on checkbox states
+  // Filter events based on checkbox states and event name filter
   const filteredEvents = events.filter((event) => {
     const today = new Date();
-    return (
-      (showLiveEvents && event.dateObject >= today) ||
-      (showPastEvents && event.dateObject < today)
-    );
+    const isLiveEvent = showLiveEvents && event.dateObject >= today;
+    const isPastEvent = showPastEvents && event.dateObject < today;
+    const matchesName = event.name
+      .toLowerCase()
+      .includes(eventNameFilter.toLowerCase());
+
+    return (isLiveEvent || isPastEvent) && matchesName;
   });
+
+  // Slice events based on visibleEvents
+  const slicedEvents = filteredEvents.slice(0, visibleEvents);
+
+  // Load more events when the button is clicked
+  const handleLoadMore = () => {
+    setVisibleEvents((prevVisibleEvents) => prevVisibleEvents + 6);
+  };
 
   return (
     <>
@@ -115,24 +130,43 @@ function EventsPage() {
                 </label>
               </div>
             </div>
+
+            {/* Add input field for event name filter */}
+            <div className="max-w-[400px]">
+              <Input
+                type="text"
+                placeholder="Filter by Event Name"
+                value={eventNameFilter}
+                onChange={(e) => setEventNameFilter(e.target.value)}
+                className="mt-4"
+              />
+            </div>
           </div>
 
           <div className="flex flex-wrap gap-8 justify-around mt-10">
             {loading ? (
               <Loader />
             ) : (
-              filteredEvents.length === 0 && (
+              slicedEvents.length === 0 && (
                 <p className="mt-4">
                   We currently don't have any matching events. 💖
                 </p>
               )
             )}
-            {filteredEvents.map((event) => (
+            {slicedEvents.map((event) => (
               <div key={event.timestamp}>
                 <EventCard data={event} />
               </div>
             ))}
           </div>
+
+          {visibleEvents < filteredEvents.length && (
+            <div className="flex justify-center mt-6">
+              <Button onClick={handleLoadMore} variant="secondary">
+                Load More Events &#10227;
+              </Button>
+            </div>
+          )}
         </div>
       </section>
     </>
