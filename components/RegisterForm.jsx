@@ -91,79 +91,75 @@ export default function EventForm({ data }) {
   const [loading, setLoading] = useState(true);
   const [Leader, setLeader] = useState({});
 
-  useEffect(() => {
-  
-    async function isUserRegistered(eventId, userEmail) {
-      const registrationsRef = collection(db, "registrations");
+  async function isUserRegistered(eventId, userEmail) {
+    const registrationsRef = collection(db, "registrations");
 
-      // Check if the user's email is in leaderEmail or memberEmail
-      const q = query(
-        registrationsRef,
-        where("eventId", "==", eventId),
-        where("leaderEmail", "==", userEmail)
-      );
+    // Check if the user's email is in leaderEmail or memberEmail
+    const q = query(
+      registrationsRef,
+      where("eventId", "==", eventId),
+      where("leaderEmail", "==", userEmail)
+    );
 
-      const querySnapshot = await getDocs(q);
+    const querySnapshot = await getDocs(q);
 
-      if (!querySnapshot.empty) {
-        // User found in leaderEmail, no need to check further
-        const leaderData = querySnapshot.docs[0].data();
+    if (!querySnapshot.empty) {
+      // User found in leaderEmail, no need to check further
+      const leaderData = querySnapshot.docs[0].data();
+      setLeader({
+        leaderEmail: leaderData.leaderEmail,
+        leaderName: leaderData.leaderName,
+        leaderBranch: leaderData.leaderBranch,
+        leaderYear: leaderData.leaderYear,
+        leaderPhone: leaderData.leaderPhone || "",
+      });
+      return true;
+    }
+
+    // If not found in leaderEmail, check memberEmail
+    const qForMember = query(registrationsRef, where("eventId", "==", eventId));
+
+    const memberQuerySnapshot = await getDocs(qForMember);
+
+    // Check if any document is found
+    if (!memberQuerySnapshot.empty) {
+      // Check if any team member has the specified memberEmail
+      const matchingDocument = memberQuerySnapshot.docs.find((doc) => {
+        const teamMembers = doc.data().teamMembers || [];
+        return teamMembers.some((member) => member.memberEmail === userEmail);
+      });
+
+      if (matchingDocument) {
+        const memberData = matchingDocument.data();
         setLeader({
-          leaderEmail: leaderData.leaderEmail,
-          leaderName: leaderData.leaderName,
-          leaderBranch: leaderData.leaderBranch,
-          leaderYear: leaderData.leaderYear,
-          leaderPhone: leaderData.leaderPhone || "",
+          leaderEmail: memberData.leaderEmail,
+          leaderName: memberData.leaderName,
+          leaderBranch: memberData.leaderBranch,
+          leaderYear: memberData.leaderYear,
+          leaderPhone: memberData.leaderPhone || "",
         });
-        return true;
-      }
-
-      // If not found in leaderEmail, check memberEmail
-      const qForMember = query(
-        registrationsRef,
-        where("eventId", "==", eventId)
-      );
-
-      const memberQuerySnapshot = await getDocs(qForMember);
-
-      // Check if any document is found
-      if (!memberQuerySnapshot.empty) {
-        // Check if any team member has the specified memberEmail
-        const matchingDocument = memberQuerySnapshot.docs.find((doc) => {
-          const teamMembers = doc.data().teamMembers || [];
-          return teamMembers.some((member) => member.memberEmail === userEmail);
-        });
-
-        if (matchingDocument) {
-          const memberData = matchingDocument.data();
-          setLeader({
-            leaderEmail: memberData.leaderEmail,
-            leaderName: memberData.leaderName,
-            leaderBranch: memberData.leaderBranch,
-            leaderYear: memberData.leaderYear,
-            leaderPhone: memberData.leaderPhone || "",
-          });
-        }
-      }
-
-      return !memberQuerySnapshot.empty;
-    }
-
-    async function checkUserRegistration() {
-      const eventId = data.id;
-      const userEmail = user?.emailAddresses?.[0]?.emailAddress || "";
-      const isRegistered = await isUserRegistered(eventId, userEmail);
-      if (isRegistered) {
-        setSubmitted(true);
-        setLoading(false);
-      } else {
-        setSubmitted(false);
-        setLoading(false);
       }
     }
 
+    return !memberQuerySnapshot.empty;
+  }
+
+  async function checkUserRegistration() {
+    const eventId = data.id;
+    const userEmail = user?.emailAddresses?.[0]?.emailAddress || "";
+    const isRegistered = await isUserRegistered(eventId, userEmail);
+    if (isRegistered) {
+      setSubmitted(true);
+      setLoading(false);
+    } else {
+      setSubmitted(false);
+      setLoading(false);
+    }
+  }
+
+  useEffect(() => {
     checkUserRegistration();
-  }, []);
+  }, [submitted]);
 
   const form = useForm({
     resolver: zodResolver(formSchema),
@@ -212,7 +208,16 @@ export default function EventForm({ data }) {
       const isDocAdded = await addMessageToFirestore({ formData: values });
 
       if (isDocAdded) {
+        const formData = { formData: values };
+        setLeader({
+          leaderEmail: formData.leaderEmail,
+          leaderName: formData.leaderName,
+          leaderBranch: formData.leaderBranch,
+          leaderYear: formData.leaderYear,
+          leaderPhone: formData.leaderPhone || "",
+        });
         setSubmitted(true);
+
         // reset the form after successful submission
         form.reset();
       } else {
