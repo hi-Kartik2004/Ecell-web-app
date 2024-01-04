@@ -89,8 +89,54 @@ export default function EventForm({ data }) {
   const [submitted, setSubmitted] = useState(false);
   const [teamSize, setTeamSize] = useState(1);
   const [loading, setLoading] = useState(true);
+  const [Leader, setLeader] = useState({});
 
   useEffect(() => {
+    // async function isUserRegistered(eventId, userEmail) {
+    //   const registrationsRef = collection(db, "registrations");
+
+    //   // Check if the user's email is in leaderEmail or memberEmail
+    //   const q = query(
+    //     registrationsRef,
+    //     where("eventId", "==", eventId),
+    //     where("leaderEmail", "==", userEmail)
+    //   );
+
+    //   const querySnapshot = await getDocs(q);
+
+    //   if (!querySnapshot.empty) {
+    //     // User found in leaderEmail, no need to check further
+    //     return true;
+    //   }
+
+    //   // If not found in leaderEmail, check memberEmail
+    //   const qForMember = query(
+    //     registrationsRef,
+    //     where("eventId", "==", eventId)
+    //   );
+
+    //   const memberQuerySnapshot = await getDocs(qForMember);
+
+    //   // Check if any document is found
+    //   if (!memberQuerySnapshot.empty) {
+    //     // Check if any team member has the specified memberEmail
+    //     const matchingDocument = memberQuerySnapshot.docs.find((doc) => {
+    //       const teamMembers = doc.data().teamMembers || [];
+    //       return teamMembers.some((member) => member.memberEmail === userEmail);
+    //     });
+
+    //     if (matchingDocument) {
+    //       console.log(matchingDocument.data());
+    //     } else {
+    //       console.log("No matching team member found.");
+    //     }
+    //   } else {
+    //     console.log("No matching documents found.");
+    //   }
+
+    //   return !memberQuerySnapshot.empty;
+    // }
+
     async function isUserRegistered(eventId, userEmail) {
       const registrationsRef = collection(db, "registrations");
 
@@ -105,17 +151,44 @@ export default function EventForm({ data }) {
 
       if (!querySnapshot.empty) {
         // User found in leaderEmail, no need to check further
+        const leaderData = querySnapshot.docs[0].data();
+        setLeader({
+          leaderEmail: leaderData.leaderEmail,
+          leaderName: leaderData.leaderName,
+          leaderBranch: leaderData.leaderBranch,
+          leaderYear: leaderData.leaderYear,
+          leaderPhone: leaderData.leaderPhone || "",
+        });
         return true;
       }
 
       // If not found in leaderEmail, check memberEmail
       const qForMember = query(
         registrationsRef,
-        where("eventId", "==", eventId),
-        where("teamMembers", "array-contains", { memberEmail: userEmail })
+        where("eventId", "==", eventId)
       );
 
       const memberQuerySnapshot = await getDocs(qForMember);
+
+      // Check if any document is found
+      if (!memberQuerySnapshot.empty) {
+        // Check if any team member has the specified memberEmail
+        const matchingDocument = memberQuerySnapshot.docs.find((doc) => {
+          const teamMembers = doc.data().teamMembers || [];
+          return teamMembers.some((member) => member.memberEmail === userEmail);
+        });
+
+        if (matchingDocument) {
+          const memberData = matchingDocument.data();
+          setLeader({
+            leaderEmail: memberData.leaderEmail,
+            leaderName: memberData.leaderName,
+            leaderBranch: memberData.leaderBranch,
+            leaderYear: memberData.leaderYear,
+            leaderPhone: memberData.leaderPhone || "",
+          });
+        }
+      }
 
       return !memberQuerySnapshot.empty;
     }
@@ -231,8 +304,8 @@ export default function EventForm({ data }) {
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-center">
-            Thanks for filling the form. You have successfully registered for
-            the event.
+            Thanks for filling the form.
+            {`Your team Leader is ${Leader.leaderName}, his Email is ${Leader.leaderEmail}, his Branch is ${Leader.leaderBranch}, his Year is ${Leader.leaderYear} and his Phone Number is +${Leader.leaderPhone}`}
           </p>
         </div>
         <div>

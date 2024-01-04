@@ -8,6 +8,7 @@ import Loader from "@/components/Loader";
 import data from "@/app/data";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useUser } from "@clerk/nextjs";
 
 async function fetchEvents() {
   try {
@@ -49,27 +50,70 @@ async function fetchEvents() {
   }
 }
 
+async function fetchUserRegistrations() {
+  try {
+    const registrationCollection = collection(db, "registrations");
+    const q = query(registrationCollection);
+    const querySnapshot = await getDocs(q);
+
+    if (querySnapshot.empty) {
+      console.log("No registrations.");
+      return [];
+    }
+
+    // Extract relevant registration data without unnecessary operations
+    const registrations = querySnapshot.docs.map((doc) => {
+      const registrationData = doc.data();
+      return { ...registrationData, id: doc.id };
+    });
+
+    console.log(registrations);
+
+    return registrations;
+  } catch (error) {
+    console.error("Error getting registrations:", error);
+    throw new Error("Error getting registrations");
+  }
+}
+
 function EventsPage() {
   const [loading, setLoading] = useState(true);
   const [events, setEvents] = useState([]);
   const [showLiveEvents, setShowLiveEvents] = useState(true);
   const [showPastEvents, setShowPastEvents] = useState(false);
+  const [showMyEvents, setShowMyEvents] = useState(false); // Added state for My Events
   const [eventNameFilter, setEventNameFilter] = useState("");
   const [visibleEvents, setVisibleEvents] = useState(6);
+  const [userRegistrations, setUserRegistrations] = useState([]); // Added state for user registrations
+
+  const { isSignedIn, user } = useUser();
+  const loggedEmail = user?.emailAddresses[0]?.emailAddress;
 
   useEffect(() => {
-    fetchEvents()
-      .then((data) => {
-        setEvents(data);
-      })
-      .catch((error) => {
-        console.error("Error fetching events:", error);
+    const fetchUserRegistrationsData = async () => {
+      if (!loggedEmail) {
+        console.log("User email not available.");
+        return;
+      }
+
+      console.log("Fetching user registrations for email:", loggedEmail);
+      try {
+        const registrationsData = await fetchUserRegistrations();
+        setUserRegistrations(registrationsData);
+
+        console.log("Fetching events");
+        const eventsData = await fetchEvents();
+        setEvents(eventsData);
+      } catch (error) {
+        console.error("Error fetching user registrations or events:", error);
         // Handle error toasts here, if needed
-      })
-      .finally(() => {
+      } finally {
         setLoading(false);
-      });
-  }, []);
+      }
+    };
+
+    isSignedIn && fetchUserRegistrationsData();
+  }, [isSignedIn, loggedEmail]);
 
   // Filter events based on checkbox states and event name filter
   const filteredEvents = events.filter((event) => {
@@ -80,7 +124,20 @@ function EventsPage() {
       .toLowerCase()
       .includes(eventNameFilter.toLowerCase());
 
-    return (isLiveEvent || isPastEvent) && matchesName;
+    // Check if the event is registered by the user
+    const isMyEvent =
+      showMyEvents &&
+      userRegistrations.some(
+        (registration) =>
+          registration.eventId === event.id &&
+          (registration.leaderEmail === loggedEmail ||
+            (registration.teamMembers &&
+              registration.teamMembers.some(
+                (member) => member.memberEmail === loggedEmail
+              ))) // Check if the user is the leader or a team member
+      );
+
+    return (isLiveEvent || isPastEvent || isMyEvent) && matchesName;
   });
 
   // Slice events based on visibleEvents
@@ -90,6 +147,18 @@ function EventsPage() {
   const handleLoadMore = () => {
     setVisibleEvents((prevVisibleEvents) => prevVisibleEvents + 6);
   };
+
+  if (loggedEmail === undefined) {
+    return (
+      <div className="container min-h-[60vh] flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  } else {
+    !loggedEmail && (
+      <p className="mt-4">You need to be logged in to view this page.</p>
+    );
+  }
 
   return (
     <>
@@ -103,7 +172,7 @@ function EventsPage() {
               {data?.eventPageDescription}
             </p>
 
-            <div className="flex gap-8 flex-wrap">
+            <div className="flex space-x-8 flex-wrap items-center justify-center">
               <div className="flex items-center space-x-2 mt-4">
                 <Checkbox
                   id="live-events"
@@ -131,6 +200,20 @@ function EventsPage() {
                   Past Events
                 </label>
               </div>
+
+              <div className="flex items-center space-x-2 mt-4">
+                <Checkbox
+                  id="my-events"
+                  checked={showMyEvents}
+                  onCheckedChange={() => setShowMyEvents(!showMyEvents)}
+                />
+                <label
+                  htmlFor="my-events"
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  My Events
+                </label>
+              </div>
             </div>
 
             {/* Add input field for event name filter */}
@@ -146,7 +229,7 @@ function EventsPage() {
           </div>
 
           <div className="flex flex-wrap gap-8 justify-around mt-10">
-            {loading ? (
+            {loading || isSignedIn === undefined ? (
               <Loader />
             ) : (
               slicedEvents.length === 0 && (
