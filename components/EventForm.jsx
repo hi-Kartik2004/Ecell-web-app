@@ -64,6 +64,11 @@ const formSchema = z.object({
         const [day, month, year] = dateString.split("-").map(Number);
         const parsedDate = new Date(year, month - 1, day);
         const currentDate = new Date();
+        parsedDate.setHours(23, 59, 59, 999);
+
+        console.log("Parsed Date:", parsedDate);
+        console.log("Current Date:", currentDate);
+
         return parsedDate >= currentDate;
       },
       { message: "Please enter a future date." }
@@ -194,7 +199,7 @@ export default function EventForm() {
   // Render UI based on form state
   if (submitted) {
     return (
-      <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center">
+      <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-center">

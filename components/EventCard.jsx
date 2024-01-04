@@ -25,7 +25,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 function EventCard({ data }) {
   return (
-    <Card className="max-w-[400px] w-full">
+    <Card className="max-w-[380px] w-full">
       <CardHeader>
         <div className="mb-2 flex justify-between">
           <Badge variant={"secondary"}>
@@ -55,7 +55,7 @@ function EventCard({ data }) {
           </div>
         </div>
       </CardContent>
-      <CardFooter className="flex justify-between">
+      <CardFooter className="flex justify-between gap-4">
         <div className="flex flex-col gap-2">
           <div className="flex gap-2 items-center">
             <BsCalendar /> <span className="text-xs">{data?.date}</span>

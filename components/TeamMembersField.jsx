@@ -58,7 +58,9 @@ function TeamMembersField({ member, index, remove }) {
             <FormControl>
               <Input placeholder="Member's Year" {...field} />
             </FormControl>
-            <FormDescription>min:1, max:5 (M.tech)</FormDescription>
+            <FormDescription>
+              Eg: 1 for first year, 2 for second ... 5 for M.tech
+            </FormDescription>
             <FormMessage />
           </FormItem>
         )}

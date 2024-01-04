@@ -30,6 +30,8 @@ async function fetchEvents() {
         dateParts[1] - 1, // Month (subtract 1 because months are 0-indexed in JavaScript)
         dateParts[0] // Day
       );
+
+      eventData.dateObject.setHours(23, 59, 59, 999);
       return { ...eventData, id: doc.id };
     });
 
@@ -97,7 +99,7 @@ function EventsPage() {
             <h1 className="text-4xl text-center font-bold">
               {data?.eventPageTitle} ({loading ? "_" : events.length})
             </h1>
-            <p className="text-muted-foreground text-center mt-2">
+            <p className="text-muted-fo1round text-center mt-2">
               {data?.eventPageDescription}
             </p>
 

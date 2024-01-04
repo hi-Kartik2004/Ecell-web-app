@@ -255,7 +255,7 @@ export default function EventForm({ data }) {
             <FormItem>
               <FormLabel>Team Name*</FormLabel>
               <FormControl>
-                <Input placeholder="Your beautiful team Name" {...field} />
+                <Input placeholder="Your team Name" {...field} />
               </FormControl>
               <FormDescription>Keep it innovative and short.</FormDescription>
               <FormMessage />
@@ -287,7 +287,9 @@ export default function EventForm({ data }) {
               <FormControl>
                 <Input placeholder="Your Year" {...field} />
               </FormControl>
-              <FormDescription>min:1, max:5 (M.tech)</FormDescription>
+              <FormDescription>
+                Eg: 1 for first year, 2 for second ... 5 for M.tech
+              </FormDescription>
               <FormMessage />
             </FormItem>
           )}
