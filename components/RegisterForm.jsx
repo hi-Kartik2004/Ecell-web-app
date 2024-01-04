@@ -92,51 +92,7 @@ export default function EventForm({ data }) {
   const [Leader, setLeader] = useState({});
 
   useEffect(() => {
-    // async function isUserRegistered(eventId, userEmail) {
-    //   const registrationsRef = collection(db, "registrations");
-
-    //   // Check if the user's email is in leaderEmail or memberEmail
-    //   const q = query(
-    //     registrationsRef,
-    //     where("eventId", "==", eventId),
-    //     where("leaderEmail", "==", userEmail)
-    //   );
-
-    //   const querySnapshot = await getDocs(q);
-
-    //   if (!querySnapshot.empty) {
-    //     // User found in leaderEmail, no need to check further
-    //     return true;
-    //   }
-
-    //   // If not found in leaderEmail, check memberEmail
-    //   const qForMember = query(
-    //     registrationsRef,
-    //     where("eventId", "==", eventId)
-    //   );
-
-    //   const memberQuerySnapshot = await getDocs(qForMember);
-
-    //   // Check if any document is found
-    //   if (!memberQuerySnapshot.empty) {
-    //     // Check if any team member has the specified memberEmail
-    //     const matchingDocument = memberQuerySnapshot.docs.find((doc) => {
-    //       const teamMembers = doc.data().teamMembers || [];
-    //       return teamMembers.some((member) => member.memberEmail === userEmail);
-    //     });
-
-    //     if (matchingDocument) {
-    //       console.log(matchingDocument.data());
-    //     } else {
-    //       console.log("No matching team member found.");
-    //     }
-    //   } else {
-    //     console.log("No matching documents found.");
-    //   }
-
-    //   return !memberQuerySnapshot.empty;
-    // }
-
+  
     async function isUserRegistered(eventId, userEmail) {
       const registrationsRef = collection(db, "registrations");
 

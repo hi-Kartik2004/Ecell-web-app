@@ -91,15 +91,10 @@ function EventsPage() {
 
   useEffect(() => {
     const fetchUserRegistrationsData = async () => {
-      if (!loggedEmail) {
-        console.log("User email not available.");
-        return;
-      }
-
       console.log("Fetching user registrations for email:", loggedEmail);
       try {
         const registrationsData = await fetchUserRegistrations();
-        setUserRegistrations(registrationsData);
+        isSignedIn && setUserRegistrations(registrationsData);
 
         console.log("Fetching events");
         const eventsData = await fetchEvents();
@@ -112,8 +107,8 @@ function EventsPage() {
       }
     };
 
-    isSignedIn && fetchUserRegistrationsData();
-  }, [isSignedIn, loggedEmail]);
+    fetchUserRegistrationsData();
+  }, [loggedEmail, isSignedIn]);
 
   // Filter events based on checkbox states and event name filter
   const filteredEvents = events.filter((event) => {
@@ -126,6 +121,7 @@ function EventsPage() {
 
     // Check if the event is registered by the user
     const isMyEvent =
+      isSignedIn &&
       showMyEvents &&
       userRegistrations.some(
         (registration) =>
@@ -148,18 +144,6 @@ function EventsPage() {
     setVisibleEvents((prevVisibleEvents) => prevVisibleEvents + 6);
   };
 
-  if (loggedEmail === undefined) {
-    return (
-      <div className="container min-h-[60vh] flex items-center justify-center">
-        <Loader />
-      </div>
-    );
-  } else {
-    !loggedEmail && (
-      <p className="mt-4">You need to be logged in to view this page.</p>
-    );
-  }
-
   return (
     <>
       <section className="flex justify-center dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')] min-h-[100vh]">
@@ -168,7 +152,7 @@ function EventsPage() {
             <h1 className="text-4xl text-center font-bold">
               {data?.eventPageTitle} ({loading ? "_" : events.length})
             </h1>
-            <p className="text-muted-fo1round text-center mt-2">
+            <p className="text-muted-foreground text-center mt-2">
               {data?.eventPageDescription}
             </p>
 
@@ -201,19 +185,21 @@ function EventsPage() {
                 </label>
               </div>
 
-              <div className="flex items-center space-x-2 mt-4">
-                <Checkbox
-                  id="my-events"
-                  checked={showMyEvents}
-                  onCheckedChange={() => setShowMyEvents(!showMyEvents)}
-                />
-                <label
-                  htmlFor="my-events"
-                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
-                >
-                  My Events
-                </label>
-              </div>
+              {isSignedIn && (
+                <div className="flex items-center space-x-2 mt-4">
+                  <Checkbox
+                    id="my-events"
+                    checked={showMyEvents}
+                    onCheckedChange={() => setShowMyEvents(!showMyEvents)}
+                  />
+                  <label
+                    htmlFor="my-events"
+                    className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                  >
+                    My Events
+                  </label>
+                </div>
+              )}
             </div>
 
             {/* Add input field for event name filter */}
@@ -229,7 +215,7 @@ function EventsPage() {
           </div>
 
           <div className="flex flex-wrap gap-8 justify-around mt-10">
-            {loading || isSignedIn === undefined ? (
+            {loading ? (
               <Loader />
             ) : (
               slicedEvents.length === 0 && (
