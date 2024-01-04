@@ -340,10 +340,14 @@ export default function EventForm({ data }) {
             <FormItem>
               <FormLabel>Leader's Phone*</FormLabel>
               <FormControl>
-                <Input {...field} />
+                <Input
+                  className="bg-muted text-muted-foreground"
+                  readOnly={field.values === "" ? false : true}
+                  {...field}
+                />
               </FormControl>
               <FormDescription>
-                Your primary contact phone Number (without +91)
+                Your primary contact phone Number
               </FormDescription>
               <FormMessage />
             </FormItem>
