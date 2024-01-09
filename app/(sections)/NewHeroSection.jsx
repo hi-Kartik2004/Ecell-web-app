@@ -25,7 +25,7 @@ function NewHeroSection() {
   }
 
   return (
-    <section className="pt-24 py-6 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')] w-full">
+    <section className="pt-24 py-6 dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')] w-full overflow-hidden">
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -85,27 +85,27 @@ function NewHeroSection() {
         viewport={{ once: true, amount: 0.1 }}
         transition={{ duration: 0.5 }}
         variants={{
-          visible: { opacity: 1, y: 0 },
+          visible: { opacity: 1, y: 0, rotate: -1.5 },
           hidden: { opacity: 0, y: 10 },
         }}
       >
         <Marquee className="">
-          <div className="flex">
+          <div className="flex justify-between">
             {data.heroMarqueeImages.map((image) => (
               <img
                 src={image}
                 alt={`hero-image ${image}}`}
-                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-6"
               />
             ))}
           </div>
 
-          <div className="flex">
+          <div className="flex justify-between">
             {data.heroMarqueeImages.map((image) => (
               <img
                 src={image}
                 alt={`hero-image ${image}}`}
-                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-4"
+                className="w-full rounded-xl mt-10 shadow-lg border-yellow-500/50 border-2 max-h-[300px] mr-6"
               />
             ))}
           </div>
