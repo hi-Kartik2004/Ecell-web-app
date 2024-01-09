@@ -1,9 +1,11 @@
-"uce client";
+"use client";
+import { useEffect, useState } from "react";
 import { Separator } from "@/components/ui/separator";
 import React from "react";
 import FooterSection from "../../(sections)/FooterSection";
 import data from "@/app/data";
 import GlassCard from "@/components/GlassCard";
+import Loader from "@/components/Loader";
 
 
 const TeamMemberCard = ({ name, position, imageUrl }) => (
@@ -21,6 +23,12 @@ const TeamMemberCard = ({ name, position, imageUrl }) => (
 );
 
 const About = () => {
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   const leads = [
     {
       name: "John Doe",
@@ -114,6 +122,14 @@ const About = () => {
     },
   ];
 
+  if (loading) {
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
   return (
     <main className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
       <div className="container flex flex-col items-center mx-auto p-4 bg-brown">
@@ -150,7 +166,7 @@ const About = () => {
               />
             </svg>
             <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2 max-w-[1000px] ">
-       
+
               <h1 className={`text-xl font-semibold `}>
                 History
               </h1>

@@ -1,8 +1,9 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import FooterSection from "../../(sections)/FooterSection";
 import { Separator } from "@/components/ui/separator";
 import data from "@/app/data";
+import Loader from "@/components/Loader";
 
 const images = [
   "https://placekitten.com/600/400",
@@ -21,6 +22,11 @@ const Page = () => {
   const [selectedImage, setSelectedImage] = useState(null);
   const [darkMode, setDarkMode] = useState(false);
 
+  const [loading, setLoading] = useState(true);
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
   const openModal = (index) => {
     setSelectedImage(images[index]);
   };
@@ -34,6 +40,15 @@ const Page = () => {
       closeModal();
     }
   };
+
+
+  if (loading) {
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
 
   return (
     <main className=" dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">

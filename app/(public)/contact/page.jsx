@@ -1,5 +1,5 @@
 "use client";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import FooterSection from "../../(sections)/FooterSection";
 import { addDoc, collection } from "firebase/firestore";
 import { db } from "../../../firebase/config";
@@ -12,9 +12,17 @@ import {
   FaMapPin,
 } from "react-icons/fa";
 import { useTheme } from "next-themes";
+import Loader from "@/components/Loader";
 
 const page = () => {
   const isDarkMode = true;
+
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    setLoading(false);
+  }, []);
+
 
   const [formData, setFormData] = useState({
     name: "",
@@ -44,6 +52,15 @@ const page = () => {
     });
     // console.log('Form Data:', formData);
   };
+
+  if (loading) {
+    return (
+      <div className="min-h-[100vh] flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
 
   return (
     <main>
