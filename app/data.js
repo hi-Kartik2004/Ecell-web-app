@@ -181,7 +181,7 @@ const data = {
 
   // Footer
   footerMessage: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  footerYellowBtnMessage: "Join our Community2",
+  footerYellowBtnMessage: "Join our Community",
   footerYellowBtnLink: "/sign-in",
 
   footerLinks: [
