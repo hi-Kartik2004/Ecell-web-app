@@ -42,7 +42,7 @@ const data = {
     {
       title: "Sometimes you've got to run before you walk.",
       description:
-        "Embark is held each year as the inaugural event of the Cell. Its an ideation and innovation competition open to all students of RVCE. The focus is on brainstorming, idea generation and Business-Plan creation. They are judged by a panel of experts from various fields.",
+        "Embark is held each year as the inaugural event of the Cell. Its an ideation and innovation competition open to all students of UVCE. The focus is on brainstorming, idea generation and Business-Plan creation. They are judged by a panel of experts from various fields.",
     },
     {
       title: "King of flagships in events.",
