@@ -2,10 +2,10 @@ const data = {
   // General
   siteName: "E-Cell UVCE, Bengaluru",
   siteDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  clubName: "E-Cell",
+  clubName: "E-Cell UVCE",
   presidentName: "Rushil BR",
   presidentPhone: "1234567890",
-  presidentEmail: "test@gmail.com",
+  presidentEmail: "entrepreneurshipcelluvce@gmail.com",
 
   // Hero section
   heroBadgeMessage: "New",
@@ -27,15 +27,15 @@ const data = {
   // Featured section
   featuredSection2Title: "Our Partners",
   featuredSection2Images: [
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
+    "https://play-lh.googleusercontent.com/EWZYr1Z1amte67yITxQegKQIy4gW8s_FbVLn6dx5Pdp4SytR_iIG5gMgqLl1VjfVgb-O",
+    "https://yt3.googleusercontent.com/okCU0fg72Ne6qXmGa1LdpYrz3gYDGVbYMpwdQLZHnGAtl6yBd3VEio3TfrvsKB4II2eciLuz-l0=s900-c-k-c0x00ffffff-no-rj",
+    "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1408952675/gcywc5ltpyv7fo8zaltb.png",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
     "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
   ],
 
   // about section
-  aboutSectionTitleLeft: "About etrtty",
+  aboutSectionTitleLeft: "About",
   aboutSectionTitleYellow: "Entrepreneurship Cell ",
   aboutSectionTitleRight: "UVCE, Bengaluru",
   aboutSectionCards: [
@@ -58,30 +58,30 @@ const data = {
 
   // Features section
   featuresTitle: "Why choose us?",
-  featuresDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  featuresDescription: "Welcome to Entrepreneurship Cell UVCE - Your Catalyst for Success!",
   featuresCards: [
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Passionate Community",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "Join a community of like-minded individuals passionate about entrepreneurship. Our members share a common drive for innovation, creativity, and a commitment to building successful ventures.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       link: "https://www.google.com",
     },
 
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Mentorship Programs",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "Benefit from mentorship programs connecting you with experienced entrepreneurs who provide guidance, share their experiences, and help you navigate the challenges of starting and growing a business.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       link: "https://www.google.com",
     },
 
     {
-      title: "lorem ipsum dor sit ipem",
+      title: " Exclusive Access",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "lAs a member, enjoy exclusive access to curated events, workshops, and resources designed to enhance your entrepreneurial skills. Stay ahead with insights from industry experts and thought leaders.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
       link: "https://www.google.com",
@@ -91,166 +91,167 @@ const data = {
   // Memories section
   memoriesTitle: "Memories",
   memoriesDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Relive the Unforgettable Moments of Past Events",
   memoriesCards: [
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "StartUp to Win",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups ",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Bull Market 6.0",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won cash prizes.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Discourse",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "An event with a resounding success! DISCOURSE was gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   ],
 
   // Testimonials:
-  testimonialsTitle: "Testimonials",
-  testimonialsDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  testimonials: [
-    {
-      personName: "lorem ipsum1",
-      personSubtitle: "lorem ipsum dor sit ipem",
-      personImage:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "lorem ipsum dor sit ipem1",
-      description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-    },
-    {
-      personName: "lorem ipsu2",
-      personSubtitle: "lorem ipsum dor sit ipem",
-      personImage:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "lorem ipsum dor sit ipem2",
-      description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-    },
-    {
-      personName: "lorem ipsu3",
-      personSubtitle: "lorem ipsum dor sit ipem",
-      personImage:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "lorem ipsum dor sit ipem2",
-      description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-    },
-    {
-      personName: "lorem ipsu4",
-      personSubtitle: "lorem ipsum dor sit ipem",
-      personImage:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      title: "lorem ipsum dor sit ipem2",
-      description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-    },
-  ],
+  // testimonialsTitle: "Testimonials",
+  // testimonialsDescription:
+  //   "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  // testimonials: [
+  //   {
+  //     personName: "lorem ipsum1",
+  //     personSubtitle: "lorem ipsum dor sit ipem",
+  //     personImage:
+  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  //     title: "lorem ipsum dor sit ipem1",
+  //     description:
+  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  //   },
+  //   {
+  //     personName: "lorem ipsu2",
+  //     personSubtitle: "lorem ipsum dor sit ipem",
+  //     personImage:
+  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  //     title: "lorem ipsum dor sit ipem2",
+  //     description:
+  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  //   },
+  //   {
+  //     personName: "lorem ipsu3",
+  //     personSubtitle: "lorem ipsum dor sit ipem",
+  //     personImage:
+  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  //     title: "lorem ipsum dor sit ipem2",
+  //     description:
+  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  //   },
+  //   {
+  //     personName: "lorem ipsu4",
+  //     personSubtitle: "lorem ipsum dor sit ipem",
+  //     personImage:
+  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+  //     title: "lorem ipsum dor sit ipem2",
+  //     description:
+  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  //   },
+  // ],
 
   // stats
   stats: [
     {
-      title: "lorem ipsum dor sit ipem",
-      count: 120,
+      title: "Students driven",
+      count: 1000,
     },
     {
-      title: "lorem ipsum dor sit ipem",
-      count: 100,
+      title: "Prizes won",
+      count: 10000,
     },
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Events Conducted",
       count: 100,
     },
-    {
-      title: "lorem ipsum dor sit ipem",
-      count: 100,
-    },
+    // {
+    //   title: "lorem ipsum dor sit ipem",
+    //   count: 100,
+    // },
   ],
 
   // Footer
-  footerMessage: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+
+  footerMessage: "Join E-Cell UVCE's Vibrant Community to enjoy Membership benefits.",
   footerYellowBtnMessage: "Join our Community",
   footerYellowBtnLink: "/sign-in",
 
   footerLinks: [
     {
-      title: "1st link grp",
+      title: "Follow Us:",
       links: [
         {
-          name: "lorem ipsum dor sit ipem",
+          name: "Facebook",
+          link: "https://www.facebook.com/ecelluvce",
+        },
+        {
+          name: "Instagram",
+          link: "https://www.instagram.com/ecelluvce",
+        },
+        {
+          name: "Twitter",
+          link: "https://www.twitter.com/ecelluvce",
+        },
+      ],
+    },
+    {
+      title: "Quick Links",
+      links: [
+        {
+          name: "Home",
           link: "https://www.google.com",
         },
         {
-          name: "lorem ipsum dor sit ipem",
+          name: "Events",
           link: "https://www.google.com",
         },
         {
-          name: "lorem ipsum dor sit ipem",
+          name: "Articles",
           link: "https://www.google.com",
         },
       ],
     },
     {
-      title: "lorem ipsum dor sit ipem",
-      links: [
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-      ],
-    },
-    {
-      title: "lorem ipsum dor sit ipem",
-      links: [
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-        {
-          name: "lorem ipsum dor sit ipem",
-          link: "https://www.google.com",
-        },
-      ],
-    },
+    //   title: "lorem ipsum dor sit ipem",
+    //   links: [
+    //     {
+    //       name: "lorem ipsum dor sit ipem",
+    //       link: "https://www.google.com",
+    //     },
+    //     {
+    //       name: "lorem ipsum dor sit ipem",
+    //       link: "https://www.google.com",
+    //     },
+    //     {
+    //       name: "lorem ipsum dor sit ipem",
+    //       link: "https://www.google.com",
+    //     },
+    //   ],
+    // },
   ],
-  footerPrivacyLinks: [
-    {
-      name: "lorem ipsum dor sit ipem",
-      link: "https://www.google.com",
-    },
-    {
-      name: "lorem ipsum dor sit ipem",
-      link: "https://www.google.com",
-    },
-    {
-      name: "lorem ipsum dor sit ipem",
-      link: "https://www.google.com",
-    },
-  ],
+  // footerPrivacyLinks: [
+  //   {
+  //     name: "lorem ipsum dor sit ipem",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     name: "lorem ipsum dor sit ipem",
+  //     link: "https://www.google.com",
+  //   },
+  //   {
+  //     name: "lorem ipsum dor sit ipem",
+  //     link: "https://www.google.com",
+  //   },
+  // ],
 
   // Foot
   footText: "E-Cell UVCE, Bengaluru | Most Rights Reserved",
@@ -264,7 +265,7 @@ const data = {
   // Events page
   eventPageTitle: "Events",
   eventPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Upcoming events",
 
   // Articles Page
   articlePageTitle: "Articles",
