@@ -13,8 +13,6 @@ import {
 function AddBlog() {
   return (
     <div className="">
-      <Toaster />
-
       <div className="mt-24">
         <Editor showProfile={1} />
       </div>

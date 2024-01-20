@@ -23,8 +23,14 @@ function FeaturedSection2() {
         </h1>
 
         <div className="flex flex-wrap justify-around w-full gap-4 mt-10 items-center max-w-[800px]">
-          {data.featuredSection2Images.map((image) => (
-            <img src={image} alt="logo" width={100} height={100} />
+          {data.featuredSection2Images.map((image, index) => (
+            <img
+              src={image}
+              alt={image}
+              className={`${
+                index === 1 ? "max-w-[100px]" : "max-w-[200px] w-full"
+              }`}
+            />
           ))}
         </div>
       </div>

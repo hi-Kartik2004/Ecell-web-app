@@ -1,10 +1,10 @@
 const data = {
   // General
   siteName: "E-Cell UVCE, Bengaluru",
-  siteDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  siteDescription: "Empowering Students to Build Tomorrow's Ventures",
   clubName: "E-Cell UVCE",
   presidentName: "Rushil BR",
-  presidentPhone: "1234567890",
+  presidentPhone: "+91 98862 25685",
   presidentEmail: "entrepreneurshipcelluvce@gmail.com",
 
   // Hero section
@@ -12,152 +12,148 @@ const data = {
   heroAlertMessage: "We are currently in beta. Please report any bugs to us.",
   heroTitleLeft: "Welcome to",
   heroTitleYellow: "Entrepreneurship Cell ",
-  heroTitleRight: "World UVCE, Bengaluru",
+  heroTitleRight: "UVCE, Bengaluru",
   heroDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Empowering students with the knowledge and skills to become successful entrepreneurs. Join us on this exciting journey of innovation and creativity.",
   heroYellowBtnMessage: "Join our Community",
   heroYellowBtnLink: "/sign-in",
   heroSecondaryBtnMessage: "Explore Events",
   heroSecondaryBtnLink: "/events",
   heroMarqueeImages: [
-    "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-    "https://assets.entrepreneur.com/content/3x2/2000/20151215195453-business-leader-group-front-leadership-team-professionals-businesspeople.jpeg",
+    "./assets/img1.jpeg",
+    "./assets/img2.jpg",
+    "./assets/img3.jpeg",
+    "./assets/img4.jpeg",
   ],
 
   // Featured section
   featuredSection2Title: "Our Partners",
   featuredSection2Images: [
-    "https://play-lh.googleusercontent.com/EWZYr1Z1amte67yITxQegKQIy4gW8s_FbVLn6dx5Pdp4SytR_iIG5gMgqLl1VjfVgb-O",
-    "https://yt3.googleusercontent.com/okCU0fg72Ne6qXmGa1LdpYrz3gYDGVbYMpwdQLZHnGAtl6yBd3VEio3TfrvsKB4II2eciLuz-l0=s900-c-k-c0x00ffffff-no-rj",
-    "https://images.crunchbase.com/image/upload/c_pad,h_256,w_256,f_auto,q_auto:eco,dpr_1/v1408952675/gcywc5ltpyv7fo8zaltb.png",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
-    "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7ufrNqLeu7nvqSuz5BrsTzMQmoxjd0_1i3YQzwJVjWw&s",
+    "https://qualitastech.com/wp-content/uploads/2022/04/Hi-Res-Logo-Qualitas-Trans.-BG_2x-transper-1024x264-4.webp",
+    "https://res.cloudinary.com/hevo/image/upload/f_auto,q_auto,w_250/v1/hevo-website/customer/logo-white/30ffb6bb7dac4bdfb05dd1796b71a2ea_v3evyj",
+    "./assets/kaaj-ventures-logo.png",
   ],
 
   // about section
-  aboutSectionTitleLeft: "About",
-  aboutSectionTitleYellow: "Entrepreneurship Cell ",
-  aboutSectionTitleRight: "UVCE, Bengaluru",
+  aboutSectionTitleLeft: "Our",
+  aboutSectionTitleYellow: "Initiatives",
+  aboutSectionTitleRight: "🚀",
   aboutSectionCards: [
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "Sometimes you've got to run before you walk.",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "Embark is held each year as the inaugural event of the Cell. Its an ideation and innovation competition open to all students of RVCE. The focus is on brainstorming, idea generation and Business-Plan creation. They are judged by a panel of experts from various fields.",
     },
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "King of flagships in events.",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "Exuberance | Enthusiasm Unlocked, that gives you a great platform to showcase your entrepreneurial spirit and skills with vigor and aspiration to achieve endeavours beyond the horizon! This e-week is to unleash and unlock the enthusiasm and zeal we all have for entrepreneurship and pioneering. Workshops are conducted to ensure that startups acquire the necessary skills to supplement their dreams.",
     },
     {
-      title: "lorem ipsum dor sit ipem",
+      title: "What defines us.",
       description:
-        "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+        "E-Summit is an annual celebration of Entrepreneurship. With a massive footfall of over 8000, it is a summit for budding entrepreneurs, students, professionals, mentors, angel investors and venture capitalists. There is a stunning array of competitions for students to showcase their talents.",
     },
   ],
 
   // Features section
-  featuresTitle: "Why choose us?",
-  featuresDescription: "Welcome to Entrepreneurship Cell UVCE - Your Catalyst for Success!",
+  featuresTitle: "Why our College Loves us?",
+  featuresDescription:
+    "Entrepreneurship Cell UVCE is your Catalyst for Success!",
   featuresCards: [
     {
       title: "Passionate Community",
       description:
         "Join a community of like-minded individuals passionate about entrepreneurship. Our members share a common drive for innovation, creativity, and a commitment to building successful ventures.",
-      image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://www.google.com",
+      image: "./assets/img4.jpeg",
+      link: "https://www.instagram/ecelluvce",
     },
 
     {
       title: "Mentorship Programs",
       description:
         "Benefit from mentorship programs connecting you with experienced entrepreneurs who provide guidance, share their experiences, and help you navigate the challenges of starting and growing a business.",
-      image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://www.google.com",
+      image: "./assets/img1.jpeg",
+      link: "https://www.instagram/ecelluvce",
     },
 
     {
-      title: " Exclusive Access",
+      title: "Exclusive Access",
       description:
-        "lAs a member, enjoy exclusive access to curated events, workshops, and resources designed to enhance your entrepreneurial skills. Stay ahead with insights from industry experts and thought leaders.",
-      image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-      link: "https://www.google.com",
+        "As a member, enjoy exclusive access to curated events, workshops, and resources designed to enhance your entrepreneurial skills. Stay ahead with insights from industry experts and thought leaders.",
+      image: "./assets/img2.jpg",
+      link: "https://www.instagram/ecelluvce",
     },
   ],
 
   // Memories section
   memoriesTitle: "Memories",
-  memoriesDescription:
-    "Relive the Unforgettable Moments of Past Events",
+  memoriesDescription: "Relive the Unforgettable Moments of Past Events",
   memoriesCards: [
     {
       title: "StartUp to Win",
       description:
-        "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups ",
+        "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
       title: "Bull Market 6.0",
       description:
-        "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won cash prizes.",
+        "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won amazing cash prizes. (Most Popular E-cell event of year 2023)",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
     {
       title: "Discourse",
       description:
-        "An event with a resounding success! DISCOURSE was gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format.",
+        "Conducted for it's inaugrual time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
   ],
 
   // Testimonials:
-  // testimonialsTitle: "Testimonials",
-  // testimonialsDescription:
-  //   "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  // testimonials: [
-  //   {
-  //     personName: "lorem ipsum1",
-  //     personSubtitle: "lorem ipsum dor sit ipem",
-  //     personImage:
-  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "lorem ipsum dor sit ipem1",
-  //     description:
-  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  //   },
-  //   {
-  //     personName: "lorem ipsu2",
-  //     personSubtitle: "lorem ipsum dor sit ipem",
-  //     personImage:
-  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "lorem ipsum dor sit ipem2",
-  //     description:
-  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  //   },
-  //   {
-  //     personName: "lorem ipsu3",
-  //     personSubtitle: "lorem ipsum dor sit ipem",
-  //     personImage:
-  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "lorem ipsum dor sit ipem2",
-  //     description:
-  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  //   },
-  //   {
-  //     personName: "lorem ipsu4",
-  //     personSubtitle: "lorem ipsum dor sit ipem",
-  //     personImage:
-  //       "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-  //     title: "lorem ipsum dor sit ipem2",
-  //     description:
-  //       "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  //   },
-  // ],
+  testimonialsTitle: "Testimonials",
+  testimonialsDescription:
+    "Read what our community members have to say about their experiences with Entrepreneurship Cell UVCE.",
+  testimonials: [
+    {
+      personName: "Kartikeya Saini",
+      personSubtitle: "Student, UVCE",
+      personImage: "https://avatars.githubusercontent.com/u/111000515?v=4",
+      title: "A Fantastic Journey",
+      description:
+        "Being a part of Entrepreneurship Cell UVCE has been a fantastic journey. The mentorship programs have been invaluable, and I've learned so much from the passionate community here.",
+    },
+    {
+      personName: "Rushil BR",
+      personSubtitle: "Entrepreneur",
+      personImage:
+        "https://media-maa2-1.cdn.whatsapp.net/v/t61.24694-24/419711062_739182584834179_3266864267092605175_n.jpg?ccb=11-4&oh=01_AdSC3JexMHe_PrzoSLfEfig8gzXoAZlxen7Mxr4I50_29w&oe=65B90C69&_nc_sid=e6ed6c&_nc_cat=109",
+      title: "Inspiring Events",
+      description:
+        "The exclusive access to curated events and workshops has been a game-changer for me. Entrepreneurship Cell UVCE provides a platform for continuous learning and growth.",
+    },
+    {
+      personName: "Shreyas",
+      personSubtitle: "Entrepreneur",
+      personImage:
+        "https://media-maa2-2.cdn.whatsapp.net/v/t61.24694-24/410350975_606893054897276_2780830952425532174_n.jpg?ccb=11-4&oh=01_AdQtW2CodQWv1rnKdm7ArPW2QQo1PsFE737r5csOYmkl7A&oe=65B90B1F&_nc_sid=e6ed6c&_nc_cat=110",
+      title: "Inspiring Events",
+      description:
+        "The exclusive access to curated events and workshops has been a game-changer for me. Entrepreneurship Cell UVCE provides a platform for continuous learning and growth.",
+    },
+    {
+      personName: "Tejas R",
+      personSubtitle: "Alumnus, UVCE",
+      personImage:
+        "https://media-maa2-1.cdn.whatsapp.net/v/t61.24694-24/322282589_172740678848037_7007146453107698501_n.jpg?ccb=11-4&oh=01_AdRU5NshYhxuXy8z2DgulmryxFgR_PC0RKP5FMHBBDpYAw&oe=65B92928&_nc_sid=e6ed6c&_nc_cat=103",
+      title: "Impactful Memories",
+      description:
+        "I cherish the impactful memories created during events like StartUp to Win. Entrepreneurship Cell UVCE plays a crucial role in shaping the entrepreneurial mindset of students.",
+    },
+  ],
 
   // stats
   stats: [
@@ -173,18 +169,13 @@ const data = {
       title: "Events Conducted",
       count: 100,
     },
-    // {
-    //   title: "lorem ipsum dor sit ipem",
-    //   count: 100,
-    // },
   ],
 
   // Footer
-
-  footerMessage: "Join E-Cell UVCE's Vibrant Community to enjoy Membership benefits.",
+  footerMessage:
+    "Join E-Cell UVCE's Vibrant Community to enjoy Membership benefits.",
   footerYellowBtnMessage: "Join our Community",
   footerYellowBtnLink: "/sign-in",
-
   footerLinks: [
     {
       title: "Follow Us:",
@@ -221,66 +212,66 @@ const data = {
       ],
     },
     {
-    //   title: "lorem ipsum dor sit ipem",
-    //   links: [
-    //     {
-    //       name: "lorem ipsum dor sit ipem",
-    //       link: "https://www.google.com",
-    //     },
-    //     {
-    //       name: "lorem ipsum dor sit ipem",
-    //       link: "https://www.google.com",
-    //     },
-    //     {
-    //       name: "lorem ipsum dor sit ipem",
-    //       link: "https://www.google.com",
-    //     },
-    //   ],
-    // },
+      title: "Popular Resources",
+      links: [
+        {
+          name: "Funding and Grants",
+          link: "https://www.purdueglobal.edu/blog/business/entrepreneur-resources/",
+        },
+        {
+          name: "Communication Tools",
+          link: "https://venturz.co/academy/resources-for-entrepreneurs",
+        },
+        {
+          name: "B-Plans",
+          link: "https://www.bplans.com/",
+        },
+      ],
+    },
   ],
-  // footerPrivacyLinks: [
-  //   {
-  //     name: "lorem ipsum dor sit ipem",
-  //     link: "https://www.google.com",
-  //   },
-  //   {
-  //     name: "lorem ipsum dor sit ipem",
-  //     link: "https://www.google.com",
-  //   },
-  //   {
-  //     name: "lorem ipsum dor sit ipem",
-  //     link: "https://www.google.com",
-  //   },
-  // ],
+  footerPrivacyLinks: [
+    {
+      name: "Privacy Policy",
+      link: "https://www.google.com",
+    },
+    {
+      name: "Terms of Service",
+      link: "https://www.google.com",
+    },
+    {
+      name: "Contact Us",
+      link: "https://www.google.com",
+    },
+  ],
 
   // Foot
-  footText: "E-Cell UVCE, Bengaluru | Most Rights Reserved",
+  footText: "E-Cell UVCE, Bengaluru | All Rights Reserved",
 
   // Mobile menu description
-  mobileMenuDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  mobileMenuDescription: "Empowering Students to Build Tomorrow's Ventures",
 
   // Registration form description
-  registerDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  registerDescription:
+    "Join our community and kickstart your entrepreneurial journey with E-Cell UVCE.",
 
   // Events page
   eventPageTitle: "Events",
-  eventPageDescription:
-    "Upcoming events",
+  eventPageDescription: "Explore and participate in our upcoming events.",
 
   // Articles Page
   articlePageTitle: "Articles",
   articlePageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Read insightful articles on entrepreneurship, innovation, and success stories.",
 
   // About page
-  aboutPageTitle: "About",
+  aboutPageTitle: "About Us",
   aboutPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Learn about Entrepreneurship Cell UVCE and our mission to foster an entrepreneurial culture.",
 
   aboutSectionVision: {
     title: "Vision",
     description:
-      "To be a well recognized center of excellence for entrepreneurial development to form successful entrepreneurs.",
+      "To be a well-recognized center of excellence for entrepreneurial development, forming successful entrepreneurs.",
   },
   aboutSectionMission: {
     title: "Mission",
@@ -309,26 +300,27 @@ const data = {
   // Gallery page
   galleryPageTitle: "Gallery",
   galleryPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Explore the vibrant moments captured during our events and activities.",
 
   // Add event page
   addEventPageTitle: "Add Event",
   addEventPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Share your upcoming event with the E-Cell UVCE community. Let's create memorable experiences together.",
 
   // registrations page
   registrationsPageTitle: "Registrations",
   registrationsPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Register for our upcoming events and be a part of the entrepreneurial journey with E-Cell UVCE.",
 
   // Add blog page
   addBlogPageTitle: "Add Blog",
-  addBlogPageDescription: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+  addBlogPageDescription:
+    "Share your insights, experiences, and success stories with our community.",
 
   // manage blogs page
   manageBlogsPageTitle: "Manage Blogs",
   manageBlogsPageDescription:
-    "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
+    "Manage and edit your published blogs. Keep sharing your knowledge and inspiring others.",
 
   // Navbar - only techies touch this
   navbarLinks: [

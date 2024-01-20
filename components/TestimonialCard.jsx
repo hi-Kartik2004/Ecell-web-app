@@ -29,7 +29,7 @@ function TestimonialCard({ testimonial }) {
           <CardFooter className="gap-2">
             <Avatar className="w-10 h-10">
               <AvatarImage
-                src={`${testimonial?.image || "/ecell-no-bg.png"}`}
+                src={`${testimonial?.personImage || "/ecell-no-bg.png"}`}
                 alt={`${testimonial?.personName || "Lorem, ipsum."}`}
                 className="rounded-full object-cover"
               />

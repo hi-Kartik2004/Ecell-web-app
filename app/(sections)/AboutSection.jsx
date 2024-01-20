@@ -35,7 +35,7 @@ function AboutSection() {
                 data={card}
               />
             ) : (
-              <GlassCard className="-bottom-6 right-2 lg:top-4" />
+              <GlassCard className="-bottom-6 right-2 lg:top-4" data={card} />
             )
           )}
         </div>
