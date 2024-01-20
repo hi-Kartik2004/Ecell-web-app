@@ -16,7 +16,7 @@ const data = {
   heroDescription:
     "lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
   heroYellowBtnMessage: "Join our Community",
-  heroYellowBtnLink: "/join",
+  heroYellowBtnLink: "/sign-in",
   heroSecondaryBtnMessage: "Explore Events",
   heroSecondaryBtnLink: "/events",
   heroMarqueeImages: [
@@ -180,9 +180,10 @@ const data = {
   ],
 
   // Footer
-  //footerMessage: "lorem ipsum dor sit ipem lorem ipsum dor sit ipem",
-  footerYellowBtnMessage: "Join our Community2",
-  footerYellowBtnLink: "/join",
+
+  footerMessage: "Join E-Cell UVCE's Vibrant Community to enjoy Membership benefits.",
+  footerYellowBtnMessage: "Join our Community",
+  footerYellowBtnLink: "/sign-in",
 
   footerLinks: [
     {
