@@ -203,7 +203,7 @@ function EventsPage() {
             </div>
 
             {/* Add input field for event name filter */}
-            <div className="max-w-[400px]">
+            <div className="max-w-[400px] mt-2">
               <Input
                 type="text"
                 placeholder="Filter by Event Name"

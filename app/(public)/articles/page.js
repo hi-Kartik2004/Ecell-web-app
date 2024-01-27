@@ -105,27 +105,20 @@ function Page() {
   return (
     <section className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
       <div className="container w-full pt-12 pb-24 flex flex-col items-center min-h-[100vh]">
-        <div className="max-w-[800px] mt-12">
-          <h1 className="lg:text-4xl text-3xl font-bold text-center">
-            {data?.articlePageTitle}
-            {" " + "(" + (loading ? "_" : articles.length) + ")"}
-          </h1>
+        <div className="w-full flex justify-center flex-col items-center mt-12">
+          <div className="max-w-[800px]">
+            <h1 className="lg:text-4xl text-3xl font-bold text-center">
+              {data?.articlePageTitle}
+              {" " + "(" + (loading ? "_" : articles.length) + ")"}
+            </h1>
 
-          <p className="text-muted-foreground mt-2 lg:mt-4 text-center">
-            {data?.articlePageDescription}
-          </p>
+            <p className="text-muted-foreground mt-2 lg:mt-4 text-center">
+              {data?.articlePageDescription}
+            </p>
+          </div>
 
           {/* Filters */}
-          <div className="flex justify-around mt-4 gap-2 flex-wrap items-center w-full flex-col-reverse md:flex-row">
-            {/* Filter by Name */}
-            <Input
-              type="text"
-              placeholder="Filter by Article title"
-              value={nameFilter}
-              onChange={(e) => setNameFilter(e.target.value)}
-              className="max-w-[300px] "
-            />
-
+          <div className="flex justify-between sm:mt-6 mt-4 gap-2 px-4 flex-wrap items-center w-full flex-col-reverse md:flex-row">
             {/* Filter by Views */}
             <Input
               type="number"
@@ -134,6 +127,15 @@ function Page() {
               value={viewsFilter}
               onChange={(e) => setViewsFilter(parseInt(e.target.value, 10))}
               className="max-w-[300px] md:max-w-[170px]"
+            />
+
+            {/* Filter by Name */}
+            <Input
+              type="text"
+              placeholder="Filter by Article title"
+              value={nameFilter}
+              onChange={(e) => setNameFilter(e.target.value)}
+              className="max-w-[300px] "
             />
 
             {/* Filter Select */}
