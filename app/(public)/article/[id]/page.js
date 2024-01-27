@@ -133,7 +133,7 @@ function page({ params }) {
               <div className="mt-4">
                 <div className="object-cover w-full lg:h-[200px] h-[150px] overflow-hidden">
                   <img
-                    src={`https://source.unsplash.com/random/900x700/?${encodeURIComponent(
+                    src={`https://source.unsplash.com/random/900x700/?Futuristic-background-related-to${encodeURIComponent(
                       blogData.title
                     )}/1920X1080`}
                     className="w-full h-full object-cover rounded-lg bg-muted"
