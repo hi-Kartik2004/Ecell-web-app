@@ -46,7 +46,7 @@ function NewHeroSection() {
 
         <h1 className="text-3xl lg:leading-tight	 md:text-4xl lg:text-5xl max-w-[1000px] font-bold text-center mt-6">
           {data?.heroTitleLeft + " "}
-          <span className="text-primary">
+          <span className="bg-gradient-to-b from-primary to-[#ff9300] bg-clip-text text-transparent">
             {data?.heroTitleYellow + " "}
           </span>{" "}
           {data?.heroTitleRight}

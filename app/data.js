@@ -10,9 +10,9 @@ const data = {
   // Hero section
   heroBadgeMessage: "New",
   heroAlertMessage: "We are currently in beta. Please report any bugs to us.",
-  heroTitleLeft: "Welcome to",
-  heroTitleYellow: "Entrepreneurship Cell ",
-  heroTitleRight: "UVCE, Bengaluru",
+  heroTitleLeft: "The E-cell Community which makes you",
+  heroTitleYellow: " Laugh. Learn. and Launch 🚀 ",
+  heroTitleRight: "  ",
   heroDescription:
     "Empowering students with the knowledge and skills to become successful entrepreneurs. Join us on this exciting journey of innovation and creativity.",
   heroYellowBtnMessage: "Join our Community",
