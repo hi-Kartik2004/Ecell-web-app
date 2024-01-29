@@ -138,16 +138,19 @@ export default function EventForm({ data }) {
           leaderYear: memberData.leaderYear,
           leaderPhone: memberData.leaderPhone || "",
         });
+
+        return true;
       }
     }
 
-    return !memberQuerySnapshot.empty;
+    return false;
   }
 
   async function checkUserRegistration() {
     const eventId = data.id;
     const userEmail = user?.emailAddresses?.[0]?.emailAddress || "";
     const isRegistered = await isUserRegistered(eventId, userEmail);
+    console.log(isRegistered);
     if (isRegistered) {
       setSubmitted(true);
       setLoading(false);
@@ -265,7 +268,7 @@ export default function EventForm({ data }) {
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-center">
-            Thanks for filling the form.
+            You can fill this form only once.
             {`Your team Leader is ${Leader.leaderName}, his Email is ${Leader.leaderEmail}, his Branch is ${Leader.leaderBranch}, his Year is ${Leader.leaderYear} and his Phone Number is +${Leader.leaderPhone}`}
           </p>
         </div>
