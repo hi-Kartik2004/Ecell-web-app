@@ -268,7 +268,7 @@ export default function EventForm({ data }) {
         <BsCheck2Circle size={50} />
         <div className="p-2 rounded-md border">
           <p className="text-center">
-            You can fill this form only once.
+            You have already registered for this event.
             {`Your team Leader is ${Leader.leaderName}, his Email is ${Leader.leaderEmail}, his Branch is ${Leader.leaderBranch}, his Year is ${Leader.leaderYear} and his Phone Number is +${Leader.leaderPhone}`}
           </p>
         </div>
