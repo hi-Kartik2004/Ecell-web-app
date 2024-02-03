@@ -11,7 +11,7 @@ import React, { Suspense } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { formatDistanceToNow } from "date-fns";
 
-function ArticleCard({ data }) {
+function ArticleCard({ data, redirect }) {
   const timeAgo = formatDistanceToNow(new Date(data.timestamp), {
     addSuffix: true,
   });
@@ -52,7 +52,9 @@ function ArticleCard({ data }) {
 
               <div>
                 <Button variant="outline">
-                  <Link href={`/article/${data.id}`}>Read more &rarr;</Link>
+                  <Link href={`/${redirect ? redirect : "article"}/${data.id}`}>
+                    Read more &rarr;
+                  </Link>
                 </Button>
               </div>
             </CardFooter>

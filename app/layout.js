@@ -7,6 +7,7 @@ import FooterSection from "./(sections)/FooterSection";
 import "./globals.css";
 import { isMatch } from "date-fns";
 import SecretMenu from "@/components/SecretMenu";
+import { defaultInternalThemeFoundations } from "@clerk/themes/dist/clerk-js/src/ui/foundations";
 var axios = require("axios");
 
 const inter = Inter({ subsets: ["latin"] });
@@ -92,7 +93,8 @@ export default async function RootLayout({ children }) {
               <SecretMenu admin={false} />
             ) : null}
             {children}
-            <FooterSection />
+
+            <FooterSection isMember={details.isMember} />
           </ThemeProvider>
         </body>
       </html>

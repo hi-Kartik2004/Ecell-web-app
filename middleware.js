@@ -5,18 +5,17 @@ export default authMiddleware({
     "/",
     "/events",
     "/register/(.*)",
-    "/articles",
-    "/article/(.*)",
     "/about",
     "/gallery",
     "/contact",
+    "/event-summaries",
+    "/event-summary/(.*)",
   ],
 });
 
 export const config = {
   matcher: ["/((?!.+\\.[\\w]+$|_next).*)", "/", "/(api|trpc)(.*)"],
 };
-
 
 // // check for membership
 // const user = currentUser();

@@ -87,6 +87,7 @@ function page({ params }) {
           await updateDoc(blogDocRef, { views: updatedViews });
         } else {
           console.log("No such document!");
+          router.push("/articles");
         }
       } catch (error) {
         console.error("Error fetching blog data:", error);
@@ -131,7 +132,7 @@ function page({ params }) {
             </div>
             {blogData && (
               <div className="mt-4">
-                <div className="object-cover w-full lg:h-[200px] h-[150px] overflow-hidden">
+                <div className="object-cover w-full lg:h-[170px] h-[150px] overflow-hidden">
                   <img
                     src={`https://source.unsplash.com/random/900x700/?Futuristic-background-related-to${encodeURIComponent(
                       blogData.title

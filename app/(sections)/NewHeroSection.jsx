@@ -9,7 +9,7 @@ import Link from "next/link";
 import { motion } from "framer-motion";
 import Loader from "@/components/Loader";
 
-function NewHeroSection() {
+function NewHeroSection({ isMember }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -57,15 +57,37 @@ function NewHeroSection() {
         </p>
 
         <div className="flex gap-4 flex-col lg:flex-row">
-          <Button className="flex gap-2 items-center font-semibold" size="lg">
-            <Link
-              href={`${data.heroYellowBtnLink}`}
-              className="flex gap-2 items-center"
-            >
-              <Image src="/ecell-no-bg.png" alt="logo" width={25} height={25} />{" "}
-              {data?.heroYellowBtnMessage} &rarr;
-            </Link>
-          </Button>
+          {isMember ? (
+            <Button className="flex gap-2 items-center font-semibold" size="lg">
+              <Link
+                href={`${data.heroYellowBtnLinkForMembers}`}
+                className="flex gap-2 items-center"
+              >
+                <Image
+                  src="/ecell-no-bg.png"
+                  alt="logo"
+                  width={25}
+                  height={25}
+                />{" "}
+                {data?.heroYellowBtnMessageForMembers} &rarr;
+              </Link>
+            </Button>
+          ) : (
+            <Button className="flex gap-2 items-center font-semibold" size="lg">
+              <Link
+                href={`${data.heroYellowBtnLink}`}
+                className="flex gap-2 items-center"
+              >
+                <Image
+                  src="/ecell-no-bg.png"
+                  alt="logo"
+                  width={25}
+                  height={25}
+                />{" "}
+                {data?.heroYellowBtnMessage} &rarr;
+              </Link>
+            </Button>
+          )}
 
           <Button
             className="flex gap-2 items-center border-primary/20 border"

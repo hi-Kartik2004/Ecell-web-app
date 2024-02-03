@@ -17,6 +17,8 @@ const data = {
     "Empowering students with the knowledge and skills to become successful entrepreneurs. Join us on this exciting journey of innovation and creativity.",
   heroYellowBtnMessage: "Join our Community",
   heroYellowBtnLink: "/sign-in",
+  heroYellowBtnMessageForMembers: "Read Exclusive Articles",
+  heroYellowBtnLinkForMembers: "/articles",
   heroSecondaryBtnMessage: "Explore Events",
   heroSecondaryBtnLink: "/events",
   heroMarqueeImages: [
@@ -158,16 +160,21 @@ const data = {
   // stats
   stats: [
     {
-      title: "Students driven",
-      count: 1000,
-    },
-    {
-      title: "Prizes won",
-      count: 10000,
-    },
-    {
       title: "Events Conducted",
-      count: 100,
+      count: 200,
+    },
+    {
+      title: "Students driven",
+      count: 1500,
+    },
+    {
+      title: "Prizes served",
+      count: "10000",
+    },
+
+    {
+      title: "Workshops Conducted",
+      count: 50,
     },
   ],
 
@@ -322,6 +329,11 @@ const data = {
   manageBlogsPageDescription:
     "Manage and edit your published blogs. Keep sharing your knowledge and inspiring others.",
 
+  // Event Summary page
+  eventSummaryPageTitle: "Event Summary",
+  eventSummaryPageDescription:
+    "Relive the unforgettable moments of our past events.",
+
   // Navbar - only techies touch this
   navbarLinks: [
     {
@@ -333,10 +345,9 @@ const data = {
       link: "/events",
     },
     {
-      name: "Articles",
-      link: "/articles",
+      name: "Event Summaries",
+      link: "/event-summaries",
     },
-
     {
       name: "About",
       link: "/about",

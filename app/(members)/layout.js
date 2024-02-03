@@ -11,7 +11,8 @@ async function layout({ children }) {
   let isMember = false;
 
   async function checkMembership() {
-    const email = user.emailAddresses[0].emailAddress;
+    const email = user?.emailAddresses[0]?.emailAddress || null;
+    if (!email) return false;
     // const resp = await fetch("/api/checkAdmin", {});
     // const data = await resp.json();
     // const link = "http://localhost:5001/subscribers/" + email;

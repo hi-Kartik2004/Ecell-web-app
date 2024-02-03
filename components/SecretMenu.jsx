@@ -9,12 +9,14 @@ import { motion } from "framer-motion";
 import { ModeToggle } from "@/components/ThemeToggleBtn";
 
 const menuLinks = [
+  { name: "Exclusive Articles", link: "/articles" },
   { name: "Add Blog", link: "/add-blog" },
   { name: "Manage Blogs", link: "/manage-blogs" },
 ];
 
 const adminMenuLinks = [
   { name: "Add Event", link: "/add-event" },
+  { name: "Add Event Summary", link: "/add-event-summary" },
   { name: "Registrations", link: "/registrations" },
 ];
 

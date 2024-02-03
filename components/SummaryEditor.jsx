@@ -25,7 +25,7 @@ import { Skeleton } from "./ui/skeleton";
 
 export const dynamic = "force-dynamic";
 
-export default function Editor({
+export default function SummaryEditor({
   showProfile,
   gradient,
   sectionTitle,
@@ -46,19 +46,19 @@ export default function Editor({
 
   async function addBlogToFirestore() {
     try {
-      const collectionRef = collection(db, "blogs");
+      const collectionRef = collection(db, "event-summaries");
       const docSnap = await addDoc(collectionRef, {
         title: title || "No title provided",
         description: description || "No description provided",
         user: user.emailAddresses[0].emailAddress,
-        blog: sessionStorage.getItem("addBlog"),
+        blog: sessionStorage.getItem("event-summary"),
         timestamp: Date.now(),
         views: 0,
       });
       console.log("Blog added with ID: ", docSnap.id);
       toast({
-        title: "Blog Added Successfully",
-        description: `Your blog might take upto few minutes to go live, its id is ${docSnap.id}`,
+        title: "Event Summary Added Successfully",
+        description: `Your event summary might take upto few minutes to go live, its id is ${docSnap.id}`,
       });
     } catch (e) {
       console.log(e);
@@ -70,11 +70,11 @@ export default function Editor({
   }
 
   async function setBlogInFirestore() {
-    const blogRef = doc(db, "blogs", blogId);
+    const blogRef = doc(db, "event-summaries", blogId);
     await updateDoc(blogRef, {
       title: title || "No title provided",
       description: description || "No description provided",
-      blog: sessionStorage.getItem("editBlog"),
+      blog: sessionStorage.getItem("event-summary"),
       timestamp: Date.now(),
     });
     toast({
@@ -84,29 +84,28 @@ export default function Editor({
   }
 
   useEffect(() => {
-    !sessionStorage.getItem("addBlog") && sessionStorage.setItem("addBlog", "");
-    blogCode && sessionStorage.setItem("editBlog", blogCode);
+    !sessionStorage.getItem("event-summary") &&
+      sessionStorage.setItem("event-summary", "");
+    blogCode && sessionStorage.setItem("event-summary", blogCode);
   }, []);
 
-  blogCode && sessionStorage.setItem("editBlog", blogCode);
+  blogCode && sessionStorage.setItem("event-summary", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
-    storedValue = sessionStorage.getItem("addBlog")
-      ? sessionStorage.getItem("addBlog")
+    storedValue = sessionStorage.getItem("event-summary")
+      ? sessionStorage.getItem("event-summary")
       : "";
   }
 
   const [value, setValue] = React.useState(
     gradient === "Edit"
-      ? sessionStorage.getItem("editBlog")
+      ? sessionStorage.getItem("event-summary")
       : storedValue || "<!-- Write your blog below -->"
   );
 
   useEffect(() => {
-    gradient === "Edit"
-      ? sessionStorage.setItem("editBlog", value)
-      : sessionStorage.setItem("addBlog", value);
+    sessionStorage.setItem("event-summary", value);
   }, [value]);
 
   useEffect(() => {
@@ -139,14 +138,14 @@ export default function Editor({
         </h1>
         <div className="flex gap-4 flex-wrap">
           <Button variant="outline">
-            <Link href="/manage-blogs">Manage Articles</Link>
+            <Link href="/manage-event-summaries">Manage Event Summaries</Link>
           </Button>
           {value.length > 75 ? (
             <AlertDialog>
               <AlertDialogTrigger asChild>
                 <div className="flex gap-4 items-center">
                   <Button>
-                    {buttonText || `Publish Blog as ${user.firstName}`}{" "}
+                    {buttonText || `Publish Event Summary as ${user.firstName}`}{" "}
                   </Button>
                 </div>
               </AlertDialogTrigger>

@@ -13,13 +13,67 @@ import PopularEvents from "./(sections)/PopularEvents";
 import FooterSection from "@/app/(sections)/FooterSection";
 import RecentBlogs from "./(sections)/RecentBlogs";
 import StatsSection from "./(sections)/StatsSection";
+import { currentUser } from "@clerk/nextjs";
+var axios = require("axios");
 
-export default function Home() {
+export default async function Home() {
+  const user = await currentUser();
+  async function checkAdmin() {
+    if (!user) {
+      return { isMember: false, isAdmin: false };
+    }
+
+    const email = user.emailAddresses[0].emailAddress;
+
+    var data = JSON.stringify({
+      collection: "subscribers",
+      database: "subscribers",
+      dataSource: "Cluster0",
+      filter: {
+        email: email,
+      },
+    });
+
+    var config = {
+      method: "post",
+      url: "https://ap-south-1.aws.data.mongodb-api.com/app/data-wtzjz/endpoint/data/v1/action/findOne",
+      headers: {
+        "Content-Type": "application/json",
+        "Access-Control-Request-Headers": "*",
+        "api-key":
+          "8xyZSAUDmD1HMh3E3gjGhijlKitYPmnw8i4yTtY8QmMXelkyRCsQrrkp8FwkuBNM",
+      },
+      data: data,
+    };
+
+    return axios(config)
+      .then(function (response) {
+        const checkData = response.data;
+        // console.log("checkdata " + checkData);
+        if (checkData.document == null) {
+          // console.log("working");
+          return { isMember: false, isAdmin: false };
+        } else {
+          // console.log("working");
+          // console.log(checkData.document.admin);
+          return { isMember: true, isAdmin: checkData.document.admin };
+        }
+        // console.log(JSON.stringify(response.data));
+      })
+      .catch(function (error) {
+        console.error(error);
+      });
+
+    // console.log(check);
+  }
+
+  const details = await checkAdmin();
+
   return (
     <main className="flex justify-center flex-col w-full">
       <div className="w-full">
         <div className="w-full">
-          <NewHeroSection />
+          <NewHeroSection isMember={details.isMember} />
         </div>
         <FeaturedSection2 />
         <Separator />
