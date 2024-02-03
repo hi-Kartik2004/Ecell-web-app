@@ -71,9 +71,9 @@ function BlogCard({
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 10 },
         }}
-        className="w-full max-w-[320px] flex-grow"
+        className="w-full max-w-[350px] flex-grow"
       >
-        <Card className="duration-500 max-w-[320px] w-full flex-grow flex-col flex justify-between overflow-hidden h-full">
+        <Card className="duration-500 max-w-[350px] w-full flex-grow flex-col flex justify-between overflow-hidden h-full">
           <CardHeader className="h-full w-full">
             <div className="mb-2 flex justify-between">
               <Badge className="">

@@ -25,7 +25,7 @@ import { FaLocationDot } from "react-icons/fa6";
 
 function EventCard({ data }) {
   return (
-    <Card className="max-w-[350px] w-full">
+    <Card className="max-w-[400px] w-full">
       <CardHeader>
         <div className="mb-2 flex justify-between">
           <Badge variant={"secondary"}>
