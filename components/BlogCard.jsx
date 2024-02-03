@@ -35,17 +35,27 @@ function BlogCard({
   link,
   editIcon,
   deleteIcon,
+  type,
 }) {
   const { toast } = useToast();
 
   async function deleteBlog() {
-    console.log("Blog deleted");
-    const blogRef = doc(db, "blogs", id);
-    const res = await deleteDoc(blogRef);
+    let res;
+    if (type === "event-summary-card") {
+      const eventSummaryRef = doc(db, "event-summaries", id);
+      res = await deleteDoc(eventSummaryRef);
+      console.log("Summary deleted");
+    } else {
+      const blogRef = doc(db, "blogs", id);
+      res = await deleteDoc(blogRef);
+      console.log("Blog deleted");
+    }
 
     toast({
-      title: `Blog Deleted Successfully`,
-      description: `Blog with title ${title} was deleted successfully, refresh to see changes`,
+      title: `${type || "Blog"} Deleted Successfully`,
+      description: `${
+        type || "Blog"
+      } with title ${title} was deleted successfully, refresh to see changes`,
     });
   }
 
@@ -61,9 +71,9 @@ function BlogCard({
           visible: { opacity: 1, y: 0 },
           hidden: { opacity: 0, y: 10 },
         }}
-        className="h-full w-full max-w-[350px]"
+        className="w-full max-w-[320px] flex-grow"
       >
-        <Card className="duration-500 max-w-[350px] flex-col flex justify-between overflow-hidden h-full">
+        <Card className="duration-500 max-w-[320px] w-full flex-grow flex-col flex justify-between overflow-hidden h-full">
           <CardHeader className="h-full w-full">
             <div className="mb-2 flex justify-between">
               <Badge className="">
@@ -72,7 +82,11 @@ function BlogCard({
 
               <Link href={link}>{editIcon && <BiEdit size={25} />}</Link>
 
-              <Link href={`/article/${id}`}>
+              <Link
+                href={`/${
+                  type === "event-summary-card" ? "event-summary" : "article"
+                }/${id}`}
+              >
                 <GoLinkExternal size={25} />
               </Link>
 

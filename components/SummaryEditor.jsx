@@ -86,10 +86,10 @@ export default function SummaryEditor({
   useEffect(() => {
     !sessionStorage.getItem("event-summary") &&
       sessionStorage.setItem("event-summary", "");
-    blogCode && sessionStorage.setItem("event-summary", blogCode);
+    blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
   }, []);
 
-  blogCode && sessionStorage.setItem("event-summary", blogCode);
+  blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
@@ -100,12 +100,14 @@ export default function SummaryEditor({
 
   const [value, setValue] = React.useState(
     gradient === "Edit"
-      ? sessionStorage.getItem("event-summary")
+      ? sessionStorage.getItem("edit-event-summary")
       : storedValue || "<!-- Write your blog below -->"
   );
 
   useEffect(() => {
-    sessionStorage.setItem("event-summary", value);
+    gradient === "Edit"
+      ? sessionStorage.setItem("edit-event-summary", value)
+      : sessionStorage.setItem("event-summary", value);
   }, [value]);
 
   useEffect(() => {

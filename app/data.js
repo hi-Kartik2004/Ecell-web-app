@@ -330,10 +330,11 @@ const data = {
     "Manage and edit your published blogs. Keep sharing your knowledge and inspiring others.",
 
   // Event Summary page
-  eventSummaryPageTitle: "Event Summary",
+  eventSummaryPageTitle: "Event Summaries",
   eventSummaryPageDescription:
     "Relive the unforgettable moments of our past events.",
-
+  manageEventSummariesDescription:
+    "Manage and edit your published event summaries. Keep sharing about our events and inspire others.",
   // Navbar - only techies touch this
   navbarLinks: [
     {
