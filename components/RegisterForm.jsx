@@ -78,7 +78,9 @@ export default function EventForm({ data }) {
         </div>
         <div>
           <Button variant="secondary">
-            <Link href="/sign-in">Sign in</Link>
+            <Link href={`/handle-redirect?redirect=register/${data.id}`}>
+              Sign in
+            </Link>
           </Button>
         </div>
       </div>
