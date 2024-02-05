@@ -95,11 +95,11 @@ async function page({ params }) {
             <div className="mt-2 flex gap-2 items-center">
               <p>{globalData.presidentName}</p> -
               <Link
-                href={`tele:${globalData?.presidentPhone}`}
+                href={`tel:${globalData?.presidentPhone}`}
                 className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-4"
               >
                 <FaPhoneAlt />
-                <span>+91 {globalData.presidentPhone}</span>
+                <span>{globalData.presidentPhone}</span>
               </Link>
             </div>
             <div className="mt-2 flex gap-2 items-center">
