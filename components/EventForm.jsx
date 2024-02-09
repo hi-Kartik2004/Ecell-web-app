@@ -20,8 +20,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/firebase/config";
 import { collection, addDoc } from "firebase/firestore";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useState, useEffect } from "react";
 import { storage } from "@/firebase/config";
+import { useState, useEffect } from "react";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./Loader";
 

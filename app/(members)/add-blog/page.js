@@ -14,7 +14,7 @@ function AddBlog() {
   return (
     <div className="">
       <div className="mt-24">
-        <Editor showProfile={1} />
+        <Editor showProfile={1} showRecording={true} />
       </div>
 
       <SignedOut>

@@ -37,11 +37,6 @@ function page({ params }) {
 
       if (querySnapshot.empty) {
         console.log("No matching documents.");
-        toast({
-          title: "User not found!",
-          description:
-            "Incorrect Username or the user has not created a portfolio yet!",
-        });
         return;
       }
 
@@ -148,6 +143,15 @@ function page({ params }) {
                     {blogData.description} - written by {blogData.user}
                   </p>
                 </div>
+
+                {
+                  <div className="flex justify-center mt-4">
+                    <audio
+                      controls
+                      src={blogData?.recordingUrl?.recordingUrl || ""}
+                    ></audio>
+                  </div>
+                }
 
                 <div className="mt-6">
                   <Blog code={blogData.blog} />

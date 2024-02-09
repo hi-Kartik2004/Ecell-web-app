@@ -18,7 +18,7 @@ async function ManageBlogs() {
     const blogsRef = collection(db, "blogs");
     const q = query(
       blogsRef,
-      where("user", "==", user.emailAddresses[0].emailAddress),
+      where("email", "==", user.emailAddresses[0].emailAddress),
       orderBy("timestamp", "desc")
     );
     const blogsCollection = await getDocs(q);
