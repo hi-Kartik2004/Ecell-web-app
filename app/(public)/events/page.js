@@ -216,7 +216,9 @@ function EventsPage() {
 
           <div className="flex flex-wrap gap-8 justify-around mt-10">
             {loading ? (
-              <Loader />
+              <div className="mt-8">
+                <Loader />
+              </div>
             ) : (
               slicedEvents.length === 0 && (
                 <p className="mt-4">

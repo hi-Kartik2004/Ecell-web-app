@@ -169,7 +169,13 @@ function Page() {
 
         {/* Render Loading or Articles */}
         <div className="mt-2 md:mt-4 flex flex-wrap w-full justify-around gap-4 md:gap-6">
-          {loading ? <Loader /> : ""}
+          {loading ? (
+            <div className="mt-8">
+              <Loader />
+            </div>
+          ) : (
+            ""
+          )}
           {articles.slice(0, visibleArticles).map((article) => (
             <ArticleCard
               key={article.id}

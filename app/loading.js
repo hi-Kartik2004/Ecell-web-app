@@ -4,7 +4,7 @@ import React from "react";
 
 function loading() {
   return (
-    <div className="container min-h-[60vh] flex items-center justify-center">
+    <div className="container min-h-[95vh] flex items-center justify-center">
       <Loader />
     </div>
   );

@@ -74,7 +74,7 @@ export default function SummaryEditor({
     await updateDoc(blogRef, {
       title: title || "No title provided",
       description: description || "No description provided",
-      blog: sessionStorage.getItem("event-summary"),
+      blog: sessionStorage.getItem("edit-event-summary"),
       timestamp: Date.now(),
     });
     toast({
@@ -89,7 +89,7 @@ export default function SummaryEditor({
     blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
   }, []);
 
-  blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
+  // blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
@@ -111,6 +111,7 @@ export default function SummaryEditor({
   }, [value]);
 
   useEffect(() => {
+    blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
     setLoading(false);
   }, []);
 
