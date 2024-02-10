@@ -95,9 +95,8 @@ function page({ params }) {
   if (loading) {
     return (
       <div className="container mt-10 flex flex-col items-center justify-center">
-        <Skeleton className="w-[800px] h-[100px] my-4" />
-        <Skeleton className="w-[800px] h-[100px] mb-4" />
-        <Skeleton className="w-[800px] h-[60vh]" />
+        <Skeleton className="w-[800px] h-[100px] mt-8 mb-4" />
+        <Skeleton className="w-[800px] h-[60vh] mb-4" />
       </div>
     );
   }
@@ -137,13 +136,6 @@ function page({ params }) {
                   />
                 </div>
 
-                <div className="mt-6">
-                  <h1 className="text-4xl font-bold">{blogData.title}</h1>
-                  <p className="text-muted-foreground mt-4">
-                    {blogData.description} - written by {blogData.user}
-                  </p>
-                </div>
-
                 {
                   <div className="flex justify-center mt-4">
                     <audio
@@ -152,6 +144,13 @@ function page({ params }) {
                     ></audio>
                   </div>
                 }
+
+                <div className="mt-6">
+                  <h1 className="text-4xl font-bold">{blogData.title}</h1>
+                  <p className="text-muted-foreground mt-4">
+                    {blogData.description} - written by {blogData.user}
+                  </p>
+                </div>
 
                 <div className="mt-6">
                   <Blog code={blogData.blog} />
