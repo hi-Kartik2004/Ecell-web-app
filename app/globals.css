@@ -185,3 +185,5 @@ nextjs-portal {
 .markdown .img-full {
   @apply w-full;
 }
+
+/* Webkit scrollbar */
