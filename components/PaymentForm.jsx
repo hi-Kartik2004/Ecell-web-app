@@ -164,7 +164,7 @@ function PaymentForm({ data }) {
               alt="qr-code"
             />
           </div>
-          <h3 className=" mt-4 text-xl font-semibold">
+          <h3 className=" mt-4 text-xl font-semibold text-center">
             {data.entryFees * (formValues.teamMembers.length + 1) === 0
               ? "Proceed by clicking the button below!"
               : `Make a payment of Rs ${
