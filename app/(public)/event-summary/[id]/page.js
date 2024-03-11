@@ -37,11 +37,7 @@ function page({ params }) {
 
       if (querySnapshot.empty) {
         console.log("No matching documents.");
-        toast({
-          title: "User not found!",
-          description:
-            "Incorrect Username or the user has not created a portfolio yet!",
-        });
+        
         return;
       }
 

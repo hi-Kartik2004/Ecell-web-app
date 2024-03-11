@@ -23,6 +23,11 @@ import { useUser } from "@clerk/nextjs";
 import Loader from "./Loader";
 import TeamMembersField from "./TeamMembersField";
 import Link from "next/link";
+import PaymentForm from "./PaymentForm";
+import { useRouter, useSearchParams } from "next/navigation";
+import { toast, useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster";
+import { BiEdit, BiPencil } from "react-icons/bi";
 
 // Form schema for validation
 const formSchema = z.object({
@@ -92,6 +97,9 @@ export default function EventForm({ data }) {
   const [teamSize, setTeamSize] = useState(1);
   const [loading, setLoading] = useState(true);
   const [Leader, setLeader] = useState({});
+  const [showPayment, setShowPayment] = useState(false);
+  const searchParams = useSearchParams();
+  const router = useRouter();
 
   async function isUserRegistered(eventId, userEmail) {
     const registrationsRef = collection(db, "registrations");
@@ -114,6 +122,7 @@ export default function EventForm({ data }) {
         leaderBranch: leaderData.leaderBranch,
         leaderYear: leaderData.leaderYear,
         leaderPhone: leaderData.leaderPhone || "",
+        paymentId: leaderData.paymentId,
       });
       return true;
     }
@@ -205,35 +214,17 @@ export default function EventForm({ data }) {
     }
   }
 
+  async function validatePaymentId(paymentId) {
+    // validate paymentId
+    if (!paymentId) return false;
+    return true;
+  }
+
   // Function to handle form submission
   async function onSubmit(values) {
-    setSubmitting(true);
-
-    try {
-      const isDocAdded = await addMessageToFirestore({ formData: values });
-
-      if (isDocAdded) {
-        const formData = { formData: values };
-        setLeader({
-          leaderEmail: formData.leaderEmail,
-          leaderName: formData.leaderName,
-          leaderBranch: formData.leaderBranch,
-          leaderYear: formData.leaderYear,
-          leaderPhone: formData.leaderPhone || "",
-        });
-        setSubmitted(true);
-
-        // reset the form after successful submission
-        form.reset();
-      } else {
-        setSubmitted(false);
-      }
-    } catch (error) {
-      console.error(error);
-      setSubmitted(false);
-    } finally {
-      setSubmitting(false);
-    }
+    // const paymentId = searchParams("paymentId");
+    sessionStorage.setItem("registerForm", JSON.stringify(values));
+    setShowPayment(true);
   }
 
   const removeMember = (index) => () => {
@@ -271,7 +262,7 @@ export default function EventForm({ data }) {
         <div className="p-2 rounded-md border">
           <p className="text-center">
             You have already registered for this event.
-            {`Your team Leader is ${Leader.leaderName}, his Email is ${Leader.leaderEmail}, his Branch is ${Leader.leaderBranch}, his Year is ${Leader.leaderYear} and his Phone Number is +${Leader.leaderPhone}`}
+            {`Your team Leader is ${Leader.leaderName}, his Email is ${Leader.leaderEmail}, his Branch is ${Leader.leaderBranch}, his Year is ${Leader.leaderYear} and his Phone Number is +${Leader.leaderPhone} with payment id ${Leader.paymentId}`}
           </p>
         </div>
         <div>
@@ -284,143 +275,170 @@ export default function EventForm({ data }) {
   }
 
   return (
-    <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
-        {/* Your existing form fields */}
-        <FormField
-          control={form.control}
-          name="teamName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Team Name*</FormLabel>
-              <FormControl>
-                <Input placeholder="Your team Name" {...field} />
-              </FormControl>
-              <FormDescription>Keep it innovative and short.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="leaderName"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Leader Name*</FormLabel>
-              <FormControl>
-                <Input placeholder="Your name" {...field} />
-              </FormControl>
-              <FormDescription>Keep it innovative and short.</FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="leaderYear"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Leader's Academic Year*</FormLabel>
-              <FormControl>
-                <Input placeholder="Your Year" {...field} />
-              </FormControl>
-              <FormDescription>
-                Eg: 1 for first year, 2 for second ... 5 for M.tech
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="leaderBranch"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Leader's Branch*</FormLabel>
-              <FormControl>
-                <Input {...field} />
-              </FormControl>
-              <FormDescription>
-                The branch you are currently studying in.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="leaderEmail"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Leader's Email*</FormLabel>
-              <FormControl>
-                <Input
-                  className="bg-muted text-muted-foreground"
-                  {...field}
-                  readOnly={true}
-                />
-              </FormControl>
-              <FormDescription>
-                This would be your primary contact email.
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        <FormField
-          control={form.control}
-          name="leaderPhone"
-          render={({ field }) => (
-            <FormItem>
-              <FormLabel>Leader's Phone*</FormLabel>
-              <FormControl>
-                <Input
-                  className="bg-muted text-muted-foreground"
-                  readOnly={field.values === "" ? false : true}
-                  {...field}
-                />
-              </FormControl>
-              <FormDescription>
-                Your primary contact phone Number
-              </FormDescription>
-              <FormMessage />
-            </FormItem>
-          )}
-        />
-
-        {/* Render input fields for team members */}
-        {fields.map((member, index) => (
-          <div key={index}>
-            <p
-              className="underline underline-offset-4 cursor-pointer mb-4 text-primary"
-              onClick={removeMember(index)}
+    <>
+      <Toaster />
+      {showPayment ? (
+        <div className="flex flex-col items-center w-full">
+          {/* <Button variant="secondary" asChild>
+            <span
+              onClick={() => {
+                setShowPayment(false);
+              }}
+              className=" cursor-pointer w-full flex flex-wrap gap-2 items-center"
             >
-              - Remove member {index + 1}
-            </p>
-            <TeamMembersField member={member} index={index} remove={remove} />
-          </div>
-        ))}
+              Edit Team Details <BiPencil size={20} />
+            </span>
+          </Button> */}
+          <PaymentForm data={data} />
+        </div>
+      ) : (
+        <Form {...form}>
+          <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-8">
+            {/* Your existing form fields */}
+            <FormField
+              control={form.control}
+              name="teamName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Team Name*</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your team Name" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Keep it innovative and short.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        {/* Button to dynamically add more team members */}
-        {data.teamSize > 1 && teamSize < data.teamSize && (
-          <div
-            className="mt-4 underline underline-offset-4 cursor-pointer"
-            onClick={renderMemberDetails}
-          >
-            + Add member
-          </div>
-        )}
+            <FormField
+              control={form.control}
+              name="leaderName"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leader Name*</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your name" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Keep it innovative and short.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
 
-        {/* Your existing submit button */}
-        <Button type="submit" disabled={submitting}>
-          {submitting ? "Please wait..." : "Register"}
-        </Button>
-      </form>
-    </Form>
+            <FormField
+              control={form.control}
+              name="leaderYear"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leader's Academic Year*</FormLabel>
+                  <FormControl>
+                    <Input placeholder="Your Year" {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    Eg: 1 for first year, 2 for second ... 5 for M.tech
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="leaderBranch"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leader's Branch*</FormLabel>
+                  <FormControl>
+                    <Input {...field} />
+                  </FormControl>
+                  <FormDescription>
+                    The branch you are currently studying in.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="leaderEmail"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leader's Email*</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-muted text-muted-foreground"
+                      {...field}
+                      readOnly={true}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    This would be your primary contact email.
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            <FormField
+              control={form.control}
+              name="leaderPhone"
+              render={({ field }) => (
+                <FormItem>
+                  <FormLabel>Leader's Phone*</FormLabel>
+                  <FormControl>
+                    <Input
+                      className="bg-muted text-muted-foreground"
+                      readOnly={field.values === "" ? false : true}
+                      {...field}
+                    />
+                  </FormControl>
+                  <FormDescription>
+                    Your primary contact phone Number
+                  </FormDescription>
+                  <FormMessage />
+                </FormItem>
+              )}
+            />
+
+            {/* Render input fields for team members */}
+            {fields.map((member, index) => (
+              <div key={index}>
+                <p
+                  className="underline underline-offset-4 cursor-pointer mb-4 text-primary"
+                  onClick={removeMember(index)}
+                >
+                  - Remove member {index + 1}
+                </p>
+                <TeamMembersField
+                  member={member}
+                  index={index}
+                  remove={remove}
+                />
+              </div>
+            ))}
+
+            {/* Button to dynamically add more team members */}
+            {data.teamSize > 1 && teamSize < data.teamSize && (
+              <div
+                className="mt-4 underline underline-offset-4 cursor-pointer"
+                onClick={renderMemberDetails}
+              >
+                + Add member
+              </div>
+            )}
+
+            {/* Your existing submit button */}
+            <Button type="submit" disabled={submitting}>
+              {submitting ? "Please wait..." : "Register"}
+            </Button>
+          </form>
+        </Form>
+      )}
+    </>
   );
 }
