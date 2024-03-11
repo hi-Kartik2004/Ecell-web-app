@@ -31,7 +31,8 @@ function PaymentForm({ data }) {
     // Create a query to check for the existence of the paymentId
     const q = query(
       registrationsCollection,
-      where("paymentId", "==", paymentId)
+      where("paymentId", "==", paymentId),
+      where("paymentId", "!=", "Free")
     );
 
     try {
