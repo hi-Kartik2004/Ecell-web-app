@@ -85,7 +85,7 @@ export const ParallaxScroll = ({ className }) => {
               >
                 <Image
                   src={el.image}
-                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0 cursor-pointer"
+                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 border shadow-sm shadow-primary/50 p-2"
                   width={"400"}
                   height={"400"}
                   alt={el.name}
@@ -100,7 +100,7 @@ export const ParallaxScroll = ({ className }) => {
               <motion.div style={{ y: translateSecond }} key={"grid-2" + idx}>
                 <Image
                   src={el.image}
-                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0"
+                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 border shadow-sm shadow-primary/50 p-2"
                   height="400"
                   width="400"
                   alt={el.name}
@@ -114,7 +114,7 @@ export const ParallaxScroll = ({ className }) => {
               <motion.div style={{ y: translateThird }} key={"grid-3" + idx}>
                 <Image
                   src={el.image}
-                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 !p-0"
+                  className="h-80 w-full object-cover object-center rounded-lg gap-10 !m-0 border shadow-sm shadow-primary/50 p-2"
                   height="400"
                   width="400"
                   alt={el.name}
