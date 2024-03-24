@@ -187,8 +187,8 @@ function Page() {
           ) : (
             ""
           )}
-          {articles.slice(0, visibleArticles).length === 0 ? (
-            <div className="mt-10 text-lg">❄️ Not matching articles found</div>
+          {articles.slice(0, visibleArticles).length === 0 && !loading ? (
+            <div className="mt-10 text-lg">❄️ No matching articles found</div>
           ) : (
             articles
               .slice(0, visibleArticles)

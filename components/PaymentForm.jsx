@@ -12,6 +12,7 @@ import { addDoc, collection } from "firebase/firestore";
 import { db } from "@/firebase/config";
 import { BsCheck2Circle } from "react-icons/bs";
 import { getFirestore, getDocs, query, where } from "firebase/firestore";
+import globalData from "@/app/data";
 
 function PaymentForm({ data }) {
   const router = useRouter();
@@ -319,33 +320,22 @@ function PaymentForm({ data }) {
                 Terms & Conditions
               </h3>
               <div className="flex flex-col gap-2 mt-5">
-                <div className="flex items-center gap-2">
-                  <BiCheck size={30} />
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quisquam quae commodi eum!
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BiCheck size={30} />
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quisquam quae commodi eum!
-                  </p>
-                </div>
-                <div className="flex items-center gap-2">
-                  <BiCheck size={30} />
-                  <p className="text-muted-foreground">
-                    Lorem ipsum dolor sit, amet consectetur adipisicing elit.
-                    Quisquam quae commodi eum!
-                  </p>
-                </div>
+                {globalData.paymentTerms.map((terms) => (
+                  <div className="flex items-center gap-2">
+                    <BiCheck size={30} />
+                    <p className="text-muted-foreground">{terms}</p>
+                  </div>
+                ))}
               </div>
             </div>
 
-            <Button variant="link" className="mt-4" asChild>
-              <Link href="/legals">Legal Stuff</Link>
-            </Button>
+            {globalData.paymentLegals.map((button) => {
+              return (
+                <Button variant="link" className="mt-4" asChild>
+                  <Link href={button.href}>{button.text}</Link>
+                </Button>
+              );
+            })}
           </div>
         </div>
       )}

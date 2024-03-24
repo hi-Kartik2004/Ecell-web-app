@@ -335,6 +335,21 @@ const data = {
     "Relive the unforgettable moments of our past events.",
   manageEventSummariesDescription:
     "Manage and edit your published event summaries. Keep sharing about our events and inspire others.",
+
+  // Payments page
+  paymentTerms: [
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit.Quisquam quae commodi eum!",
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit.Quisquam quae commodi eum!",
+    "Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quisquam quae commodi eum!",
+  ],
+
+  paymentLegals: [
+    {
+      text: "Legal stuff",
+      href: "/legals",
+    },
+  ],
+
   // Navbar - only techies touch this
   navbarLinks: [
     {
