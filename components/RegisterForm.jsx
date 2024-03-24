@@ -91,9 +91,14 @@ export default function EventForm({ data }) {
             The registrations for this event have closed on {data?.date}
           </p>
         </div>
-        <div>
+        <div className="flex flex-wrap gap-4 items-center">
           <Button variant="secondary">
             <Link href={`/events`}>Events &rarr;</Link>
+          </Button>
+          <Button variant="secondary">
+            <Link href={`/event-summaries?search=${data?.name}`}>
+              Event Summary &rarr;
+            </Link>
           </Button>
         </div>
       </div>

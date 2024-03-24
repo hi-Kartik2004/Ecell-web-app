@@ -18,7 +18,7 @@ import Link from "next/link";
 import Blog from "@/components/Blog";
 import { Skeleton } from "@/components/ui/skeleton";
 // import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
-import { redirect, useRouter } from "next/navigation";
+import { redirect, useRouter, useSearchParams } from "next/navigation";
 import Foot from "@/components/Foot";
 
 function page({ params }) {
@@ -37,7 +37,7 @@ function page({ params }) {
 
       if (querySnapshot.empty) {
         console.log("No matching documents.");
-        
+
         return;
       }
 

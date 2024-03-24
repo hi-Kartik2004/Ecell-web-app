@@ -20,6 +20,7 @@ import {
 } from "@/components/ui/select";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useSearchParams } from "next/navigation";
 
 function Page() {
   const [articles, setArticles] = useState([]);
@@ -29,6 +30,9 @@ function Page() {
   const [viewsFilter, setViewsFilter] = useState(null); // State for filtering by views
   const [selectedFilter, setSelectedFilter] = useState(null); // State for the selected filter
   const [visibleArticles, setVisibleArticles] = useState(6);
+  const searchParams = useSearchParams();
+
+  const search = searchParams.get("search");
 
   useEffect(() => {
     async function getArticlesFromFirestore() {
@@ -52,6 +56,13 @@ function Page() {
 
     getArticlesFromFirestore();
   }, []); // Fetch articles on mount
+
+  useEffect(() => {
+    // Update nameFilter based on the search query parameter
+    if (search !== null && search !== "") {
+      setNameFilter(search);
+    }
+  }, [search]);
 
   // Apply client-side filters when nameFilter, viewsFilter, or selectedFilter changes
   useEffect(() => {
@@ -176,13 +187,19 @@ function Page() {
           ) : (
             ""
           )}
-          {articles.slice(0, visibleArticles).map((article) => (
-            <ArticleCard
-              key={article.id}
-              data={article}
-              redirect="event-summary"
-            />
-          ))}
+          {articles.slice(0, visibleArticles).length === 0 ? (
+            <div className="mt-10 text-lg">❄️ Not matching articles found</div>
+          ) : (
+            articles
+              .slice(0, visibleArticles)
+              .map((article) => (
+                <ArticleCard
+                  key={article.id}
+                  data={article}
+                  redirect="event-summary"
+                />
+              ))
+          )}
         </div>
 
         {visibleArticles < articles.length && (
