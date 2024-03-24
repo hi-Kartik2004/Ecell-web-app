@@ -23,7 +23,7 @@ import { BiLogoGmail } from "react-icons/bi";
 import { date } from "zod";
 import { FaLocationDot } from "react-icons/fa6";
 
-function EventCard({ data }) {
+function EventCard({ data, expired }) {
   return (
     <Card className="max-w-[400px] w-full">
       <CardHeader>
@@ -69,9 +69,15 @@ function EventCard({ data }) {
             </Link>
           </div>
         </div>
-        <Link href={`/register/${data.id}`}>
-          <Button variant="">Register &rarr;</Button>
-        </Link>
+        {expired ? (
+          <Link href={`/register/${data.id}`}>
+            <Button variant="">View Details &rarr;</Button>
+          </Link>
+        ) : (
+          <Link href={`/register/${data.id}`}>
+            <Button variant="">Register &rarr;</Button>
+          </Link>
+        )}
       </CardFooter>
     </Card>
   );

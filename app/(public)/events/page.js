@@ -228,7 +228,10 @@ function EventsPage() {
             )}
             {slicedEvents.map((event) => (
               <div key={event.timestamp}>
-                <EventCard data={event} />
+                <EventCard
+                  data={event}
+                  expired={event.dateObject < new Date()}
+                />
               </div>
             ))}
           </div>

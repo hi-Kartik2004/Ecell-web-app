@@ -72,6 +72,34 @@ export default function EventForm({ data }) {
     );
   }
 
+  const dateParts = data.date.split("-");
+  data.dateObject = new Date(
+    dateParts[2], // Year
+    dateParts[1] - 1, // Month (subtract 1 because months are 0-indexed in JavaScript)
+    dateParts[0] // Day
+  );
+
+  data.dateObject.setHours(23, 59, 59, 999);
+
+  if (data?.dateObject < new Date()) {
+    return (
+      <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+        <BsFillSignStopFill size={50} />
+        <div className="px-4 py-2 rounded-md border">
+          <h3 className="text-2xl font-semibold">Registrations Closed!</h3>
+          <p className="text-center text-muted-foreground mt-2">
+            The registrations for this event have closed on {data?.date}
+          </p>
+        </div>
+        <div>
+          <Button variant="secondary">
+            <Link href={`/events`}>Events &rarr;</Link>
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   if (!user) {
     return (
       <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">

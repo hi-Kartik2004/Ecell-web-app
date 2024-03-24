@@ -104,6 +104,7 @@ const formSchema = z.object({
     .nullable(),
   link: z.optional(z.string().trim().url({ message: "Invalid URL" })),
   prizes: z.string().min(2, "Please enter a valid prize."),
+  time: z.string().min(2, "Please enter a valid time."),
 });
 
 // Function to handle Firestore operation
@@ -169,6 +170,7 @@ export default function EventForm() {
       date: "",
       link: "",
       prizes: "",
+      time: "",
     },
   });
 
@@ -309,6 +311,29 @@ export default function EventForm() {
                 />
               </FormControl>
               <FormDescription>The date of the event!</FormDescription>
+              <FormMessage />
+            </FormItem>
+          )}
+        />
+
+        <FormField
+          control={form.control}
+          name="time"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>time*</FormLabel>
+              <FormControl>
+                <Input
+                  placeholder="HH:MM"
+                  onChange={(e) => {
+                    const inputDate = new Date(e.target.value);
+                    const isValidDate = !isNaN(inputDate.getTime());
+                    field.onChange(isValidDate ? inputDate : null);
+                  }}
+                  {...field}
+                />
+              </FormControl>
+              <FormDescription>The time of the event!</FormDescription>
               <FormMessage />
             </FormItem>
           )}

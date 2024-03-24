@@ -3,6 +3,7 @@ import React from "react";
 import { db } from "@/firebase/config";
 import {
   BiCalendar,
+  BiLink,
   BiLocationPlus,
   BiPhone,
   BiSolidLocationPlus,
@@ -35,7 +36,7 @@ async function page({ params }) {
         <div className="max-w-[650px] w-full">
           <div className="w-full h-[100px] rounded-md">
             <img
-              src={`https://source.unsplash.com/random/350X350/?${data.name}`}
+              src={`https://source.unsplash.com/random/350X350/?${data?.name}_stocks_finance`}
               alt="unsplash_image_for_this_event"
               className="w-full h-full object-cover rounded-md bg-muted"
             />
@@ -47,7 +48,7 @@ async function page({ params }) {
                 <div className="flex gap-2 items-center">
                   <BiCalendar />{" "}
                   <span className="text-muted-foreground text-sm">
-                    {data.date}
+                    {data?.date + " | " + data?.time + " (IST)"}
                   </span>
                 </div>
 
@@ -122,12 +123,23 @@ async function page({ params }) {
                 <span>{data?.email}</span>
               </Link>
             </div>
+
+            <div className="mt-2 flex gap-2 items-center">
+              <p>Other Link</p> -
+              <Link
+                href={data?.link ?? "/"}
+                className="flex items-center gap-2 text-muted-foreground hover:underline underline-offset-4"
+              >
+                <BiLink />
+                <span>{data?.link}</span>
+              </Link>
+            </div>
           </div>
 
           <div className="mt-8 w-full">
             <img
               src={`${data.image}`}
-              alt={`${data.name}`}
+              alt={`${data?.name}`}
               className=" object-cover rounded-md bg-muted"
             />
           </div>
@@ -135,7 +147,8 @@ async function page({ params }) {
 
         <div className="max-w-[600px] md:max-h-[140vh] flex flex-col w-full bg-card p-8 py-10 rounded-md border md:overflow-auto">
           <h1 className="text-3xl font-semibold text-center">
-            <span className="text-primary">Register</span> for {data.name}!
+            <span className="text-primary">Register</span> for{" "}
+            {data?.name ?? "Not Provided"}!
           </h1>
 
           <p className="text-center text-muted-foreground mt-2">
