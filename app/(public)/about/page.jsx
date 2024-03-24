@@ -6,121 +6,90 @@ import FooterSection from "../../(sections)/FooterSection";
 import data from "@/app/data";
 import GlassCard from "@/components/GlassCard";
 import Loader from "@/components/Loader";
+import teamData from "@/app/team";
+import {
+  BiLogoGithub,
+  BiLogoGmail,
+  BiLogoInstagram,
+  BiLogoLinkedin,
+} from "react-icons/bi";
+import Link from "next/link";
+import { Input } from "@/components/ui/input";
 
+console.log(teamData);
 
-const TeamMemberCard = ({ name, position, imageUrl }) => (
-  <div className="max-w-xs mx-auto mb-4 border border-yellow rounded shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
+const TeamMemberCard = ({
+  name,
+  post,
+  imageUrl,
+  instagram,
+  linkedin,
+  email,
+  github = "hi-kartik2004",
+}) => (
+  <div className="max-w-xs mx-auto mb-4 border border-yellow rounded-lg shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
     <img
-      src={imageUrl}
+      src={`https://avatars.githubusercontent.com/${github}
+`}
       alt={name}
-      className="w-full h-48 object-cover rounded-t"
     />
     <div className="bg-secondary  p-4 rounded-b">
-      <h3 className="text-lg font-semibold">{name}</h3>
-      <p className="text-muted-foreground">{position}</p>
+      <h3 className="text-center text-lg font-semibold">{name}</h3>
+      <p className="text-center text-muted-foreground">{post}</p>
+      <div className="flex flex-wrap items-center gap-2 mt-4 justify-around">
+        {instagram && (
+          <Link
+            href={`instagram.com/${instagram}`}
+            className="flex gap-2 items-center"
+            target="_blank"
+          >
+            <BiLogoInstagram size={30} />
+            {/* <p>{instagram}</p> */}
+          </Link>
+        )}
+
+        {linkedin && (
+          <Link
+            href={`linkedin.com/in/${linkedin}`}
+            className="flex gap-2 items-center"
+          >
+            <BiLogoLinkedin size={30} />
+            {/* <p>{linkedin}</p> */}
+          </Link>
+        )}
+
+        {email && (
+          <Link href={`mailto:${email}`} className="flex gap-2 items-center">
+            <BiLogoGmail size={30} />
+            {/* <p>{email}</p> */}
+          </Link>
+        )}
+
+        {github && (
+          <Link
+            href={`github.com/${github}`}
+            className="flex gap-2 items-center"
+          >
+            <BiLogoGithub size={30} />
+            {/* <p>{email}</p> */}
+          </Link>
+        )}
+      </div>
     </div>
   </div>
 );
 
 const About = () => {
   const [loading, setLoading] = useState(true);
+  const [searchYear, setSearchYear] = useState("");
 
   useEffect(() => {
     setLoading(false);
   }, []);
 
-  const leads = [
-    {
-      name: "John Doe",
-      position: "President",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-    {
-      name: "Jane Doe",
-      position: "Vice President",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-  ];
-  const relation = [
-    {
-      name: "John Doe",
-      position: "Design Lead",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-  ];
-  const design = [
-    {
-      name: "John Doe",
-      position: "Design Lead",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-  ];
-  const tech = [
-    {
-      name: "Saini",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-    {
-      name: "Vansh Bhardwaj",
-      position: "Design Lead",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-  ];
-  const market = [
-    {
-      name: "John Doe",
-      position: "Design Lead",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-  ];
-  const content = [
-    {
-      name: "John Doe",
-      position: "Design Lead",
-      imageUrl: "https://placekitten.com/600/400",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-    {
-      name: "Jane Doe",
-      position: "Co-Design Lead",
-      imageUrl: "https://placekitten.com/300/200",
-    },
-  ];
+  const filteredTeamData = teamData.filter((team) =>
+    team.year.includes(searchYear)
+  );
 
   if (loading) {
     return (
@@ -131,14 +100,16 @@ const About = () => {
   }
 
   return (
-    <main className="dark:bg-[url('/texture-pattern.svg')] bg-[url('/texture-pattern-light.svg')]">
+    <main className="dark:bg-[url('/texture-pattern-dark.svg')] bg-[url('/texture-pattern-light.svg')]">
       <div className="container flex flex-col items-center mx-auto p-4 bg-brown">
         <br />
         <br />
         <br />
         <div className="max-w-[800px]">
           <h1 className={`text-3xl font-bold mb-4  text-center`}>
-            E Cell UVCE <span className="text-primary">{data.aboutPageTitle}</span>
+            <span className="text-primary underline underline-offset-8">
+              {data.aboutPageTitle}
+            </span>
           </h1>
           {/* <p className="text-muted-foreground text-center">
             {data.aboutPageDescription}
@@ -166,10 +137,7 @@ const About = () => {
               />
             </svg>
             <div className="backdrop-filter backdrop-blur-lg bg-card/50 bg-opacity-30 rounded-lg p-6 mt-10 shadow-inner border-2 dark:text-white  relative z-2 max-w-[1000px] ">
-
-              <h1 className={`text-xl font-semibold `}>
-                History
-              </h1>
+              <h1 className={`text-xl font-semibold `}>History</h1>
               <p className="my-4 text-primary">
                 <b>{data.aboutPageHistoryHeading}</b>
               </p>
@@ -189,81 +157,205 @@ const About = () => {
         {/* team */}
       </div>
       <Separator />
-      <div className="">
+      <div className="mb-10">
         <div className="container mx-auto p-4">
           <br />
           <h1 className=" text-center text-3xl font-bold">
             Team <span className="text-primary">E Cell UVCE</span>
           </h1>
           <br />
-          <h1 className="text-2xl text-center font-bold mb-4">Presidents</h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {leads.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
+          <div className=" w-full flex justify-center mb-10">
+            <Input
+              name={"year"}
+              type="text"
+              className="max-w-[200px]"
+              placeholder="search team by year"
+              value={searchYear}
+              onChange={(e) => setSearchYear(e.target.value)}
+            />
           </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">
-            Public Relations Team
-          </h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {relation.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">Design Team</h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {design.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">
-            Technical Team
-          </h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {tech.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">
-            Marketing Team
-          </h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {market.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">Content Team</h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {market.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
-          <br />
-          <h1 className="text-2xl text-center font-bold mb-4">
-            Operations Team
-          </h1>
-          <br />
-          <div className="flex flex-wrap justify-evenly">
-            {market.map((member, index) => (
-              <TeamMemberCard key={index} {...member} />
-            ))}
-          </div>
+          {filteredTeamData.length === 0 ? (
+            <div className="mt-10 text-center">
+              ❄️ Either the year entered is before E-cell was established, or we
+              don't have that year's team details, reach us out if you think
+              this is wrong.
+            </div>
+          ) : (
+            filteredTeamData.slice(0, 1).map((team) => {
+              console.log(team);
+              return (
+                <div key={team?.year}>
+                  <h1 className="text-2xl text-center font-bold mb-4">
+                    Presidents - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team?.presidents.map((president, index) => (
+                      <TeamMemberCard key={index} {...president} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Public Relations Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team?.publicRelationsTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Design Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team?.designTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Technical Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team?.technicalTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Marketing Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team.marketingTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Content Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team.contentTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                  <br />
+                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                    Operations Team - {team?.year}
+                  </h1>
+                  <br />
+                  <div className="flex flex-wrap justify-evenly gap-8">
+                    {team.operationsTeam.map((member, index) => (
+                      <TeamMemberCard key={index} {...member} />
+                    ))}
+                  </div>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
       <Separator />
     </main>
   );
 };
+
+// const leads = [
+//   {
+//     name: "John Doe",
+//     position: "President",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Vice President",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+// ];
+// const relation = [
+//   {
+//     name: "John Doe",
+//     position: "Design Lead",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+// ];
+// const design = [
+//   {
+//     name: "John Doe",
+//     position: "Design Lead",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+// ];
+// const tech = [
+//   {
+//     name: "Saini",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+//   {
+//     name: "Vansh Bhardwaj",
+//     position: "Design Lead",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+// ];
+// const market = [
+//   {
+//     name: "John Doe",
+//     position: "Design Lead",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+// ];
+// const content = [
+//   {
+//     name: "John Doe",
+//     position: "Design Lead",
+//     imageUrl: "https://placekitten.com/600/400",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+//   {
+//     name: "Jane Doe",
+//     position: "Co-Design Lead",
+//     imageUrl: "https://placekitten.com/300/200",
+//   },
+// ];
 
 export default About;

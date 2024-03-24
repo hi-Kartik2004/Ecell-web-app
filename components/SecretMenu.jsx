@@ -17,6 +17,7 @@ const menuLinks = [
 const adminMenuLinks = [
   { name: "Add Event", link: "/add-event" },
   { name: "Add Event Summary", link: "/add-event-summary" },
+  { name: "Add Photo", link: "/add-gallery" },
   { name: "Registrations", link: "/registrations" },
 ];
 

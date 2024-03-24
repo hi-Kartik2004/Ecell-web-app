@@ -350,6 +350,10 @@ const data = {
     },
   ],
 
+  // Add Gallery Page
+  addGalleryPageHeading: "Add Photo for Gallery",
+  addGalleryPageDescription: "Make sure the photo is not too big (2MB or more)",
+
   // Navbar - only techies touch this
   navbarLinks: [
     {
