@@ -29,11 +29,11 @@ function NewHeroSection({ isMember }) {
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-        transition={{ duration: 0.3 }}
+        viewport={{ once: true, amount: 0 }}
+        transition={{ duration: 0.75 }}
         variants={{
           visible: { opacity: 1, y: 0 },
-          hidden: { opacity: 0, y: 10 },
+          hidden: { opacity: 0, y: 0 },
         }}
         className="container flex flex-col items-center w-full"
       >

@@ -15,6 +15,7 @@ import { Switch } from "@/components/ui/switch";
 import { AboutCard } from "@/components/AboutCard";
 import GlassCard from "@/components/GlassCard";
 import data from "../data";
+import { motion } from "framer-motion";
 
 function AboutSection() {
   return (

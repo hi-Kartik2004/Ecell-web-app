@@ -1,9 +1,20 @@
+"use client";
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
 
 function AppFeaturesCard({ reverse, data }) {
   return (
-    <div>
+    <motion.div
+      initial="hidden"
+      whileInView="visible"
+      viewport={{ once: true, amount: 0.2 }}
+      transition={{ duration: 0.5 }}
+      variants={{
+        visible: { opacity: 1, y: 0 },
+        hidden: { opacity: 0, y: 10 },
+      }}
+    >
       <div
         className={`flex flex-col items-center mt-6 lg:flex-row lg:gap-16 lg:items-start ${
           reverse ? "lg:flex-row-reverse" : ""
@@ -35,7 +46,7 @@ function AppFeaturesCard({ reverse, data }) {
           </div>
         </div>
       </div>
-    </div>
+    </motion.div>
   );
 }
 
