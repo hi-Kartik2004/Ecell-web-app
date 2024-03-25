@@ -354,6 +354,29 @@ const data = {
   addGalleryPageHeading: "Add Photo for Gallery",
   addGalleryPageDescription: "Make sure the photo is not too big (2MB or more)",
 
+  // Join page
+  joinPageHeading: "Membership",
+  joinPageDescription: "Make sure the photo is not too big (2MB or more)",
+  joinPageMembershipCardMessage: "E-cell Membership",
+  joinPageMembershipCardAmount: "149",
+  joinPageMembershipCardBenefits: [
+    "10 GB of Storage",
+    "10 GB of Storage",
+    "10 GB of Storage",
+    "10 GB of Storage",
+    "1 GB of Storage",
+  ],
+  joinPageMembershipCardDescription:
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.",
+  joinPageFreeCardBenefits: [
+    "1 GB of Storage",
+    "1 GB of Storage",
+    "1 GB of Storage",
+    "1 GB of Storage",
+  ],
+  joinPageFreeCardDescription:
+    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.",
+
   // Navbar - only techies touch this
   navbarLinks: [
     {
