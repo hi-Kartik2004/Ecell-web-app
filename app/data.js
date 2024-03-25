@@ -356,8 +356,8 @@ const data = {
 
   // Join page
   joinPageHeading: "Membership",
-  joinPageDescription: "Make sure the photo is not too big (2MB or more)",
-  joinPageMembershipCardMessage: "E-cell Membership",
+  // joinPageDescription: "Make sure the photo is not too big (2MB or more)",
+  joinPageMembershipCardMessage: "Yearly Membership",
   joinPageMembershipCardAmount: "149",
   joinPageMembershipCardBenefits: [
     "10 GB of Storage",
