@@ -111,7 +111,7 @@ function NewHeroSection({ isMember }) {
           hidden: { opacity: 0, y: 10 },
         }}
       >
-        <Marquee className="">
+        <Marquee className="" pauseOnHover>
           <div className="flex justify-between">
             {data.heroMarqueeImages.map((image) => (
               <img
