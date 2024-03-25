@@ -16,7 +16,7 @@ const data = {
   heroDescription:
     "Empowering students with the knowledge and skills to become successful entrepreneurs. Join us on this exciting journey of innovation and creativity.",
   heroYellowBtnMessage: "Join our Community",
-  heroYellowBtnLink: "/sign-in",
+  heroYellowBtnLink: "/join",
   heroYellowBtnMessageForMembers: "Read Exclusive Articles",
   heroYellowBtnLinkForMembers: "/articles",
   heroSecondaryBtnMessage: "Explore Events",
@@ -182,7 +182,7 @@ const data = {
   footerMessage:
     "Join E-Cell UVCE's Vibrant Community to enjoy Membership benefits.",
   footerYellowBtnMessage: "Join our Community",
-  footerYellowBtnLink: "/sign-in",
+  footerYellowBtnLink: "/join",
   footerLinks: [
     {
       title: "Follow Us:",
