@@ -104,7 +104,7 @@ function AddGallery() {
             name="image"
           />
           <Button type="submit" disabled={submitting}>
-            {submitting ? "Submitting..." : "Add Photo &rarr"}
+            {submitting ? "Submitting..." : "Add Photo to Gallery"}
           </Button>
         </form>
       </div>
