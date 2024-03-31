@@ -40,7 +40,7 @@ function MembershipForm() {
   const { user, isLoaded } = useUser();
   if (!isLoaded) {
     return (
-      <div className="max-h-[80vh] h-full flex items-center justify-center">
+      <div className="mt-36 mb-20">
         <Loader />
       </div>
     );
@@ -262,10 +262,11 @@ function MembershipForm() {
                   </DialogTrigger>
                   <DialogContent className="overflow-auto">
                     <DialogHeader>
-                      <DialogTitle>Purchase Membership</DialogTitle>
+                      <DialogTitle>
+                        {globalData?.joinPageMembershipDialogTitle}
+                      </DialogTitle>
                       <DialogDescription className="text-muted-foreground text-sm">
-                        Lorem ipsum dolor sit amet, consectetur adipisicing
-                        elit. Distinctio atque dolore iste?
+                        {globalData?.joinPageMembershipDialogDescription}
                       </DialogDescription>
                     </DialogHeader>
 
@@ -280,26 +281,30 @@ function MembershipForm() {
                         <span className="text-sm text-muted-foreground">
                           Sender's UPI ID
                         </span>
-                        <Input name="senderUPI" />
+                        <Input name="senderUPI" required />
                       </label>
 
                       <label className="w-full">
                         <span className="text-sm text-muted-foreground">
                           Transaction ID
                         </span>
-                        <Input name="transactionId" />
+                        <Input name="transactionId" required />
                       </label>
 
                       <label className="w-full">
                         <span className="text-sm text-muted-foreground">
                           Payment Screenshot
                         </span>
-                        <Input type="file" name={"transactionScreenshot"} />
+                        <Input
+                          type="file"
+                          name={"transactionScreenshot"}
+                          required
+                        />
                       </label>
                       <Button
                         type="submit"
                         className="w-full mt-4"
-                        disabled={submitting}
+                        disabled={submitting || regTimestamp}
                       >
                         {submitting ? "Submitting..." : "Claim Membership"}
                       </Button>
@@ -308,7 +313,9 @@ function MembershipForm() {
                 </Dialog>
               }
               <p className="text-sm text-gray-700">
-                <b>{"Applied on " + regTimestamp.toDate().toDateString()}</b>
+                {regTimestamp && (
+                  <b>Applied on {regTimestamp.toDate().toDateString()}</b>
+                )}
                 {regTimestamp && <br />}
                 {globalData?.joinPageMembershipCardDescription}
               </p>

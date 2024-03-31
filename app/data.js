@@ -359,6 +359,9 @@ const data = {
   // joinPageDescription: "Make sure the photo is not too big (2MB or more)",
   joinPageMembershipCardMessage: "Yearly Membership",
   joinPageMembershipCardAmount: "149",
+  joinPageMembershipDialogTitle: "Join the E-Cell UVCE Community!",
+  joinPageMembershipDialogDescription:
+    "Take the E-cell UVCE membership to avail various benefits at almost No Cost!",
   joinPageMembershipCardBenefits: [
     "10 GB of Storage",
     "10 GB of Storage",
