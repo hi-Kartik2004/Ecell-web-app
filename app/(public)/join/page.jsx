@@ -6,7 +6,7 @@ import React from "react";
 
 function Join() {
   return (
-    <div className="w-full flex justify-center flex-col items-center mt-24">
+    <div className="w-full flex justify-center flex-col items-center pt-14 mt-14 bg-black">
       {/* <div className="max-w-[800px]">
         <h1 className="lg:text-4xl text-3xl font-bold text-center">
           Join the Ecell UVCE Community!

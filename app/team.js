@@ -7,7 +7,8 @@ const teamOf23 = {
       instagram: "rushil_br",
       linkedin: "rushil_br",
       email: "rushil_br",
-      github: "hi-kartik2004",
+      github: "rushil-br",
+      imageUrl: "",
     },
     {
       name: "Rushil BR",
@@ -16,6 +17,7 @@ const teamOf23 = {
       linkedin: "rushil_br",
       email: "rushil_br",
       github: "hi-kartik2004",
+      imageUrl: "",
     },
   ],
   publicRelationsTeam: [
@@ -27,6 +29,7 @@ const teamOf23 = {
       github: "",
       email: "",
       github: "hi-kartik2004",
+      imageUrl: "",
     },
     {
       name: "Rushil BR",
@@ -35,6 +38,7 @@ const teamOf23 = {
       linkedin: "",
       email: "",
       github: "hi-kartik2004",
+      imageUrl: "",
     },
     {
       name: "Rushil BR",

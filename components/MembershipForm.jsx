@@ -1,15 +1,153 @@
+"use client";
 import Link from "next/link";
-import React from "react";
-import { BiSolidBullseye } from "react-icons/bi";
+import React, { useEffect, useState } from "react";
+import { BiNetworkChart, BiSolidBullseye } from "react-icons/bi";
 import { MdWorkspacePremium } from "react-icons/md";
 import globalData from "@/app/data";
+import { useSearchParams } from "next/navigation";
+import { ShowerHead } from "lucide-react";
+import {
+  Dialog,
+  DialogContent,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+} from "./ui/dialog";
+import {
+  DialogClose,
+  DialogDescription,
+  DialogTrigger,
+} from "@radix-ui/react-dialog";
+import {
+  AlertDialog,
+  AlertDialogContent,
+  AlertDialogDescription,
+  AlertDialogHeader,
+  AlertDialogTitle,
+} from "./ui/alert-dialog";
+import { Input } from "./ui/input";
+import { Button } from "@/components/ui/button";
+import QrCodeComponent from "./QrCodeComponent";
+import { addDoc, collection, getDocs } from "firebase/firestore";
+import { db, storage } from "@/firebase/config";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
+import { useToast } from "./ui/use-toast";
+import { Toaster } from "./ui/toaster";
+import { useUser } from "@clerk/nextjs";
+import Loader from "./Loader";
 
 function MembershipForm() {
+  const { user, isLoaded } = useUser();
+  if (!isLoaded) {
+    return (
+      <div className="max-h-[80vh] h-full flex items-center justify-center">
+        <Loader />
+      </div>
+    );
+  }
+
+  const { toast } = useToast();
+
+  const [submitting, setSubmitting] = useState(false);
+  const [regTimestamp, setRegTimestamp] = useState(null);
+  const [status, setStatus] = useState(null);
+
+  async function checkRegistrationStatus() {
+    const transactionsRef = collection(db, "transactions");
+    const transactionsSnapshot = await getDocs(transactionsRef);
+    const transactionsList = transactionsSnapshot.docs.map((doc) => doc.data());
+    const userTransactions = transactionsList.filter(
+      (transaction) =>
+        transaction.email === user?.emailAddresses[0]?.emailAddress
+    );
+    if (userTransactions.length > 0) {
+      setRegTimestamp(userTransactions[0].timestamp);
+      setStatus(userTransactions[0].status);
+      console.log("User has already registered.");
+      return true;
+    }
+    console.log("User has not registered yet.");
+    return false;
+  }
+
+  async function getImageUrlFromFirestore(imageFile) {
+    // Create a reference to the file we want to download
+    if (imageFile.size === 0) {
+      console.warn("File size is 0 bytes. Skipping upload.");
+      return false;
+    }
+
+    const storageRef = ref(
+      storage,
+      `transactions/${imageFile.name}_${Date.now()}`
+    );
+
+    try {
+      await uploadBytes(storageRef, imageFile);
+    } catch (uploadError) {
+      console.error("Error uploading to Storage:", uploadError);
+      throw uploadError;
+    }
+
+    const url = await getDownloadURL(storageRef);
+
+    console.log("Image Uploaded Successfully!");
+    return url;
+  }
+
+  async function addMembershipDetailsToFirebase(e) {
+    e.preventDefault();
+    setSubmitting(true);
+    const formData = new FormData(e.target);
+    console.log(formData);
+
+    // check if the file uploaded is less than 10MB
+    if (formData.get("transactionScreenshot").size > 10 * 1024 * 1024) {
+      toast({
+        title: "File size should be less than 10 MB",
+        description: "Please upload a smaller image.",
+      });
+
+      setSubmitting(false);
+      return;
+    }
+
+    const transactionUrl = await getImageUrlFromFirestore(
+      formData.get("transactionScreenshot")
+    );
+
+    const transactionRef = collection(db, "transactions");
+    await addDoc(transactionRef, {
+      name: user?.fullName,
+      email: user?.emailAddresses[0]?.emailAddress,
+      phone: user?.phoneNumbers[0]?.phoneNumber,
+      senderUPI: formData.get("senderUPI"),
+      transactionId: formData.get("transactionId"),
+      transactionScreenshot: transactionUrl,
+      timestamp: new Date(),
+      status: "Approval pending",
+    });
+
+    toast({
+      title: "Membership Claimed Successfully!",
+      description:
+        "We will verify your payment and get back to you with in 24 hours.",
+    });
+    checkRegistrationStatus();
+    setSubmitting(false);
+  }
+
+  useEffect(() => {
+    checkRegistrationStatus();
+  }, []);
+
   return (
+    // className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 tracking-wide text-black font-bold transition duration-200 rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none border bg-white"
     <div>
-      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20">
-        <div className="grid max-w-md gap-10 row-gap-5 sm:row-gap-10 lg:max-w-screen-md lg:grid-cols-2 sm:mx-auto mt-10">
-          <div className="flex flex-col justify-between p-5 bg-primary shadow-xl shadow-primary/50 border rounded-lg">
+      <Toaster />
+      <div className="px-4 py-16 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-20 flex justify-center">
+        <div className="grid max-w-md gap-10 row-gap-5 sm:row-gap-10 lg:max-w-screen-md lg:grid-cols-2 sm:mx-auto mt-10 items-center">
+          <div className="flex flex-col justify-around p-5 bg-primary shadow-xl shadow-primary/50 border rounded-lg">
             <div className="mb-6">
               <div className="flex items-center justify-between pb-6 mb-6 border-b">
                 <div>
@@ -104,13 +242,74 @@ function MembershipForm() {
               </div>
             </div>
             <div>
-              <Link
-                href="/purchase"
-                className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 tracking-wide text-black font-bold transition duration-200 rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none border bg-white"
-              >
-                Purchase &rarr;
-              </Link>
+              {
+                <Dialog>
+                  <DialogTrigger asChild>
+                    <button
+                      disabled={submitting || regTimestamp}
+                      className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 tracking-wide text-black font-bold transition duration-200 rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none border bg-white"
+                    >
+                      {regTimestamp ? (
+                        <span className="flex gap-2 items-center">
+                          {status}
+                        </span>
+                      ) : submitting ? (
+                        "Submitting..."
+                      ) : (
+                        "Purchase Membership"
+                      )}
+                    </button>
+                  </DialogTrigger>
+                  <DialogContent className="overflow-auto">
+                    <DialogHeader>
+                      <DialogTitle>Purchase Membership</DialogTitle>
+                      <DialogDescription className="text-muted-foreground text-sm">
+                        Lorem ipsum dolor sit amet, consectetur adipisicing
+                        elit. Distinctio atque dolore iste?
+                      </DialogDescription>
+                    </DialogHeader>
+
+                    <div className="max-w-[800px] flex items-center justify-center">
+                      <QrCodeComponent />
+                    </div>
+                    <form
+                      className="w-full flex flex-col gap-2 items-center"
+                      onSubmit={(e) => addMembershipDetailsToFirebase(e)}
+                    >
+                      <label className="w-full">
+                        <span className="text-sm text-muted-foreground">
+                          Sender's UPI ID
+                        </span>
+                        <Input name="senderUPI" />
+                      </label>
+
+                      <label className="w-full">
+                        <span className="text-sm text-muted-foreground">
+                          Transaction ID
+                        </span>
+                        <Input name="transactionId" />
+                      </label>
+
+                      <label className="w-full">
+                        <span className="text-sm text-muted-foreground">
+                          Payment Screenshot
+                        </span>
+                        <Input type="file" name={"transactionScreenshot"} />
+                      </label>
+                      <Button
+                        type="submit"
+                        className="w-full mt-4"
+                        disabled={submitting}
+                      >
+                        {submitting ? "Submitting..." : "Claim Membership"}
+                      </Button>
+                    </form>
+                  </DialogContent>
+                </Dialog>
+              }
               <p className="text-sm text-gray-700">
+                <b>{"Applied on " + regTimestamp.toDate().toDateString()}</b>
+                {regTimestamp && <br />}
                 {globalData?.joinPageMembershipCardDescription}
               </p>
             </div>
