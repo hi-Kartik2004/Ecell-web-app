@@ -6,7 +6,7 @@ import globalData from "@/app/data";
 export function SparklesSection() {
   return (
     <div className="w-full  flex flex-col items-center justify-center overflow-hidden rounded-md">
-      <h1 className="md:text-7xl text-3xl lg:text-9xl font-bold text-center relative z-20 bg-gradient-to-tr from-yellow-500 to-orange-800 bg-clip-text text-transparent">
+      <h1 className="md:text-7xl text-4xl lg:text-9xl font-bold text-center relative z-20 bg-gradient-to-tr from-yellow-500 to-orange-800 bg-clip-text text-transparent">
         {globalData?.joinPageHeading}
       </h1>
       <p className="text-center text-sm text-muted-foreground mt-2">
