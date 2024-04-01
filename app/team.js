@@ -342,7 +342,8 @@ const teamOf24 = {
       instagram: "shreyashsuryawanshi",
       linkedin: "Shreyash Suryawanshi",
       email: "shreyashsuryawanshi926@gmail.com",
-      imageUrl: "https://i.postimg.cc/ZK9RYLRJ/IMG-1907.jpg",
+      imageUrl:
+        "https://i.postimg.cc/XJZMLx5c/22738544-2bc7-4fde-9431-e76cbc2fd4e0.jpg",
     },
     {
       name: "Tejas R Bhoopalam",
