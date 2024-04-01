@@ -233,7 +233,7 @@ const teamOf24 = {
       linkedin: "https://www.linkedin.com/in/sindhu-t-s-768855259/",
       email: "jaanu12092003@gmail.com",
       github: "",
-      imageUrl: "https://i.postimg.cc/13txRjqy/1703405812532.jpg",
+      imageUrl: "https://i.postimg.cc/qMGQC432/1686930713217.jpg",
     },
   ],
   designTeam: [

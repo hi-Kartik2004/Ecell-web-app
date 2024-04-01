@@ -28,12 +28,12 @@ const TeamMemberCard = ({
   github,
 }) => (
   <div className="max-w-xs mx-auto mb-4 border border-yellow rounded-lg shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
-    <div className="max-h-[300px] h-full max-w-[300px] overflow-hidden w-full">
+    <div className="max-h-[300px] h-full max-w-[300px] flex overflow-hidden w-full bg-muted flex-grow">
       {imageUrl ? (
         <img
           src={imageUrl}
           alt={name || "Image"}
-          className="w-full h-full object-cover"
+          className="object-cover min-w-[280px]"
         />
       ) : (
         <span className="w-full h-full flex items-center justify-center">
