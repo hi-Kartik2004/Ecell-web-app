@@ -175,7 +175,7 @@ const teamOf24 = {
       instagram: "hill__rush",
       linkedin: "https://www.linkedin.com/in/rushil-b-r",
       email: "rushilbr225@gmail.com",
-      github: "https://github.com/rushilbr225",
+      github: "rushilbr225",
       imageUrl: "https://i.postimg.cc/sXnmnz9q/IMG-20231123-WA0057.jpg",
     },
     {
@@ -184,7 +184,7 @@ const teamOf24 = {
       instagram: "srivatsashesha",
       linkedin: "https://www.linkedin.com/in/srivatsa-sheshadri",
       email: "srivatsa.shesha@gmail.com",
-      github: "https://github.com/srivatsashesha",
+      github: "srivatsashesha",
       imageUrl: "https://i.postimg.cc/GhkxNcT9/Snapseed.jpg",
     },
   ],
@@ -204,7 +204,7 @@ const teamOf24 = {
       instagram: "chyavan_rao",
       linkedin: "www.linkedin.com/in/chyavanraoas",
       email: "chyavanrao24@gmail.com",
-      github: "https://github.com/Chyavanrao7",
+      github: "Chyavanrao7",
       imageUrl: "https://i.postimg.cc/13txRjqy/1703405812532.jpg",
     },
     {
@@ -223,7 +223,7 @@ const teamOf24 = {
       linkedin:
         "https://www.linkedin.com/in/karthikey-kadati-277420279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       email: "karthikey5438@gmail.com",
-      github: "https://github.com/Karthikey1",
+      github: "Karthikey1",
       imageUrl: "https://i.postimg.cc/sgyNRVKR/IMG-20240122-171859.jpg",
     },
     {
@@ -304,7 +304,7 @@ const teamOf24 = {
       instagram: "one__shh",
       linkedin: "https://www.linkedin.com/in/vansh-bhardwaj-5977681b1/",
       email: "vanshayushi@gmail.com",
-      github: "https://github.com/Bhardwajvansh",
+      github: "Bhardwajvansh",
       imageUrl: "https://i.postimg.cc/SxPmBMKQ/1680862132927.jpg",
     },
     {
