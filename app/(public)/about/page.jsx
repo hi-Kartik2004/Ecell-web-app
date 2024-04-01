@@ -112,7 +112,7 @@ const About = () => {
 
   return (
     <main className="dark:bg-[url('/texture-pattern-dark.svg')] bg-[url('/texture-pattern-light.svg')]">
-      <div className="container flex flex-wrap flex-wrapflex-col items-center mx-auto p-4 bg-brown">
+      <div className="container flex flex-wrap flex-col items-center mx-auto p-4 bg-brown">
         <br />
         <br />
         <br />
@@ -126,7 +126,7 @@ const About = () => {
             {data.aboutPageDescription}
           </p> */}
         </div>
-        <div className="flex flex-wrap flex-wrapjustify-around max-w-[1200px] flex-wrap">
+        <div className="flex flex-wrap justify-around max-w-[1200px]">
           <GlassCard
             className="right-2 top-4 lg:left-2"
             data={data.aboutSectionVision}
@@ -175,7 +175,7 @@ const About = () => {
             Team <span className="text-primary">E Cell UVCE</span>
           </h1>
           <br />
-          <div className=" w-full flex flex-wrap flex-wrapjustify-center mb-10">
+          <div className=" w-full flex flex-wrap justify-center mb-10">
             <Input
               name={"year"}
               type="text"
