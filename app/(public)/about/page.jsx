@@ -25,14 +25,22 @@ const TeamMemberCard = ({
   instagram,
   linkedin,
   email,
-  github = "hi-kartik2004",
+  github,
 }) => (
   <div className="max-w-xs mx-auto mb-4 border border-yellow rounded-lg shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
-    <img
-      src={`https://avatars.githubusercontent.com/${github}
-`}
-      alt={name}
-    />
+    <div className="max-h-[300px] h-full max-w-[300px] overflow-hidden w-full">
+      {imageUrl ? (
+        <img
+          src={imageUrl}
+          alt={name || "Image"}
+          className="w-full h-full object-cover"
+        />
+      ) : (
+        <span className="w-full h-full flex items-center justify-center">
+          No image available
+        </span>
+      )}
+    </div>
     <div className="bg-secondary  p-4 rounded-b">
       <h3 className="text-center text-lg font-semibold">{name}</h3>
       <p className="text-center text-muted-foreground">{post}</p>
@@ -49,10 +57,7 @@ const TeamMemberCard = ({
         )}
 
         {linkedin && (
-          <Link
-            href={`linkedin.com/in/${linkedin}`}
-            className="flex gap-2 items-center"
-          >
+          <Link href={`${linkedin}`} className="flex gap-2 items-center">
             <BiLogoLinkedin size={30} />
             {/* <p>{linkedin}</p> */}
           </Link>
@@ -195,64 +200,191 @@ const About = () => {
                     ))}
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Public Relations Team - {team?.year}
-                  </h1>
-                  <br />
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team?.publicRelationsTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Public Relations Team Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.publicRelationsTeam.map(
+                          (member, index) =>
+                            member.post === "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Public Relations Team Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.publicRelationsTeam.map(
+                          (member, index) =>
+                            member.post !== "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Design Team - {team?.year}
-                  </h1>
-                  <br />
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team?.designTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Design Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.designTeam.map(
+                          (member, index) =>
+                            (member.post === "Lead" ||
+                              member.post == "Vice Lead") && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Design Team - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.designTeam.map(
+                          (member, index) =>
+                            member.post !== "Lead" &&
+                            member.post != "Vice Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Technical Team - {team?.year}
-                  </h1>
-                  <br />
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team?.technicalTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Technical Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.technicalTeam.map(
+                          (member, index) =>
+                            member.post === "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Technical Team - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.technicalTeam.map(
+                          (member, index) =>
+                            member.post !== "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Marketing Team - {team?.year}
-                  </h1>
-                  <br />
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team.marketingTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Marketing Team Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.marketingTeam.map(
+                          (member, index) =>
+                            (member.post === "Lead" ||
+                              member.post == "Vice Lead") && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Marketing Team - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.marketingTeam.map(
+                          (member, index) =>
+                            member.post !== "Lead" &&
+                            member.post !== "Vice Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Content Team - {team?.year}
-                  </h1>
-                  <br />
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team.contentTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Content Team Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.contentTeam.map((member, index) => {
+                          // Check if the member is a lead or vice lead
+                          if (
+                            member.post === "Lead" ||
+                            member.post === "Vice Lead"
+                          ) {
+                            return <TeamMemberCard key={index} {...member} />;
+                          }
+                          return null; // Return null for other team members
+                        })}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Content Team - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.contentTeam.map((member, index) => {
+                          // Exclude leads and vice leads
+                          if (
+                            member.post !== "Lead" &&
+                            member.post !== "Vice Lead"
+                          ) {
+                            return <TeamMemberCard key={index} {...member} />;
+                          }
+                          return null; // Return null for leads and vice leads
+                        })}
+                      </div>
+                    </div>
                   </div>
                   <br />
-                  <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                    Operations Team - {team?.year}
-                  </h1>
-                  <br />
+
                   <div className="flex flex-wrap justify-evenly gap-8">
-                    {team.operationsTeam.map((member, index) => (
-                      <TeamMemberCard key={index} {...member} />
-                    ))}
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Operations Team Leads - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.operationsTeam.map(
+                          (member, index) =>
+                            member.post === "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
+                    <div>
+                      <h1 className="text-2xl mt-10 text-center font-bold mb-4">
+                        Operations Team - {team?.year}
+                      </h1>
+                      <div className="flex justify-evenly gap-8">
+                        {team?.operationsTeam.map(
+                          (member, index) =>
+                            member.post !== "Lead" && (
+                              <TeamMemberCard key={index} {...member} />
+                            )
+                        )}
+                      </div>
+                    </div>
                   </div>
                 </div>
               );
