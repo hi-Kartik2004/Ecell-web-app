@@ -28,7 +28,7 @@ const TeamMemberCard = ({
   github,
 }) => (
   <div className="max-w-xs mx-auto mb-4 border border-yellow rounded-lg shadow-[5px_5px_0px_0px_rgba(249,203,21)]">
-    <div className="max-h-[300px] h-full max-w-[300px] flex overflow-hidden w-full bg-muted flex-grow">
+    <div className="max-h-[300px] h-full max-w-[300px] flex flex-wrap overflow-hidden w-full bg-muted flex-grow">
       {imageUrl ? (
         <img
           src={imageUrl}
@@ -36,7 +36,7 @@ const TeamMemberCard = ({
           className="object-cover min-w-[280px]"
         />
       ) : (
-        <span className="w-full h-full flex items-center justify-center">
+        <span className="w-full h-full flex flex-wrap flex-wrapitems-center justify-center">
           No image available
         </span>
       )}
@@ -44,11 +44,11 @@ const TeamMemberCard = ({
     <div className="bg-secondary  p-4 rounded-b">
       <h3 className="text-center text-lg font-semibold">{name}</h3>
       <p className="text-center text-muted-foreground">{post}</p>
-      <div className="flex flex-wrap items-center gap-2 mt-4 justify-around">
+      <div className="flex flex-wrap flex-wrapflex-wrap items-center gap-2 mt-4 justify-around">
         {instagram && (
           <Link
             href={`instagram.com/${instagram}`}
-            className="flex gap-2 items-center"
+            className="flex flex-wrap flex-wrapgap-2 items-center"
             target="_blank"
           >
             <BiLogoInstagram size={30} />
@@ -57,14 +57,20 @@ const TeamMemberCard = ({
         )}
 
         {linkedin && (
-          <Link href={`${linkedin}`} className="flex gap-2 items-center">
+          <Link
+            href={`${linkedin}`}
+            className="flex flex-wrap flex-wrapgap-2 items-center"
+          >
             <BiLogoLinkedin size={30} />
             {/* <p>{linkedin}</p> */}
           </Link>
         )}
 
         {email && (
-          <Link href={`mailto:${email}`} className="flex gap-2 items-center">
+          <Link
+            href={`mailto:${email}`}
+            className="flex flex-wrap flex-wrapgap-2 items-center"
+          >
             <BiLogoGmail size={30} />
             {/* <p>{email}</p> */}
           </Link>
@@ -73,7 +79,7 @@ const TeamMemberCard = ({
         {github && (
           <Link
             href={`github.com/${github}`}
-            className="flex gap-2 items-center"
+            className="flex flex-wrap flex-wrapgap-2 items-center"
           >
             <BiLogoGithub size={30} />
             {/* <p>{email}</p> */}
@@ -98,7 +104,7 @@ const About = () => {
 
   if (loading) {
     return (
-      <div className="min-h-[100vh] flex items-center justify-center">
+      <div className="min-h-[100vh] flex flex-wrap flex-wrapitems-center justify-center">
         <Loader />
       </div>
     );
@@ -106,7 +112,7 @@ const About = () => {
 
   return (
     <main className="dark:bg-[url('/texture-pattern-dark.svg')] bg-[url('/texture-pattern-light.svg')]">
-      <div className="container flex flex-col items-center mx-auto p-4 bg-brown">
+      <div className="container flex flex-wrap flex-wrapflex-col items-center mx-auto p-4 bg-brown">
         <br />
         <br />
         <br />
@@ -120,7 +126,7 @@ const About = () => {
             {data.aboutPageDescription}
           </p> */}
         </div>
-        <div className="flex justify-around max-w-[1200px] flex-wrap">
+        <div className="flex flex-wrap flex-wrapjustify-around max-w-[1200px] flex-wrap">
           <GlassCard
             className="right-2 top-4 lg:left-2"
             data={data.aboutSectionVision}
@@ -169,7 +175,7 @@ const About = () => {
             Team <span className="text-primary">E Cell UVCE</span>
           </h1>
           <br />
-          <div className=" w-full flex justify-center mb-10">
+          <div className=" w-full flex flex-wrap flex-wrapjustify-center mb-10">
             <Input
               name={"year"}
               type="text"
@@ -194,18 +200,18 @@ const About = () => {
                     Presidents - {team?.year}
                   </h1>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     {team?.presidents.map((president, index) => (
                       <TeamMemberCard key={index} {...president} />
                     ))}
                   </div>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Public Relations Team Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.publicRelationsTeam.map(
                           (member, index) =>
                             member.post === "Lead" && (
@@ -218,7 +224,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Public Relations Team Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.publicRelationsTeam.map(
                           (member, index) =>
                             member.post !== "Lead" && (
@@ -229,12 +235,12 @@ const About = () => {
                     </div>
                   </div>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Design Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.designTeam.map(
                           (member, index) =>
                             (member.post === "Lead" ||
@@ -248,7 +254,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Design Team - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.designTeam.map(
                           (member, index) =>
                             member.post !== "Lead" &&
@@ -260,12 +266,12 @@ const About = () => {
                     </div>
                   </div>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Technical Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.technicalTeam.map(
                           (member, index) =>
                             member.post === "Lead" && (
@@ -278,7 +284,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Technical Team - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.technicalTeam.map(
                           (member, index) =>
                             member.post !== "Lead" && (
@@ -289,12 +295,12 @@ const About = () => {
                     </div>
                   </div>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Marketing Team Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.marketingTeam.map(
                           (member, index) =>
                             (member.post === "Lead" ||
@@ -308,7 +314,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Marketing Team - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.marketingTeam.map(
                           (member, index) =>
                             member.post !== "Lead" &&
@@ -320,12 +326,12 @@ const About = () => {
                     </div>
                   </div>
                   <br />
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Content Team Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.contentTeam.map((member, index) => {
                           // Check if the member is a lead or vice lead
                           if (
@@ -342,7 +348,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Content Team - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.contentTeam.map((member, index) => {
                           // Exclude leads and vice leads
                           if (
@@ -358,12 +364,12 @@ const About = () => {
                   </div>
                   <br />
 
-                  <div className="flex flex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Operations Team Leads - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.operationsTeam.map(
                           (member, index) =>
                             member.post === "Lead" && (
@@ -376,7 +382,7 @@ const About = () => {
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Operations Team - {team?.year}
                       </h1>
-                      <div className="flex justify-evenly gap-8">
+                      <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.operationsTeam.map(
                           (member, index) =>
                             member.post !== "Lead" && (
