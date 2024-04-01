@@ -33,7 +33,7 @@ const TeamMemberCard = ({
         <img
           src={imageUrl}
           alt={name || "Image"}
-          className="object-cover min-w-[280px]"
+          className="object-cover min-w-[280px] min-h-[300px]"
         />
       ) : (
         <span className="w-full h-full flex flex-wrap flex-wrapitems-center justify-center">
@@ -60,6 +60,7 @@ const TeamMemberCard = ({
           <Link
             href={`${linkedin}`}
             className="flex flex-wrap flex-wrapgap-2 items-center"
+            target="_blank"
           >
             <BiLogoLinkedin size={30} />
             {/* <p>{linkedin}</p> */}
@@ -80,6 +81,7 @@ const TeamMemberCard = ({
           <Link
             href={`github.com/${github}`}
             className="flex flex-wrap flex-wrapgap-2 items-center"
+            target="_blank"
           >
             <BiLogoGithub size={30} />
             {/* <p>{email}</p> */}
