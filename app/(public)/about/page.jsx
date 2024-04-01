@@ -47,7 +47,7 @@ const TeamMemberCard = ({
       <div className="flex flex-wrap flex-wrapflex-wrap items-center gap-2 mt-4 justify-around">
         {instagram && (
           <Link
-            href={`instagram.com/${instagram}`}
+            href={`https://instagram.com/${instagram}`}
             className="flex flex-wrap flex-wrapgap-2 items-center"
             target="_blank"
           >
@@ -58,7 +58,7 @@ const TeamMemberCard = ({
 
         {linkedin && (
           <Link
-            href={`${linkedin}`}
+            href={`https://${linkedin}`}
             className="flex flex-wrap flex-wrapgap-2 items-center"
             target="_blank"
           >
@@ -79,7 +79,7 @@ const TeamMemberCard = ({
 
         {github && (
           <Link
-            href={`github.com/${github}`}
+            href={`https://github.com/${github}`}
             className="flex flex-wrap flex-wrapgap-2 items-center"
             target="_blank"
           >
@@ -224,7 +224,7 @@ const About = () => {
                     </div>
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
-                        Public Relations Team Leads - {team?.year}
+                        Public Relations Team - {team?.year}
                       </h1>
                       <div className="flex flex-wrap flex-wrapjustify-evenly gap-8">
                         {team?.publicRelationsTeam.map(
