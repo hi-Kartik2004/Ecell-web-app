@@ -106,7 +106,7 @@ const About = () => {
 
   if (loading) {
     return (
-      <div className="min-h-[100vh] flex flex-wrap flex-wrapitems-center justify-center">
+      <div className="min-h-[100vh] flex flex-wrap items-center justify-center">
         <Loader />
       </div>
     );
@@ -328,7 +328,7 @@ const About = () => {
                     </div>
                   </div>
                   <br />
-                  <div className="flex flex-wrap flex-wrapflex-wrap justify-evenly gap-8">
+                  <div className="flex flex-wrap flex-col items-center justify-evenly gap-8">
                     <div>
                       <h1 className="text-2xl mt-10 text-center font-bold mb-4">
                         Content Team Leads - {team?.year}

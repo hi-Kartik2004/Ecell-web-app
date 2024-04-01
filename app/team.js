@@ -415,14 +415,6 @@ const teamOf24 = {
       email: "varsharao2005@gmail.com",
       imageUrl: "https://i.postimg.cc/9QsS30QG/1711454345619.jpg",
     },
-    {
-      name: "Danish Neman Sharief",
-      post: "Executive",
-      instagram: "danish.shariff_",
-      linkedin: "https://www.linkedin.com/in/danish-shariff-b48a3025a",
-      email: "danishshariff92@gmail.com",
-      imageUrl: "https://i.postimg.cc/YSMFZZDz/1706450777661.jpg",
-    },
   ],
   operationsTeam: [
     {
