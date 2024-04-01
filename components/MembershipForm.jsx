@@ -28,10 +28,18 @@ import {
 import { Input } from "./ui/input";
 import { Button } from "@/components/ui/button";
 import QrCodeComponent from "./QrCodeComponent";
-import { addDoc, collection, getDocs } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  getDocs,
+  orderBy,
+  query,
+  updateDoc,
+  where,
+} from "firebase/firestore";
 import { db, storage } from "@/firebase/config";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { useToast } from "./ui/use-toast";
+import { toast, useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./Loader";
@@ -49,22 +57,46 @@ function MembershipForm() {
   const { toast } = useToast();
 
   const [submitting, setSubmitting] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
   const [regTimestamp, setRegTimestamp] = useState(null);
   const [status, setStatus] = useState(null);
 
+  function isTimestampWithinOneYear(timestamp) {
+    // Convert the provided timestamp to milliseconds
+    const milliseconds = timestamp.seconds * 1000 + timestamp.nanoseconds / 1e6;
+
+    // Create a Date object from the milliseconds
+    const providedDate = new Date(milliseconds);
+
+    // Calculate date one year ago from today
+    const oneYearAgo = new Date();
+    oneYearAgo.setFullYear(oneYearAgo.getFullYear() - 1);
+
+    // Compare provided timestamp with date one year ago
+    return providedDate > oneYearAgo;
+  }
+
   async function checkRegistrationStatus() {
     const transactionsRef = collection(db, "transactions");
-    const transactionsSnapshot = await getDocs(transactionsRef);
+    const transactionsSnapshot = await getDocs(
+      query(
+        transactionsRef,
+        where("email", "==", user?.emailAddresses[0]?.emailAddress),
+        orderBy("timestamp", "desc")
+      )
+    );
     const transactionsList = transactionsSnapshot.docs.map((doc) => doc.data());
     const userTransactions = transactionsList.filter(
       (transaction) =>
         transaction.email === user?.emailAddresses[0]?.emailAddress
     );
     if (userTransactions.length > 0) {
-      setRegTimestamp(userTransactions[0].timestamp);
-      setStatus(userTransactions[0].status);
-      console.log("User has already registered.");
-      return true;
+      setRegTimestamp(userTransactions[0]?.timestamp);
+      if (isTimestampWithinOneYear(userTransactions[0]?.timestamp)) {
+        setStatus(userTransactions[0]?.status);
+        console.log("User has already registered.");
+        return true;
+      }
     }
     console.log("User has not registered yet.");
     return false;
@@ -135,6 +167,7 @@ function MembershipForm() {
     });
     checkRegistrationStatus();
     setSubmitting(false);
+    setSubmitted(true);
   }
 
   useEffect(() => {
@@ -243,13 +276,13 @@ function MembershipForm() {
             </div>
             <div>
               {
-                <Dialog>
+                <Dialog className={`${submitted && "hidden"}`}>
                   <DialogTrigger asChild>
                     <button
-                      disabled={submitting || regTimestamp}
+                      disabled={status}
                       className="inline-flex items-center justify-center w-full h-12 px-6 mb-4 tracking-wide text-black font-bold transition duration-200 rounded-lg shadow-md bg-deep-purple-accent-400 hover:bg-deep-purple-accent-700 focus:shadow-outline focus:outline-none border bg-white"
                     >
-                      {regTimestamp ? (
+                      {status ? (
                         <span className="flex gap-2 items-center">
                           {status}
                         </span>
@@ -304,9 +337,13 @@ function MembershipForm() {
                       <Button
                         type="submit"
                         className="w-full mt-4"
-                        disabled={submitting || regTimestamp}
+                        disabled={status}
                       >
-                        {submitting ? "Submitting..." : "Claim Membership"}
+                        {submitting
+                          ? "Submitting..."
+                          : status
+                            ? "Verification Pending (24 hours)"
+                            : "Claim Membership"}
                       </Button>
                     </form>
                   </DialogContent>
@@ -314,7 +351,7 @@ function MembershipForm() {
               }
               <p className="text-sm text-gray-700">
                 {regTimestamp && (
-                  <b>Applied on {regTimestamp.toDate().toDateString()}</b>
+                  <b>Last Applied on {regTimestamp.toDate().toDateString()}</b>
                 )}
                 {regTimestamp && <br />}
                 {globalData?.joinPageMembershipCardDescription}

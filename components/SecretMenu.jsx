@@ -19,6 +19,7 @@ const adminMenuLinks = [
   { name: "Add Event Summary", link: "/add-event-summary" },
   { name: "Add Photo", link: "/add-gallery" },
   { name: "Registrations", link: "/registrations" },
+  { name: "Transactions", link: "/transactions" },
 ];
 
 function SecretMenu({ username, admin }) {
