@@ -10,6 +10,7 @@ export default authMiddleware({
     "/contact",
     "/event-summaries",
     "/event-summary/(.*)",
+    "/api/webhook",
   ],
 });
 

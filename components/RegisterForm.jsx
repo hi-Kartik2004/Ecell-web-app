@@ -1,6 +1,6 @@
 // Import necessary libraries and components
 "use client";
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm, useFieldArray } from "react-hook-form";
 import * as z from "zod";
@@ -18,7 +18,14 @@ import {
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { db } from "@/firebase/config";
-import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import {
+  addDoc,
+  collection,
+  deleteDoc,
+  getDocs,
+  query,
+  where,
+} from "firebase/firestore";
 import { useUser } from "@clerk/nextjs";
 import Loader from "./Loader";
 import TeamMembersField from "./TeamMembersField";
@@ -60,6 +67,22 @@ const formSchema = z.object({
     })
   ),
 });
+
+export async function addMessageToFirestore({ ...formData }) {
+  try {
+    const docData = {
+      ...formData,
+    };
+
+    const collectionRef = collection(db, "registrations");
+    await addDoc(collectionRef, docData);
+
+    return true;
+  } catch (error) {
+    console.error("Error in Firestore operation:", error);
+    return false;
+  }
+}
 
 // Main component for the form
 export default function EventForm({ data }) {
@@ -133,6 +156,10 @@ export default function EventForm({ data }) {
   const [showPayment, setShowPayment] = useState(false);
   const searchParams = useSearchParams();
   const router = useRouter();
+  const [dataOfForm, setDataOfForm] = useState(null);
+  const eventSourceRef = useRef(null);
+  const [showDuplicatePaymentError, setShowDuplicatePaymentError] =
+    useState(false);
 
   async function isUserRegistered(eventId, userEmail) {
     const registrationsRef = collection(db, "registrations");
@@ -228,24 +255,6 @@ export default function EventForm({ data }) {
   });
 
   // Function to handle Firestore operation
-  async function addMessageToFirestore({ formData }) {
-    try {
-      const docData = {
-        ...formData,
-        timestamp: Date.now(),
-        eventId: data.id,
-        eventName: data.name,
-      };
-
-      const collectionRef = collection(db, "registrations");
-      await addDoc(collectionRef, docData);
-
-      return true;
-    } catch (error) {
-      console.error("Error in Firestore operation:", error);
-      return false;
-    }
-  }
 
   async function validatePaymentId(paymentId) {
     // validate paymentId
@@ -257,6 +266,11 @@ export default function EventForm({ data }) {
   async function onSubmit(values) {
     // const paymentId = searchParams("paymentId");
     sessionStorage.setItem("registerForm", JSON.stringify(values));
+    setDataOfForm({
+      ...values,
+      ...data,
+      timestamp: Date.now(),
+    });
     setShowPayment(true);
   }
 
@@ -278,6 +292,76 @@ export default function EventForm({ data }) {
       });
     }
   }
+
+  useEffect(() => {
+    async function addDataToQueue() {
+      const ref = collection(db, "paymentQueue");
+      const q = query(
+        collection(db, "paymentQueue"),
+        where("leaderEmail", "==", user?.emailAddresses[0]?.emailAddress)
+      );
+      try {
+        const getSnapshot = await getDocs(q);
+        console.log(getSnapshot.size);
+        if (!getSnapshot.empty) {
+          setShowDuplicatePaymentError(true);
+          return;
+        }
+        const snapshot = await addDoc(ref, dataOfForm);
+        toast({
+          title: "Success",
+          description: "Data added to payment queue",
+        });
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    async function removeDataFromQueue() {
+      const ref = collection(db, "paymentQueue");
+      const q = query(ref, where("leaderEmail", "==", dataOfForm.leaderEmail));
+      let querySnapshot;
+      try {
+        querySnapshot = await getDocs(q);
+      } catch (err) {
+        console.error(err);
+        return; // Exit early if there's an error
+      }
+
+      // Use Promise.all to wait for all deletions to complete
+      await Promise.all(
+        querySnapshot.docs.map(async (doc) => {
+          try {
+            await deleteDoc(doc.ref);
+            console.log("Successfully deleted data from payment queue");
+          } catch (e) {
+            console.error(e);
+          }
+        })
+      );
+
+      console.log("All deletions completed");
+    }
+
+    if (showPayment) {
+      checkUserRegistration();
+      addDataToQueue();
+    }
+
+    if (!showPayment) {
+      removeDataFromQueue();
+    }
+
+    // after every 12 minutes set showPayment to false
+    const interval = setInterval(() => {
+      setShowPayment(false);
+    }, 720000);
+
+    return () => {
+      removeDataFromQueue();
+      clearInterval(interval);
+    };
+  }, [showPayment]);
 
   if (loading) {
     return (
@@ -307,6 +391,42 @@ export default function EventForm({ data }) {
     );
   }
 
+  if (showDuplicatePaymentError) {
+    return (
+      <div className="text-center h-[45vh] mt-20 mb-12 gap-4 flex flex-col justify-center items-center">
+        <BsFillSignStopFill size={50} />
+        <div className="px-4 py-2 rounded-md border">
+          <h3 className="text-2xl font-semibold">
+            You can only perform one payment at a time.
+          </h3>
+          <p className="text-center text-muted-foreground mt-2">
+            please close other payment windows to proceed.
+          </p>
+        </div>
+        <div className="flex flex-wrap gap-4 items-center">
+          {/* <Button
+            onClick={() => {
+              setShowPayment(false);
+              setShowDuplicatePaymentError(false);
+            }}
+          >
+            Shut down all other payment pages and proceed this payment with
+            force
+          </Button> */}
+          <Button
+            variant="secondary"
+            onClick={() => {
+              setShowPayment(false);
+              setShowDuplicatePaymentError(false);
+            }}
+          >
+            Proceed this payment with force*
+          </Button>
+        </div>
+      </div>
+    );
+  }
+
   return (
     <>
       <Toaster />
@@ -322,7 +442,24 @@ export default function EventForm({ data }) {
               Edit Team Details <BiPencil size={20} />
             </span>
           </Button> */}
-          <PaymentForm data={data} />
+          <Button
+            variant="link"
+            onClick={() => {
+              setShowPayment(false);
+            }}
+          >
+            &rarr; Back
+          </Button>
+          <iframe
+            src={`https://konfhub.com/widget/tto?desc=false${
+              "?eventId=" + data.id + "&teamName=" + dataOfForm.teamName
+            }`}
+            id="konfhub-widget"
+            title="Register for testing this out"
+            width="100%"
+            height="500px"
+            className="rounded-lg no-scrollbar mt-4 shadow-lg shadow-background border"
+          ></iframe>
         </div>
       ) : (
         <Form {...form}>

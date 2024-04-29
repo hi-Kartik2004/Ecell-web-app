@@ -145,7 +145,7 @@ async function page({ params }) {
           </div>
         </div>
 
-        <div className="max-w-[600px] md:max-h-[140vh] flex flex-col w-full bg-card p-8 py-10 rounded-md border md:overflow-auto">
+        <div className="max-w-[600px] md:max-h-[142vh] flex flex-col w-full bg-card p-8 py-10 rounded-md border md:overflow-auto">
           <h1 className="text-3xl font-semibold text-center">
             <span className="text-primary">Register</span> for{" "}
             {data?.name ?? "Not Provided"}!
