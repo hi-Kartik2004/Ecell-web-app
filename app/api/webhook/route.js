@@ -1,4 +1,3 @@
-"use server";
 import { db } from "@/firebase/config";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
 import { NextResponse } from "next/server";
@@ -47,15 +46,12 @@ export async function POST(req) {
           );
         } catch (err) {
           console.error(err);
-          return NextResponse.json({
-            message: "Error adding data",
-            status: 500,
-          });
+          return NextResponse.redirect("https://google.com");
         }
       }
     } catch (err) {
       console.error(err);
-      return NextResponse.json({ message: "Error fetching data", status: 500 });
+      return NextResponse.redirect("https://facebook.com");
     }
   }
 
