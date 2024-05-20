@@ -474,9 +474,9 @@ const teamOf24 = {
 const teamData = [
   // The latest team information must be above the rest which will set it to default.
   { ...teamOf24 },
-  {
-    ...teamOf23,
-  },
+  // {
+  //   ...teamOf23,
+  // },
 ];
 
 export default teamData;
