@@ -11,6 +11,9 @@ export default authMiddleware({
     "/event-summaries",
     "/event-summary/(.*)",
     "/api/webhook",
+    "/registration-failed",
+    "/redirect-works",
+    "/api/handle-redirect",
   ],
 });
 

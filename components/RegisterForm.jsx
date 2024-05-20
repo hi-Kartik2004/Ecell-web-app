@@ -95,7 +95,7 @@ export default function EventForm({ data }) {
     );
   }
 
-  const dateParts = data.date.split("-");
+  const dateParts = data?.date?.split("-");
   data.dateObject = new Date(
     dateParts[2], // Year
     dateParts[1] - 1, // Month (subtract 1 because months are 0-indexed in JavaScript)
@@ -309,8 +309,8 @@ export default function EventForm({ data }) {
         }
         const snapshot = await addDoc(ref, dataOfForm);
         toast({
-          title: "Success",
-          description: "Data added to payment queue",
+          title: "Team Details Saved!",
+          description: "You can now proceed with the payment.",
         });
       } catch (e) {
         console.error(e);
@@ -450,6 +450,10 @@ export default function EventForm({ data }) {
           >
             &rarr; Back
           </Button>
+          <p className="text-red-500">
+            The Email Address provided when making the payment should match with
+            the leader's Email i.e the email using which you have logged in.
+          </p>
           <iframe
             src={`https://konfhub.com/widget/tto?desc=false${
               "?eventId=" + data.id + "&teamName=" + dataOfForm.teamName

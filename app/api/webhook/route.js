@@ -1,14 +1,26 @@
 import { db } from "@/firebase/config";
 import { addDoc, collection, getDocs, query, where } from "firebase/firestore";
+import { permanentRedirect, redirect } from "next/navigation";
 import { NextResponse } from "next/server";
+
+export async function GET(req) {
+  // get query params
+  const redirectUrl = req.query.get("redirectUrl");
+  console.log(redirectUrl);
+  // redirect(redirectUrl);
+  return Response.json({
+    redirectUrl: redirectUrl,
+  });
+  // redirect("/redirect-works");
+}
 
 export async function POST(req) {
   const body = await req.json();
 
   const webhookEmail = body?.Data["Attendee Details"]["Email Address"];
 
-  console.log(webhookEmail);
   let eventId = null;
+  let redirectUrl = null;
 
   async function addRegistrations() {
     const ref = query(
@@ -16,6 +28,7 @@ export async function POST(req) {
       where("leaderEmail", "==", webhookEmail)
     );
     let data = [];
+
     try {
       const snapshot = await getDocs(ref);
 
@@ -25,10 +38,7 @@ export async function POST(req) {
 
       if (data.length === 0) {
         console.log("No data found");
-        return NextResponse.json({
-          message: "No matching data found",
-          status: 404,
-        });
+        redirectUrl = "/registration-failed?reason=no-data-found-in-queue";
       } else {
         console.log(data);
         eventId = data[0].id;
@@ -41,20 +51,24 @@ export async function POST(req) {
             eventId: data[0].id,
           });
           console.log("Added data to registrations collection");
-          return NextResponse.redirect(
-            body?.Data["Attendee Details"]["Ticket URL"]
-          );
+          redirectUrl = body?.Data["Attendee Details"]["Ticket URL"];
         } catch (err) {
           console.error(err);
-          return NextResponse.redirect("https://google.com");
+          redirectUrl = "/registration-failed?reason=firebase-error";
         }
       }
     } catch (err) {
       console.error(err);
-      return NextResponse.redirect("https://facebook.com");
+      redirectUrl = "/registration-failed?reason=firebase-error";
     }
   }
 
-  const result = await addRegistrations();
-  return result;
+  await addRegistrations();
+
+  if (redirectUrl) {
+    console.log(redirectUrl);
+    redirect(
+      "https://localhost:3001/api/handle-redirect?redirectUrl=" + redirectUrl
+    );
+  }
 }
