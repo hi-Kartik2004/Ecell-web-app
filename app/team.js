@@ -175,7 +175,7 @@ const teamOf24 = {
       instagram: "hill__rush",
       linkedin: "https://www.linkedin.com/in/rushil-b-r",
       email: "rushilbr225@gmail.com",
-      github: "https://github.com/rushilbr225",
+      github: "rushilbr225",
       imageUrl: "https://i.postimg.cc/sXnmnz9q/IMG-20231123-WA0057.jpg",
     },
     {
@@ -184,7 +184,7 @@ const teamOf24 = {
       instagram: "srivatsashesha",
       linkedin: "https://www.linkedin.com/in/srivatsa-sheshadri",
       email: "srivatsa.shesha@gmail.com",
-      github: "https://github.com/srivatsashesha",
+      github: "srivatsashesha",
       imageUrl: "https://i.postimg.cc/GhkxNcT9/Snapseed.jpg",
     },
   ],
@@ -204,7 +204,7 @@ const teamOf24 = {
       instagram: "chyavan_rao",
       linkedin: "www.linkedin.com/in/chyavanraoas",
       email: "chyavanrao24@gmail.com",
-      github: "https://github.com/Chyavanrao7",
+      github: "Chyavanrao7",
       imageUrl: "https://i.postimg.cc/13txRjqy/1703405812532.jpg",
     },
     {
@@ -223,7 +223,7 @@ const teamOf24 = {
       linkedin:
         "https://www.linkedin.com/in/karthikey-kadati-277420279?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app",
       email: "karthikey5438@gmail.com",
-      github: "https://github.com/Karthikey1",
+      github: "Karthikey1",
       imageUrl: "https://i.postimg.cc/sgyNRVKR/IMG-20240122-171859.jpg",
     },
     {
@@ -304,7 +304,7 @@ const teamOf24 = {
       instagram: "one__shh",
       linkedin: "https://www.linkedin.com/in/vansh-bhardwaj-5977681b1/",
       email: "vanshayushi@gmail.com",
-      github: "https://github.com/Bhardwajvansh",
+      github: "Bhardwajvansh",
       imageUrl: "https://i.postimg.cc/SxPmBMKQ/1680862132927.jpg",
     },
     {
@@ -342,7 +342,8 @@ const teamOf24 = {
       instagram: "shreyashsuryawanshi",
       linkedin: "Shreyash Suryawanshi",
       email: "shreyashsuryawanshi926@gmail.com",
-      imageUrl: "https://i.postimg.cc/ZK9RYLRJ/IMG-1907.jpg",
+      imageUrl:
+        "https://i.postimg.cc/XJZMLx5c/22738544-2bc7-4fde-9431-e76cbc2fd4e0.jpg",
     },
     {
       name: "Tejas R Bhoopalam",
@@ -414,14 +415,6 @@ const teamOf24 = {
       email: "varsharao2005@gmail.com",
       imageUrl: "https://i.postimg.cc/9QsS30QG/1711454345619.jpg",
     },
-    {
-      name: "Danish Neman Sharief",
-      post: "Executive",
-      instagram: "danish.shariff_",
-      linkedin: "https://www.linkedin.com/in/danish-shariff-b48a3025a",
-      email: "danishshariff92@gmail.com",
-      imageUrl: "https://i.postimg.cc/YSMFZZDz/1706450777661.jpg",
-    },
   ],
   operationsTeam: [
     {
@@ -474,9 +467,9 @@ const teamOf24 = {
 const teamData = [
   // The latest team information must be above the rest which will set it to default.
   { ...teamOf24 },
-  // {
-  //   ...teamOf23,
-  // },
+  {
+    ...teamOf23,
+  },
 ];
 
 export default teamData;
