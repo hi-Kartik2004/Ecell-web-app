@@ -40,6 +40,7 @@ import {
   TableRow,
 } from "@/components/ui/table";
 import TeamDetailsDialog from "./TeamDetailsDialog";
+import Link from "next/link";
 const columns = [
   {
     id: "select",
@@ -69,9 +70,9 @@ const columns = [
   //   cell: ({ row }) => <div>{row.getValue("eventId")}</div>,
   // },
   {
-    accessorKey: "eventName",
+    accessorKey: "name",
     header: "Event Name",
-    cell: ({ row }) => <div>{row.getValue("eventName")}</div>,
+    cell: ({ row }) => <div>{row.getValue("name")}</div>,
   },
   {
     accessorKey: "teamName",
@@ -86,12 +87,20 @@ const columns = [
   {
     accessorKey: "leaderEmail",
     header: "Leader Email",
-    cell: ({ row }) => <div>{row.getValue("leaderEmail")}</div>,
+    cell: ({ row }) => (
+      <Link href={"mailto:" + row.getValue("leaderEmail")}>
+        {row.getValue("leaderEmail")}
+      </Link>
+    ),
   },
   {
     accessorKey: "paymentId",
     header: "Payment Id",
-    cell: ({ row }) => <div>{row.getValue("paymentId") || "Free event"}</div>,
+    cell: ({ row }) => (
+      <Link href={row.getValue("paymentId")}>
+        {row.getValue("paymentId") || "Free event"}
+      </Link>
+    ),
   },
   {
     accessorKey: "timestamp",
@@ -100,7 +109,7 @@ const columns = [
       <div>
         {" "}
         {new Date(row.getValue("timestamp"))
-          .toISOString()
+          .toLocaleString("en-IN")
           .slice(0, 19)
           .replace("T", " ")}
       </div>
@@ -189,9 +198,9 @@ export function DataTableDemo({ data }) {
         <div className="flex gap-4 flex-wrap w-full">
           <Input
             placeholder="Filter by event name..."
-            value={table.getColumn("eventName")?.getFilterValue() || ""}
+            value={table.getColumn("name")?.getFilterValue() || ""}
             onChange={(event) =>
-              table.getColumn("eventName")?.setFilterValue(event.target.value)
+              table.getColumn("name")?.setFilterValue(event.target.value)
             }
             className="max-w-xs"
           />

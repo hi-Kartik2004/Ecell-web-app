@@ -10,11 +10,14 @@ import Link from "next/link";
 import React, { Suspense } from "react";
 import { BsFillPersonFill } from "react-icons/bs";
 import { formatDistanceToNow } from "date-fns";
+import { getUnsplashPhoto } from "./GetUnsplashUrl";
 
-function ArticleCard({ data, redirect }) {
+async function ArticleCard({ data, redirect }) {
   const timeAgo = formatDistanceToNow(new Date(data.timestamp), {
     addSuffix: true,
   });
+
+  const unsplashPhoto = await getUnsplashPhoto(data?.title);
 
   return (
     <div className="max-w-[400px] w-full">
@@ -37,7 +40,7 @@ function ArticleCard({ data, redirect }) {
           <div className="">
             <div className="w-full h-[200px] px-5">
               <img
-                src={`https://source.unsplash.com/random/350X350/?${data.title}`}
+                src={data?.imageUrl || unsplashPhoto}
                 alt="blog-card"
                 className="rounded-md object-cover w-full h-full bg-muted"
               />

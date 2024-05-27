@@ -16,12 +16,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
+import { db, storage } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Input } from "./ui/input";
 import Link from "next/link";
 import { Skeleton } from "./ui/skeleton";
+import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
 
 export const dynamic = "force-dynamic";
 
@@ -43,10 +44,33 @@ export default function SummaryEditor({
   const [title, setTitle] = useState(blogTitle || "");
   const [description, setDescription] = useState(blogDescription || "");
   const [loading, setLoading] = useState(true);
+  const [image, setImage] = useState(null);
+
+  async function uploadImage(imageFile) {
+    const timestamp = new Date().getTime();
+    const storageRef = ref(
+      storage,
+      `event-summary-images/${imageFile.name}_${timestamp}`
+    );
+
+    try {
+      await uploadBytes(storageRef, imageFile);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL;
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      toast({
+        title: "Image Upload Failed",
+        description: `Could not upload the image: ${error.message}`,
+      });
+      throw error;
+    }
+  }
 
   async function addBlogToFirestore() {
     try {
       const collectionRef = collection(db, "event-summaries");
+      const imageUrl = image ? await uploadImage(image) : null;
       const docSnap = await addDoc(collectionRef, {
         title: title || "No title provided",
         description: description || "No description provided",
@@ -54,32 +78,35 @@ export default function SummaryEditor({
         blog: sessionStorage.getItem("event-summary"),
         timestamp: Date.now(),
         views: 0,
+        imageUrl: imageUrl,
       });
       console.log("Blog added with ID: ", docSnap.id);
       toast({
         title: "Event Summary Added Successfully",
-        description: `Your event summary might take upto few minutes to go live, its id is ${docSnap.id}`,
+        description: `Your event summary might take up to a few minutes to go live, its id is ${docSnap.id}`,
       });
     } catch (e) {
       console.log(e);
       toast({
         title: "Adding Blog failed",
-        description: `Please refer exisiting issue on our github repo with the following error: ${e}, or raise one yourself.`,
+        description: `Please refer to the existing issue on our GitHub repo with the following error: ${e}, or raise one yourself.`,
       });
     }
   }
 
   async function setBlogInFirestore() {
     const blogRef = doc(db, "event-summaries", blogId);
+    const imageUrl = image ? await uploadImage(image) : null;
     await updateDoc(blogRef, {
       title: title || "No title provided",
       description: description || "No description provided",
       blog: sessionStorage.getItem("edit-event-summary"),
       timestamp: Date.now(),
+      imageUrl: imageUrl,
     });
     toast({
       title: "Blog Edited Successfully",
-      description: `Your blog might take upto few minutes to go live, its id is ${blogId}`,
+      description: `Your blog might take up to a few minutes to go live, its id is ${blogId}`,
     });
   }
 
@@ -88,8 +115,6 @@ export default function SummaryEditor({
       sessionStorage.setItem("event-summary", "");
     blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
   }, []);
-
-  // blogCode && sessionStorage.setItem("edit-event-summary", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
@@ -164,11 +189,15 @@ export default function SummaryEditor({
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                       />
-
                       <Input
                         placeholder="description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                      />
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setImage(e.target.files[0])}
                       />
                     </div>
                   </AlertDialogDescription>

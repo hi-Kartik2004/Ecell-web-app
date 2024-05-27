@@ -10,7 +10,7 @@ import { ModeToggle } from "@/components/ThemeToggleBtn";
 
 const menuLinks = [
   { name: "Exclusive Articles", link: "/articles" },
-  { name: "Add Blog", link: "/add-blog" },
+  { name: "Add Article", link: "/add-blog" },
   { name: "Manage Blogs", link: "/manage-blogs" },
 ];
 

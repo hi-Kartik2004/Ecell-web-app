@@ -20,6 +20,7 @@ import { Skeleton } from "@/components/ui/skeleton";
 // import { routeros } from "react-syntax-highlighter/dist/esm/styles/hljs";
 import { useRouter } from "next/navigation";
 import Foot from "@/components/Foot";
+import { getUnsplashPhoto } from "@/components/GetUnsplashUrl";
 
 function page({ params }) {
   const router = useRouter();
@@ -27,6 +28,7 @@ function page({ params }) {
   const [loading, setLoading] = useState(true);
   const [blogData, setBlogData] = useState(null);
   const [data, setData] = useState([]);
+  const [unsplashPhoto, setUnsplashPhoto] = useState("");
 
   async function getPortfolioDetailsFromFirestore() {
     try {
@@ -63,6 +65,11 @@ function page({ params }) {
   }
 
   useEffect(() => {
+    async function helper() {
+      const url = await getUnsplashPhoto(blogData?.title);
+      setUnsplashPhoto(url);
+    }
+    helper();
     getPortfolioDetailsFromFirestore();
     setLoading(false);
   }, []);
@@ -128,9 +135,7 @@ function page({ params }) {
               <div className="mt-4">
                 <div className="object-cover w-full lg:h-[170px] h-[150px] overflow-hidden">
                   <img
-                    src={`https://source.unsplash.com/random/900x700/?Futuristic-background-related-to${encodeURIComponent(
-                      blogData.title
-                    )}/1920X1080`}
+                    src={unsplashPhoto}
                     className="w-full h-full object-cover rounded-lg bg-muted"
                     alt="inside blog image"
                   />

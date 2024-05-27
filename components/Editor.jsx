@@ -16,15 +16,13 @@ import {
 import { Button } from "@/components/ui/button";
 import { UserButton, useUser } from "@clerk/nextjs";
 import { addDoc, collection, doc, updateDoc } from "firebase/firestore";
-import { db } from "@/firebase/config";
+import { db, storage } from "@/firebase/config";
 import { useToast } from "./ui/use-toast";
 import { Toaster } from "./ui/toaster";
 import { Input } from "./ui/input";
 import Link from "next/link";
 import { Skeleton } from "./ui/skeleton";
 import { getDownloadURL, ref, uploadBytes } from "firebase/storage";
-import { storage } from "@/firebase/config";
-import { Checkbox } from "./ui/checkbox";
 import { FaSpinner } from "react-icons/fa";
 
 export const dynamic = "force-dynamic";
@@ -49,24 +47,15 @@ export default function Editor({
   const [description, setDescription] = useState(blogDescription || "");
   const [loading, setLoading] = useState(true);
   const [addingBlog, setAddingBlog] = useState(false);
+  const [image, setImage] = useState(null);
 
   function filterEnglishMarkdown(markdownText) {
-    // Regular expression to match images in Markdown
     const imageRegex = /!\[.*?\]\([^)]+\)/g;
-
-    // Regular expression to match strikethrough in Markdown
     const strikethroughRegex = /~~(.*?)~~/g;
-
-    // Regular expression to match HTML comments
     const commentsRegex = /<!--[\s\S]*?-->/g;
 
-    // Replace images with an empty string
     let filteredText = markdownText.replace(imageRegex, "");
-
-    // Replace strikethrough with its content
     filteredText = filteredText.replace(strikethroughRegex, (match, p1) => p1);
-
-    // Remove HTML comments
     filteredText = filteredText.replace(commentsRegex, "");
 
     return filteredText;
@@ -119,6 +108,27 @@ export default function Editor({
     }
   }
 
+  async function uploadImage(imageFile) {
+    const timestamp = new Date().getTime();
+    const storageRef = ref(
+      storage,
+      `blog-images/${imageFile.name}_${timestamp}`
+    );
+
+    try {
+      await uploadBytes(storageRef, imageFile);
+      const downloadURL = await getDownloadURL(storageRef);
+      return downloadURL;
+    } catch (error) {
+      console.error("Error uploading image:", error);
+      toast({
+        title: "Image Upload Failed",
+        description: `Could not upload the image: ${error.message}`,
+      });
+      throw error;
+    }
+  }
+
   async function getTheDownloadUrlFromFirestore(sessionLabel = "addBlog") {
     const timestamp = new Date().getTime();
     const blog = sessionStorage.getItem(sessionLabel);
@@ -148,9 +158,8 @@ export default function Editor({
       throw uploadError;
     }
 
-    let downloadURL;
     try {
-      downloadURL = await getDownloadURL(storageRef);
+      const downloadURL = await getDownloadURL(storageRef);
       return downloadURL;
     } catch (downloadError) {
       console.error("Error getting Download URL:", downloadError);
@@ -163,6 +172,7 @@ export default function Editor({
     try {
       const collectionRef = collection(db, "blogs");
       const recordingUrl = await getTheDownloadUrlFromFirestore();
+      const imageUrl = image ? await uploadImage(image) : null;
       const docSnap = await addDoc(collectionRef, {
         title: title || "No title provided",
         description: description || "No description provided",
@@ -172,20 +182,20 @@ export default function Editor({
         timestamp: Date.now(),
         views: 0,
         recordingUrl: { recordingUrl },
+        imageUrl: imageUrl,
       });
       console.log("Blog added with ID: ", docSnap.id);
       toast({
         title: "Blog Added Successfully",
-        description: `Your blog might take upto few minutes to go live, its id is ${docSnap.id}`,
+        description: `Your blog might take up to a few minutes to go live, its id is ${docSnap.id}`,
       });
     } catch (e) {
       console.log(e);
       toast({
         title: "Adding Blog failed",
-        description: `Please refer exisiting issue on our github repo with the following error: ${e}, or raise one yourself.`,
+        description: `Please refer to the existing issue on our GitHub repo with the following error: ${e}, or raise one yourself.`,
       });
     }
-
     setAddingBlog(false);
   }
 
@@ -193,6 +203,7 @@ export default function Editor({
     setAddingBlog(true);
     const blogRef = doc(db, "blogs", blogId);
     const recordingUrl = await getTheDownloadUrlFromFirestore("editBlog");
+    const imageUrl = image ? await uploadImage(image) : null;
     await updateDoc(blogRef, {
       title: title || "No title provided",
       description: description || "No description provided",
@@ -201,10 +212,11 @@ export default function Editor({
       email: user.emailAddresses[0].emailAddress,
       timestamp: Date.now(),
       recordingUrl: { recordingUrl },
+      imageUrl: imageUrl,
     });
     toast({
       title: "Blog Edited Successfully",
-      description: `Your blog might take upto few minutes to go live, its id is ${blogId}`,
+      description: `Your blog might take up to a few minutes to go live, its id is ${blogId}`,
     });
     setAddingBlog(false);
   }
@@ -213,8 +225,6 @@ export default function Editor({
     !sessionStorage.getItem("addBlog") && sessionStorage.setItem("addBlog", "");
     blogCode && sessionStorage.setItem("editBlog", blogCode);
   }, []);
-
-  // blogCode && sessionStorage.setItem("editBlog", blogCode);
 
   let storedValue = "<!-- Write your blog below -->";
   if (typeof window !== "undefined") {
@@ -294,7 +304,7 @@ export default function Editor({
                   <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
                   <AlertDialogDescription>
                     The blog once published will be public to everyone, and can
-                    be accessed other members, we will enbale text to speech
+                    be accessed by other members. We will enable text-to-speech
                     functionality for your cool blog 😎
                     <div className="flex flex-col flex-wrap gap-4 mt-4">
                       <Input
@@ -302,18 +312,22 @@ export default function Editor({
                         value={title}
                         onChange={(e) => setTitle(e.target.value)}
                       />
-
                       <Input
-                        placeholder="description"
+                        placeholder="Description"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                      />
+                      <Input
+                        type="file"
+                        accept="image/*"
+                        onChange={(e) => setImage(e.target.files[0])}
                       />
                     </div>
                   </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
                   <AlertDialogCancel>Cancel</AlertDialogCancel>
-                  {buttonType == "edit" ? (
+                  {buttonType === "edit" ? (
                     <AlertDialogAction
                       onClick={setBlogInFirestore}
                       disabled={title.length < 10 || addingBlog}

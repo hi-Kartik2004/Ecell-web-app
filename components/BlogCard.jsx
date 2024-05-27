@@ -23,6 +23,8 @@ import {
 import { Button } from "./ui/button";
 import { Toaster } from "./ui/toaster";
 import { useToast } from "./ui/use-toast";
+import { useEffect } from "react";
+import { getUnsplashPhoto } from "./GetUnsplashUrl";
 
 function BlogCard({
   index,
@@ -36,9 +38,10 @@ function BlogCard({
   editIcon,
   deleteIcon,
   type,
+  imageUrl = "",
 }) {
   const { toast } = useToast();
-
+  const [unsplashPhoto, setUnsplashPhoto] = useState("");
   async function deleteBlog() {
     let res;
     if (type === "event-summary-card") {
@@ -58,6 +61,14 @@ function BlogCard({
       } with title ${title} was deleted successfully, refresh to see changes`,
     });
   }
+
+  useEffect(() => {
+    async function helper() {
+      const url = await getUnsplashPhoto(blogData?.title);
+      setUnsplashPhoto(url);
+    }
+    helper();
+  }, []);
 
   return (
     <>
@@ -128,7 +139,7 @@ function BlogCard({
           </CardHeader>
           <CardContent className="w-full">
             <img
-              src={`https://source.unsplash.com/random/350X350/?${title}`}
+              src={imageUrl || unsplashPhoto}
               alt="coming from unsplash"
               className="bg-secondary-foreground rounded-md h-[200px] w-full object-cover object-top"
             />

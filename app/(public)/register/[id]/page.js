@@ -18,6 +18,7 @@ import EventForm from "@/components/EventForm";
 import { Separator } from "@/components/ui/separator";
 import RegisterForm from "@/components/RegisterForm";
 import globalData from "@/app/data";
+import { getUnsplashPhoto } from "@/components/GetUnsplashUrl";
 
 async function page({ params }) {
   let data;
@@ -30,13 +31,14 @@ async function page({ params }) {
     console.error(error);
   }
 
+  data.image = await getUnsplashPhoto(data?.name);
   return (
     <>
       <section className="flex flex-wrap container gap-10 mt-16 py-10 justify-center xl:justify-between">
         <div className="max-w-[650px] w-full">
           <div className="w-full h-[100px] rounded-md">
             <img
-              src={`https://source.unsplash.com/random/350X350/?${data?.name}_stocks_finance`}
+              src={`${data.image}`}
               alt="unsplash_image_for_this_event"
               className="w-full h-full object-cover rounded-md bg-muted"
             />
@@ -140,7 +142,7 @@ async function page({ params }) {
             <img
               src={`${data.image}`}
               alt={`${data?.name}`}
-              className=" object-cover rounded-md bg-muted"
+              className="object-cover rounded-md bg-muted"
             />
           </div>
         </div>
