@@ -17,7 +17,10 @@ async function ArticleCard({ data, redirect }) {
     addSuffix: true,
   });
 
-  const unsplashPhoto = await getUnsplashPhoto(data?.title);
+  let unsplashPhoto = "";
+  if (!data?.imageUrl) {
+    unsplashPhoto = await getUnsplashPhoto(data?.title);
+  }
 
   return (
     <div className="max-w-[400px] w-full">
@@ -30,7 +33,9 @@ async function ArticleCard({ data, redirect }) {
             </div>
             <div>
               <CardTitle className="leading-2 text-2xl line-clamp-2">
-                {data.title}
+                <Link href={`/${redirect ? redirect : "article"}/${data.id}`}>
+                  {data.title || ""}
+                </Link>
               </CardTitle>
             </div>
             <div className="text-muted-foreground line-clamp-3 mt-2">
@@ -39,11 +44,13 @@ async function ArticleCard({ data, redirect }) {
           </CardHeader>
           <div className="">
             <div className="w-full h-[200px] px-5">
-              <img
-                src={data?.imageUrl || unsplashPhoto}
-                alt="blog-card"
-                className="rounded-md object-cover w-full h-full bg-muted"
-              />
+              <Link href={`/${redirect ? redirect : "article"}/${data.id}`}>
+                <img
+                  src={data?.imageUrl || unsplashPhoto}
+                  alt="blog-card"
+                  className="rounded-md object-cover w-full h-full bg-muted"
+                />
+              </Link>
             </div>
             <CardFooter className="w-full flex justify-between mt-4">
               {
