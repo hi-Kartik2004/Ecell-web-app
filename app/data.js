@@ -363,7 +363,7 @@ const data = {
   joinPageMembershipDialogDescription:
     "Take the E-cell UVCE membership to avail various benefits at almost No Cost!",
   joinPageMembershipCardBenefits: [
-    "10 GB of Storage",
+    "Price: $180",
     "10 GB of Storage",
     "10 GB of Storage",
     "10 GB of Storage",
