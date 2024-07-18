@@ -31,14 +31,14 @@ async function page({ params }) {
     console.error(error);
   }
 
-  data.image = await getUnsplashPhoto(data?.name);
+  data["unsplashUrl"] = await getUnsplashPhoto(data?.name);
   return (
     <>
       <section className="flex flex-wrap container gap-10 mt-16 py-10 justify-center xl:justify-between">
         <div className="max-w-[650px] w-full">
           <div className="w-full h-[100px] rounded-md">
             <img
-              src={`${data.image}`}
+              src={`${data.unsplashUrl}`}
               alt="unsplash_image_for_this_event"
               className="w-full h-full object-cover rounded-md bg-muted"
             />
