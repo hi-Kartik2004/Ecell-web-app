@@ -33,7 +33,7 @@ const data = {
   featuredSection2Images: [
     "https://qualitastech.com/wp-content/uploads/2022/04/Hi-Res-Logo-Qualitas-Trans.-BG_2x-transper-1024x264-4.webp",
     "https://res.cloudinary.com/hevo/image/upload/f_auto,q_auto,w_250/v1/hevo-website/customer/logo-white/30ffb6bb7dac4bdfb05dd1796b71a2ea_v3evyj",
-    "./assets/kaaj-ventures-logo.png"
+    "./assets/kaaj-ventures-logo.png",
   ],
 
   // about section
@@ -96,15 +96,13 @@ const data = {
       title: "StartUp to Win",
       description:
         "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups.",
-      image:
-        "./assets/img3.jpeg",
+      image: "./assets/img3.jpeg",
     },
     {
       title: "Bull Market 6.0",
       description:
         "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won amazing cash prizes. (Most Popular E-cell event of year 2023)",
-      image:
-        "/assets/img5.jpeg",
+      image: "/assets/img5.jpg",
     },
     // {
     //   title: "Becoming the best You! By Ishan Sharma",
@@ -117,8 +115,7 @@ const data = {
       title: "Discourse",
       description:
         "Conducted for its inaugural time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format, loved by all the participants.",
-      image:
-        "/assets/img2.jpeg",
+      image: "/assets/img2.jpg",
     },
   ],
 
