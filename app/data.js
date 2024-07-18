@@ -10,11 +10,11 @@ const data = {
   // Hero section
   heroBadgeMessage: "New",
   heroAlertMessage: "We are currently in beta. Please report any bugs to us.",
-  heroTitleLeft: "The E-cell Community which makes you",
-  heroTitleYellow: " Laugh. Learn. and Launch 🚀 ",
+  heroTitleLeft: "E-Cell UVCE",
+  heroTitleYellow: "Dream. Dare. Do.",
   heroTitleRight: "  ",
   heroDescription:
-    "Empowering students with the knowledge and skills to become successful entrepreneurs. Join us on this exciting journey of innovation and creativity.",
+    "Empowering students with the knowledge and skills to become successful entrepreneurs. Dare to dream big and do great things with E-Cell UVCE.",
   heroYellowBtnMessage: "Join our Community",
   heroYellowBtnLink: "/join",
   heroYellowBtnMessageForMembers: "Read Exclusive Articles",
@@ -42,19 +42,19 @@ const data = {
   aboutSectionTitleRight: "🚀",
   aboutSectionCards: [
     {
-      title: "Sometimes you've got to run before you walk.",
+      title: "Events and workshops which are fun & insightful",
       description:
-        "Embark is held each year as the inaugural event of the Cell. Its an ideation and innovation competition open to all students of UVCE. The focus is on brainstorming, idea generation and Business-Plan creation. They are judged by a panel of experts from various fields.",
+        "Our dynamic initiatives empower students to explore entrepreneurship, delve into business strategies, and navigate the exciting world of the stock market. From workshops on startup essentials to stock trading simulations, we offer a diverse range of programs that equip participants with practical skills and knowledge. Join us on this entrepreneurial journey, where innovation meets execution, and discover the limitless possibilities that await!",
     },
     {
-      title: "King of flagships in events.",
+      title: "Vibrant community",
       description:
-        "Exuberance | Enthusiasm Unlocked, that gives you a great platform to showcase your entrepreneurial spirit and skills with vigor and aspiration to achieve endeavours beyond the horizon! This e-week is to unleash and unlock the enthusiasm and zeal we all have for entrepreneurship and pioneering. Workshops are conducted to ensure that startups acquire the necessary skills to supplement their dreams.",
+        "At E-Cell UVCE, we’re more than just a platform; we’re a vibrant community where entrepreneurial minds collide. Imagine a bustling marketplace of ideas, where stock market enthusiasts, business strategists, and budding entrepreneurs gather to share insights, challenge norms, and ignite innovation. Whether you’re a dreamer, a doer, or both, our nexus welcomes you. Join us, and let’s turn ideas into reality!",
     },
     {
-      title: "What defines us.",
+      title: "Spreading knowledge",
       description:
-        "E-Summit is an annual celebration of Entrepreneurship. With a massive footfall of over 8000, it is a summit for budding entrepreneurs, students, professionals, mentors, angel investors and venture capitalists. There is a stunning array of competitions for students to showcase their talents.",
+        "E-Cell UVCE's social media channels are a treasure trove of inspiration. Our regular articles are crafted to spark curiosity, drive motivation, and deepen interest in the entrepreneurial world. Each post is a beacon of knowledge, illuminating the path for students eager to embark on their own business ventures. Follow us for your dose of entrepreneurial wisdom and let's innovate together!",
     },
   ],
 
@@ -106,10 +106,17 @@ const data = {
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
+    // {
+    //   title: "Becoming the best You! By Ishan Sharma",
+    //   description:
+    //     "On April 10th, 2024, E-Cell UVCE hosted an inspiring session with Ishan Sharma, a renowned entrepreneur and influencer. Titled 'Becoming The Best You!', Ishan shared his journey from college dropout to entrepreneurial success, offering valuable insights on overcoming self-doubt and achieving dreams.His motivational story and practical advice left attendees inspired and determined.",
+    //   image:
+    //     "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+    // },
     {
       title: "Discourse",
       description:
-        "Conducted for it's inaugrual time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format.",
+        "Conducted for its inaugural time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format, loved by all the participants.",
       image:
         "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
     },
@@ -199,6 +206,10 @@ const data = {
           name: "Twitter",
           link: "https://www.twitter.com/ecelluvce",
         },
+        {
+          name: "LinkedIn",
+          link: "https://www.linkedin.com/in/e-cell-uvce",
+        },
       ],
     },
     {
@@ -259,8 +270,7 @@ const data = {
 
   // Registration form description
   registerDescription:
-    "Join our community and kickstart your entrepreneurial journey with E-Cell UVCE.",
-
+    "Join us at E-Cell, where aspiring entrepreneurs come together to ignite ideas, collaborate with like-minded innovators, and embark on a journey of turning dreams into thriving ventures.",
   // Events page
   eventPageTitle: "Events",
   eventPageDescription: "Explore and participate in our upcoming events.",
@@ -278,31 +288,19 @@ const data = {
   aboutSectionVision: {
     title: "Vision",
     description:
-      "To be a well-recognized center of excellence for entrepreneurial development, forming successful entrepreneurs.",
+      "To foster a dynamic ecosystem where aspiring entrepreneurs are empowered with resources, mentorship, and networking opportunities to transform their ideas into impactful ventures. Through inclusive programs and a culture of innovation, we strive to cultivate a new generation of visionary leaders dedicated to driving positive change and creating a more prosperous future.",
   },
   aboutSectionMission: {
     title: "Mission",
     description:
-      "To enhance and nurture entrepreneurial skills among students.",
+      "To inspire, educate, and support aspiring entrepreneurs through comprehensive resources and opportunities, fostering a culture of innovation and collaboration to catalyse the growth of impactful ventures.",
   },
   aboutPageHistoryHeading: "Where Innovation Meets Opportunity.",
   aboutPageHistoryP1: `The Entrepreneurship Cell of UVCE, founded in 2014 by Tejas Narayan,
   stands tall as a student-run body with the goal of fostering an
-  entrepreneurial culture and providing the most unique opportunities to the
-  student community. In 2019, the club was re-organized with support from
-  the alumni.`,
-  aboutPageHistoryP2: `We, at the Entrepreneurship Cell UVCE, seek to instill an Entrepreneurship
-  drive among the students of the college. With our numerous workshops,
-  seminars, and events, we aim to further the students' understanding of
-  business from how to chalk out a business plan to executing it. The E-Cell
-  envisions nurturing the innovative potential of every student, in a bid to
-  invigorate and inspire them to get one step closer to their entrepreneurial
-  vision. From networking, and business modeling to investor pitches, E-Cell
-  continually strives to provide students with a platform to holistically develop,
-  learn and expand the horizon of opportunities that lie before them.`,
-  aboutPageHistoryP3: `We also provide opportunities for our members to gain a better
-  understanding of the finance world by facilitating regular interactions with
-  them.`,
+  entrepreneurial culture and providing the most unique opportunities to the student community. In 2019, the club was re-organized with support from the alumni.`,
+  aboutPageHistoryP2: `We, at the Entrepreneurship Cell UVCE, seek to instil an Entrepreneurship drive among the students of the college. With our numerous workshops, seminars, and events, we aim to further the students' understanding of business from how to chalk out a business plan to executing it. The E-Cell envisions nurturing the innovative potential of every student, in a bid to invigorate and inspire them to get one step closer to their entrepreneurial vision. From networking, and business modelling to investor pitches, E-Cell continually strives to provide students with a platform to holistically develop, learn and expand the horizon of opportunities that lie before them.`,
+  aboutPageHistoryP3: `We also provide opportunities for our members to gain a better understanding of the finance world by facilitating regular interactions with them.`,
 
   // Gallery page
   galleryPageTitle: "Gallery",
@@ -363,11 +361,16 @@ const data = {
   joinPageMembershipDialogDescription:
     "Take the E-cell UVCE membership to avail various benefits at almost No Cost!",
   joinPageMembershipCardBenefits: [
-    "10 GB of Storage",
-    "10 GB of Storage",
-    "10 GB of Storage",
-    "10 GB of Storage",
-    "1 GB of Storage",
+    "Certificate for membership",
+    "T-shirt and badge",
+    "Exclusive time to network with guests",
+    "Exclusive events - sessions, Debates",
+    "Stock Market Sessions",
+    "Vist to a startup offices",
+    "Visit to industry",
+    "Games and fun activities",
+    "Freelancing events",
+    "Meet and Greet with alumni who are VC’s and founders",
   ],
   joinPageMembershipCardDescription:
     "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.",

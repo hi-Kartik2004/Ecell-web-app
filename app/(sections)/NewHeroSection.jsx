@@ -45,18 +45,18 @@ function NewHeroSection({ isMember }) {
         </div>
 
         <h1 className="text-3xl lg:leading-tight	 md:text-4xl lg:text-5xl max-w-[1000px] font-bold text-center mt-6">
-          {data?.heroTitleLeft + " "}
-          <span className="bg-gradient-to-b from-primary to-[#ff9300] bg-clip-text text-transparent">
+          {data?.heroTitleLeft + " "} <br />
+          <span className="bg-gradient-to-b from-primary to-[#ff9300] bg-clip-text text-transparent text-6xl">
             {data?.heroTitleYellow + " "}
           </span>{" "}
           {data?.heroTitleRight}
         </h1>
 
-        <p className="max-w-[800px] lg:text-base text-muted-foreground text-sm text-center my-6 lg:my-8">
+        <p className="max-w-[600px] lg:text-base text-muted-foreground text-sm text-center my-6 lg:my-6">
           {data?.heroDescription}
         </p>
 
-        <div className="flex gap-4 flex-col lg:flex-row">
+        <div className="flex gap-4 flex-col lg:flex-row mt-2">
           {isMember ? (
             <Button className="flex gap-2 items-center font-semibold" size="lg">
               <Link
