@@ -355,14 +355,6 @@ const teamOf24 = {
         "https://i.postimg.cc/bvTKgV4C/Screenshot-20240328-135557-2.jpg",
     },
     {
-      name: "Amith Ravindranath",
-      post: "Executive",
-      instagram: "xtreeme_amith",
-      linkedin: "https://www.linkedin.com/in/amith-r-manu-a45344301/",
-      email: "lightningretridition@gmail.com",
-      imageUrl: "https://i.postimg.cc/HnNJyMyW/IMG-20240328-WA0013.jpg",
-    },
-    {
       name: "Yadu Vaibhav",
       post: "Executive",
       instagram: "vaibhzyx",

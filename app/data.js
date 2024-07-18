@@ -33,7 +33,7 @@ const data = {
   featuredSection2Images: [
     "https://qualitastech.com/wp-content/uploads/2022/04/Hi-Res-Logo-Qualitas-Trans.-BG_2x-transper-1024x264-4.webp",
     "https://res.cloudinary.com/hevo/image/upload/f_auto,q_auto,w_250/v1/hevo-website/customer/logo-white/30ffb6bb7dac4bdfb05dd1796b71a2ea_v3evyj",
-    "./assets/kaaj-ventures-logo.png",
+    "./assets/kaaj-ventures-logo.png"
   ],
 
   // about section
@@ -97,14 +97,14 @@ const data = {
       description:
         "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups.",
       image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "public\assets\img3.jpeg",
     },
     {
       title: "Bull Market 6.0",
       description:
         "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won amazing cash prizes. (Most Popular E-cell event of year 2023)",
       image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "public\assets\img5.jpeg",
     },
     // {
     //   title: "Becoming the best You! By Ishan Sharma",
@@ -118,7 +118,7 @@ const data = {
       description:
         "Conducted for its inaugural time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format, loved by all the participants.",
       image:
-        "https://images.pexels.com/photos/2608517/pexels-photo-2608517.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "public\assets\img5.jpeg",
     },
   ],
 
@@ -356,13 +356,12 @@ const data = {
   joinPageHeading: "Membership",
   // joinPageDescription: "Make sure the photo is not too big (2MB or more)",
   joinPageMembershipCardMessage: "Yearly Membership",
-  joinPageMembershipCardAmount: "149",
+  joinPageMembershipCardAmount: "180",
   joinPageMembershipDialogTitle: "Join the E-Cell UVCE Community!",
   joinPageMembershipDialogDescription:
     "Take the E-cell UVCE membership to avail various benefits at almost No Cost!",
   joinPageMembershipCardBenefits: [
     "Certificate for membership",
-    "T-shirt and badge",
     "Exclusive time to network with guests",
     "Exclusive events - sessions, Debates",
     "Stock Market Sessions",
@@ -373,15 +372,14 @@ const data = {
     "Meet and Greet with alumni who are VC’s and founders",
   ],
   joinPageMembershipCardDescription:
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.",
+    "",
   joinPageFreeCardBenefits: [
-    "1 GB of Storage",
-    "1 GB of Storage",
-    "1 GB of Storage",
-    "1 GB of Storage",
+    "Events - Sessions, Debates",
+    "Games and Fun Activities",
+    "Access to Ticketed Events",
   ],
   joinPageFreeCardDescription:
-    "Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque rem aperiam, eaque ipsa quae.",
+    "",
 
   // Navbar - only techies touch this
   navbarLinks: [
