@@ -97,14 +97,14 @@ const data = {
       description:
         "A 3-day intensive workshop conducted by Mr. B V Jagadeesh, a seasoned entrepreneur, venture capitalist and the Chairman of UVCE Foundation. The event equipped the students with valuable insights and strategies for launching and scaling successful startups.",
       image:
-        "public\assets\img3.jpeg",
+        "./assets/img3.jpeg",
     },
     {
       title: "Bull Market 6.0",
       description:
         "The 6th edition of E-Cell's flagship event Bull Market gave real-world insights into the field of Trading in the Indian Stock Markets. The students strategically invested and winners won amazing cash prizes. (Most Popular E-cell event of year 2023)",
       image:
-        "public\assets\img5.jpeg",
+        "/assets/img5.jpeg",
     },
     // {
     //   title: "Becoming the best You! By Ishan Sharma",
@@ -118,7 +118,7 @@ const data = {
       description:
         "Conducted for its inaugural time, this event was a resounding success! DISCOURSE gave the students a unique platform that amalgamated entrepreneurship and public speaking in an exceptional format, loved by all the participants.",
       image:
-        "public\assets\img5.jpeg",
+        "/assets/img2.jpeg",
     },
   ],
 
@@ -372,14 +372,14 @@ const data = {
     "Meet and Greet with alumni who are VC’s and founders",
   ],
   joinPageMembershipCardDescription:
-    "",
+    "The duration of the membership is 1 year.",
   joinPageFreeCardBenefits: [
     "Events - Sessions, Debates",
     "Games and Fun Activities",
     "Access to Ticketed Events",
   ],
   joinPageFreeCardDescription:
-    "",
+    "Everyone still get's to be a part of the E-cell UVCE Community.",
 
   // Navbar - only techies touch this
   navbarLinks: [
