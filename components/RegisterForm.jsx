@@ -455,7 +455,7 @@ export default function EventForm({ data }) {
             the leader's Email i.e the email using which you have logged in.
           </p>
           <iframe
-            src={`https://konfhub.com/widget/tto?desc=false${
+            src={`https://konfhub.com/widget/e-cell-tickets?desc=false${
               "?eventId=" + data.id + "&teamName=" + dataOfForm.teamName
             }`}
             id="konfhub-widget"
