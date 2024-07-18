@@ -3,7 +3,6 @@ import { db } from "@/firebase/config";
 import { currentUser } from "@clerk/nextjs";
 import { collection, getDocs, query, where } from "firebase/firestore";
 import Link from "next/link";
-import { redirect, useRouter } from "next/navigation";
 import React from "react";
 import { BsFillSignStopFill } from "react-icons/bs";
 var axios = require("axios");
