@@ -354,9 +354,9 @@ const data = {
   // joinPageDescription: "Make sure the photo is not too big (2MB or more)",
   joinPageMembershipCardMessage: "Yearly Membership",
   joinPageMembershipCardAmount: "180",
-  joinPageMembershipDialogTitle: "Join the E-Cell UVCE Community!",
+  joinPageMembershipDialogTitle: "Make the Payment & Share Details.",
   joinPageMembershipDialogDescription:
-    "Take the E-cell UVCE membership to avail various benefits at almost No Cost!",
+    "Make the payment of Rs 180 to the UPI ID provided below and share the screenshot of the payment.",
   joinPageMembershipCardBenefits: [
     "Certificate for membership",
     "Exclusive time to network with guests",
@@ -377,6 +377,10 @@ const data = {
   ],
   joinPageFreeCardDescription:
     "Everyone still get's to be a part of the E-cell UVCE Community.",
+
+  // membership payment form & QR Code
+  paymentUpiId: "shamanthacharya67@oksbi",
+  paymentQrCode: "https://i.postimg.cc/t43cQrqC/image.png",
 
   // Navbar - only techies touch this
   navbarLinks: [

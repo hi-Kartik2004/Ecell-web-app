@@ -293,9 +293,9 @@ function MembershipForm() {
                       )}
                     </button>
                   </DialogTrigger>
-                  <DialogContent className="overflow-auto">
+                  <DialogContent className="overflow-auto max-h-screen">
                     <DialogHeader>
-                      <DialogTitle>
+                      <DialogTitle className="text-left">
                         {globalData?.joinPageMembershipDialogTitle}
                       </DialogTitle>
                       <DialogDescription className="text-muted-foreground text-sm">
