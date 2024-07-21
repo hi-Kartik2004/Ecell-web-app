@@ -247,15 +247,15 @@ const data = {
   footerPrivacyLinks: [
     {
       name: "Privacy Policy",
-      link: "https://www.google.com",
+      link: "https://docs.google.com/document/d/1jajviq87SWCDtZoTMrP1af6GVzkNclcwClIis7GT6io/edit?usp=sharing",
     },
     {
       name: "Terms of Service",
-      link: "https://www.google.com",
+      link: "https://docs.google.com/document/d/19l_xmBvtFVcYKG4PJCtSCf40ai-3aeDj9US7wOoYP2k/edit?usp=sharing",
     },
     {
       name: "Contact Us",
-      link: "https://www.google.com",
+      link: "https://docs.google.com/document/d/13gJpt4-JKucBNwt6TWWXJrIgkn8UadTm1QLJXr53R-o/edit?usp=sharing",
     },
   ],
 
