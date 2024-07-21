@@ -15,8 +15,9 @@ var axios = require("axios");
 const inter = Inter({ subsets: ["latin"] });
 
 export const metadata = {
-  title: "Ecell UVCE 💡",
-  description: "By the students, for the students!",
+  title: "E-Cell UVCE 💡",
+  description:
+    "Ecell UVCE, Empowering students with the knowledge and skills to become successful entrepreneurs. Dare to dream big and do great things with E-Cell UVCE.",
 };
 
 export default async function RootLayout({ children }) {

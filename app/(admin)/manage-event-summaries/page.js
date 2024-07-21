@@ -73,6 +73,7 @@ async function ManageBlogs() {
                       editIcon={1}
                       deleteIcon={1}
                       id={blog.id}
+                      imageUrl={blog.imageUrl}
                     />
                   </div>
                 ))}

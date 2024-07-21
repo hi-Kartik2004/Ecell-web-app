@@ -71,6 +71,11 @@ export default async function Home() {
 
   return (
     <main className="flex justify-center flex-col w-full">
+      <p className=" hidden">
+        E-Cell UVCE Dream. Dare. Do. Empowering students with the knowledge and
+        skills to become successful entrepreneurs. Dare to dream big and do
+        great things with E-Cell UVCE.
+      </p>
       <div className="w-full">
         <div className="w-full">
           <NewHeroSection isMember={details.isMember} />
